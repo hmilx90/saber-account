@@ -3,152 +3,138 @@
 * @author linjing03@
 */
 
-.classify li {
-    list-style: none;
-    float: left;
-    /*margin-left: 1.44rem;*/
-    margin-top: 0.5rem;
-    text-align: center;
-    font-size: 0.75rem;
-    width: 17%;
-    padding: 0 4%;
-}
-.classify {
+.classify
     margin-top: 3.375rem;
     width: 100%;
-}
-.classify-list {
+
+    li
+        list-style: none;
+        float: left;
+        margin-top: 0.5rem;
+        text-align: center;
+        font-size: 0.75rem;
+        width: 17%;
+        padding: 0 4%;
+
+
+.classify-list
     overflow: hidden;
-}
 
 
-.item-bg {
+.item-bg
     height: 57px;
     width: 57px;
     background-color: #59c0bf;
     border-radius: 50%;
     margin-bottom: 5px;
-}
 
-.classify-list:after {
+
+.classify-list:after
     content:'.';
     display:block;
     height: 0;
     visibility: hidden;
     clear: both;
-}
 
-.item-bg-1 {
+
+.item-bg-1
     background-color: #f7836a;
-}
-.item-bg-2 {
-    background-color: #fdde83;
-}
-.item-bg-3 {
-    background-color: #cbde9c;
-}
-.item-bg-4 {
-    background-color: #ffbe9e;
-}
-.item-bg-5 {
-    background-color: #a2aaff;
-}
-.item-bg-6 {
-    background-color: #ffa8d3;
-}
-.item-bg-7 {
-    background-color: #a7d7fd;
-}
-.item-bg-8 {
-    background-color: #9bfdb2;
-}
 
-#tab-bnt {
+.item-bg-2
+    background-color: #fdde83;
+
+.item-bg-3
+    background-color: #cbde9c;
+
+.item-bg-4
+    background-color: #ffbe9e;
+
+.item-bg-5
+    background-color: #a2aaff;
+
+.item-bg-6
+    background-color: #ffa8d3;
+
+.item-bg-7
+    background-color: #a7d7fd;
+
+.item-bg-8
+    background-color: #9bfdb2;
+
+
+#tab-bnt
     margin: 10px auto;
     width: 110px;
-}
-#tab-bnt .tab-1, #tab-bnt .tab-2 {
+
+#tab-bnt .tab-1, #tab-bnt .tab-2
     background-color: #d8d8d8;
     line-height: 26px;
     width: 45px;
     display: inline-block;
     padding: 0 7px;
     text-align: center;
-}
-#tab-bnt .tab-1 {
-    border-bottom-left-radius: 13px;
-    -webkit-border-bottom-left-radius: 13px;
-    -moz-border-bottom-left-radius: 13px;
-    border-top-left-radius: 13px;
-    -webkit-border-top-left-radius: 13px;
-    -moz-border-top-left-radius: 13px;
-    padding-right: 0;
-}
-#tab-bnt .tab-2 {
-    border-bottom-right-radius: 13px;
-    -webkit-border-bottom-right-radius: 13px;
-    -moz-border-bottom-right-radius: 13px;
-    border-top-right-radius: 13px;
-    -webkit-border-top-right-radius: 13px;
-    -moz-border-top-right-radius: 13px;
-    padding-left: 0;
-}
-#tab-bnt .active{
-    background-color: #cfe7e7;
-}
 
-.ipt-box-i {
+#tab-bnt
+    .tab-1
+        border-bottom-left-radius: 13px;
+        -webkit-border-bottom-left-radius: 13px;
+        -moz-border-bottom-left-radius: 13px;
+        border-top-left-radius: 13px;
+        -webkit-border-top-left-radius: 13px;
+        -moz-border-top-left-radius: 13px;
+        padding-right: 0;
+
+        .tab-2
+            border-bottom-right-radius: 13px;
+            -webkit-border-bottom-right-radius: 13px;
+            -moz-border-bottom-right-radius: 13px;
+            border-top-right-radius: 13px;
+            -webkit-border-top-right-radius: 13px;
+            -moz-border-top-right-radius: 13px;
+            padding-left: 0;
+
+        .active
+            background-color: #cfe7e7;
+
+
+.ipt-box-i
     padding-left: 3px;
     border-top: 1px solid #bcbcba;
     border-bottom: 1px solid #bcbcba;
     line-height: 38px;
     height: 38px;
-}
+
 .ipt-box-i+div {
     padding-left: 3px;
 }
-.sum {
+.sum
     display: inline-block;
     /*margin-bottom: -13px;*/
     text-align: right;
     font-size: 24px;
     padding-right: 3px;
-}
-.sum, .ipt-remark {
+
+.sum, .ipt-remark
     height: 38px;
     border: 0;
     width: 70%;
-    /*background-color: #59c0bf;*/
-}
 
-.keyboard table {
-    width: 100%;
-}
-.keyboard td{
-    width: 25%;
-    height: 108px;
-    line-height: 54px;
-    text-align: center;
-    font-size: 32px;
-}
-.keyboard .key-cn {
-    font-size: 18px;
-}
 
-.keyboard td{
-    background-color: #f1ffff;
+.keyboard
+    table
+        width: 100%;
+    td
+        width: 25%;
+        height: 108px;
+        line-height: 54px;
+        text-align: center;
+        font-size: 32px;
+        background-color: #f1ffff;
+        border-top: 1px solid #bcbcba;
+        border-left: 1px solid #bcbcba;
+
+    .key-cn
+        font-size: 18px;
+.p-btm
     border-top: 1px solid #bcbcba;
-    border-left: 1px solid #bcbcba;
-}
 
-.p-btm {
-    border-top: 1px solid #bcbcba;
-}
-
-.active-cls .item-bg {
-    /*border: 4px solid #dadbdd;*/
-    /*width: 49px;*/
-    /*height: 49px;*/
-    /*margin-top: -4px;*/
-    /*margin-bottom: -4px;*/
-}
