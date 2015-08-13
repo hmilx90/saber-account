@@ -3,6 +3,9 @@
 * @author linjing03@
 */
 
+@require '../common/css/common.styl'
+@require '../common/css/font.styl'
+
 .classify
     margin-top: 3.375rem;
     width: 100%;
@@ -20,13 +23,12 @@
 .classify-list
     overflow: hidden;
 
-
-.item-bg
-    height: 57px;
-    width: 57px;
-    background-color: #59c0bf;
-    border-radius: 50%;
-    margin-bottom: 5px;
+.classify-list:after
+    content:'.';
+    display:block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
 
 
 .classify-list:after
@@ -35,6 +37,16 @@
     height: 0;
     visibility: hidden;
     clear: both;
+
+.item-bg
+    height: 57px;
+    width: 57px;
+    background-color: #59c0bf;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 30px;
+    line-height: 57px;
 
 
 .item-bg-1
@@ -84,17 +96,17 @@
         -moz-border-top-left-radius: 13px;
         padding-right: 0;
 
-        .tab-2
-            border-bottom-right-radius: 13px;
-            -webkit-border-bottom-right-radius: 13px;
-            -moz-border-bottom-right-radius: 13px;
-            border-top-right-radius: 13px;
-            -webkit-border-top-right-radius: 13px;
-            -moz-border-top-right-radius: 13px;
-            padding-left: 0;
+    .tab-2
+        border-bottom-right-radius: 13px;
+        -webkit-border-bottom-right-radius: 13px;
+        -moz-border-bottom-right-radius: 13px;
+        border-top-right-radius: 13px;
+        -webkit-border-top-right-radius: 13px;
+        -moz-border-top-right-radius: 13px;
+        padding-left: 0;
 
-        .active
-            background-color: #cfe7e7;
+    .active
+        background-color: #cfe7e7;
 
 
 .ipt-box-i
@@ -109,12 +121,11 @@
 }
 .sum
     display: inline-block;
-    /*margin-bottom: -13px;*/
     text-align: right;
     font-size: 24px;
     padding-right: 3px;
 
-.sum, .ipt-remark
+.ipt-remark
     height: 38px;
     border: 0;
     width: 70%;

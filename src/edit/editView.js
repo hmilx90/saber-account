@@ -9,6 +9,22 @@ define(function (require) {
 
     config.template = require('./edit.tpl');
 
+    var caculator = {
+        init: function (){
+            caculator.show();
+        },
+        show: function () {
+
+        },
+        hide: function () {
+
+        },
+        work: function () {
+
+        }
+
+    }
+
     return config;
 
 });
