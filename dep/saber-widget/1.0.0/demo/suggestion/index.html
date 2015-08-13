@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="menglingjun" />
+    <title>suggestion demo</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        'baseUrl': '../src',
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+    <link rel="stylesheet" href="demo.css">
+
+</head>
+
+<body>
+    <nav class="ui-bar" data-ui="primary header">
+        <a href="../" class="ui-btn" data-ui="primary">← 返回</a>
+        <h1 data-ui="title">Suggestion - Saber UI</h1>
+        <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+    </nav>
+
+    <article>
+        <form action="http://www.baidu.com/s" method="get">
+            <div class="ui-suggestion">
+                <div data-role="wrapper">
+                    <input data-role="input" type="text" id="input" name="wd">
+                    <i class="icon-search">s</i>
+                    <span data-role="reset">x</span>
+                    <input data-role="search" type="submit" value="百度一下">
+                </div>
+            </div>
+        </form>
+    </article>
+
+
+<script>
+   require(
+        [
+            'saber-dom',
+            'saber-widget',
+            'saber-widget/Suggestion'
+        ],
+        function( dom, widget ) {
+
+            var sug = widget.suggestion( dom.query('.ui-suggestion') );
+
+            sug.on('request', function (ev, data) {
+                console.log(data)
+            })
+
+            sug.on('select', function (ev, domEv) {
+                var target = domEv.target;
+                if (target && target.tagName == 'LI') {
+                    location.href = 'http://www.baidu.com?wd=' + dom.getData(target, 'key');
+                }
+            });
+
+        }
+    );
+
+</script>
+</body>
+</html>

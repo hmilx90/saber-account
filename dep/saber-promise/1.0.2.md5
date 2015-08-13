@@ -1,0 +1,11 @@
+{
+    "doc/promise.md": "95095a6275597a85f501d6e3b786be8c",
+    "doc/resolver.md": "407547f448f0cfabb328d2e9b724d232",
+    "History.md": "33a9135c34d49b7a8a983e77464df3da",
+    "package.json": "f7beff2e30abc7cc5a50b3c5fad037cd",
+    "README.md": "e7379bbadb5482ccb50c6e6b87538f8e",
+    "src/promise.js": "b93d71be894e6c0629cd4951f49efaa6",
+    "test/adapter.js": "2f70853919772f85cc06f93b6f8dc135",
+    "test/exceptionSpec.js": "f5e3dc4fd8688620e34ff8e5172ebe0b",
+    "test/resolverSpec.js": "f2c840552d966fb9e982da7759681001"
+}

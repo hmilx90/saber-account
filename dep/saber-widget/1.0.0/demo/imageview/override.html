@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>ImageView - Saber Widget Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="masker.css">
+    <link rel="stylesheet" href="imageview.css">
+    <link rel="stylesheet" href="demo.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+</head>
+
+<body>
+    <nav class="ui-bar" data-ui="primary header">
+        <a href="./" class="ui-btn" data-ui="primary">← 返回</a>
+        <h1 data-ui="title">ImageView - Saber UI</h1>
+        <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+    </nav>
+
+    <nav class="ui-bar" data-ui="subheader">
+        <div class="ui-btns">
+            <a href="./basic.html" class="ui-btn">基本</a>
+            <a href="./flex.html" class="ui-btn">转屏</a>
+            <a href="./override.html" class="ui-btn" data-ui="active">自定义</a>
+            <a href="./setup.html" class="ui-btn">Setup</a>
+            <a href="./group.html" class="ui-btn">分组</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="demos">
+            <span id="showBtn" class="ui-btn" data-ui="success block" data-action="enable">显示</span>
+        </div>
+    </div>
+
+
+    <script>
+    require(
+        [
+            'saber-tap',
+            'saber-dom',
+            'saber-widget',
+            'saber-widget/ImageView',
+            'saber-widget/plugin/Masker'
+        ],
+        function( Tap, dom, widget ) {
+            Tap.mixin( document.body );
+
+            var images = [
+                'http://www.techdigest.tv/three-logo-thumb.jpg',
+                'http://ygimg1.mnsfz.com/pic/yangguang/2014-5-30/1/10.jpg',
+                'http://img.gaitu.com//eimg/200907160943575506.gif',
+                'http://ygimg1.mnsfz.com/pic/yangguang/2014-5-12/1/2002131509443154443.jpg',
+                'http://ygimg1.mnsfz.com/pic/yangguang/2014-5-13/1/5483238720140323173013082.jpg'
+            ];
+
+            iv = widget.imageView( {
+
+                datasource: images,
+
+                makeToolbar: function () {
+                    return [
+                        '<span data-role="close">返回</span>',
+                        '<h1>No.' + ( this.get( 'index' ) + 1 ) + '</h1>'
+                    ].join( '' );
+                },
+
+                onChange: function ( ev, from, to ) {
+                    console.info( 'change from %s to %s', from, to );
+                }
+
+            } );
+
+
+            dom.g( 'showBtn' ).addEventListener( 'click', function ( ev ) {
+                iv.enable();
+            }, false );
+        }
+    );
+    document.addEventListener( 'touchstart', function(){}, false );
+    </script>
+</body>
+</html>

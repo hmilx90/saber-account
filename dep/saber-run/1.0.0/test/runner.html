@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Jasmine Spec Runner v2.0.0</title>
+
+    <link rel="stylesheet" type="text/css" href="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.css">
+
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine-html.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/boot.js"></script>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-6/esl.js"></script>
+
+    <script type="text/javascript" src="./consoleReporter.js"></script>
+
+    <script>
+        require.config({
+            baseUrl: './',
+
+            packages: [
+                {
+                    name: 'saber-lang',
+                    location: './dep/saber-lang/1.0.0/src'
+                },
+                {
+                    name: 'saber-dom',
+                    location: './dep/saber-dom/1.0.0/src'
+                },
+                {
+                    name: 'saber-promise',
+                    location: './dep/saber-promise/1.0.0/src',
+                    main: 'promise'
+                },
+                {
+                    name: 'saber-run',
+                    location: '../src'
+                }
+            ]
+        });
+
+        require([
+            'transition.spec',
+            'animation.spec',
+            'util.spec'
+        ]);
+    </script>
+</head>
+
+<body>
+</body>
+</html>

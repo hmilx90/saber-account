@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Demo</title>
+        <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .sky {
+            font-size: 20px;
+            color: lightskyblue;
+            text-align: center;
+            background: #EAEAE9;
+            padding: 10px;
+        }
+        .readable {
+            font-size: 14px;
+            color: #333;
+            background: #FAFAF9;
+            padding: 10px;
+        }
+        .list span {
+            background: #FFA;
+        }
+
+        .list span span {
+            color: red;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">Basic DOM Demo</h1>
+            <p class="desc">desc...</p>
+            <ul class="list">
+                <li>please <span>click</span> me !</li>
+                <li><span>here</span> is a matches demo.</li>
+                <li>when you using <span>delegate</span>, it's very useful.</li>
+                <li><span>closest demo <span id="closest" data-ui="saber">here</span> !</span></li>
+            </ul>
+            <p id="dataset-result"></p>
+        </div>
+        <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-6/esl.js"></script>
+        <script>
+        require.config({
+            packages: [
+                {
+                    name: 'saber-dom',
+                    location: '../src'
+                }
+            ]
+        });
+
+        require([ 'saber-dom' ], function(dom) {
+            var title = dom.query('.title');
+            var desc = dom.queryAll('p');
+
+            dom.addClass(title, 'sky');
+            dom.addClass(desc[0], 'readable');
+
+            dom.setStyle(title, 'float', 'right');
+            console.log(dom.getStyle(title, 'width'));
+
+            // matches demo
+            var list = dom.query('.list');
+            list.addEventListener('click', function(ev) {
+                var el = ev.target;
+                if (dom.matches(el, '.list span')) {
+                    title.innerHTML = 'you clicked: ' + el.innerHTML;
+                }
+            });
+
+            // closest demo
+            var cEl = dom.g('closest');
+            var ret1 = dom.closest(cEl, 'span');
+            var ret2 = dom.closest(cEl, 'ul');
+            var ret3 = dom.closest(cEl, 'li > span' , list);
+
+            console.log(ret1, ret2, ret3);
+
+            // dataset demo
+            var datasetResult = dom.g('dataset-result');
+            var result = [];
+            result.push('null: ' + dom.getData(datasetResult, 'ui'));
+            result.push('saber: ' + dom.getData(cEl, 'ui'));
+            dom.setData(cEl, 'ui', 'rider');
+            result.push('rider: ' + dom.getData(cEl, 'ui'));
+            dom.removeData(cEl, 'ui');
+            result.push('null: ' + dom.getData(cEl, 'ui'));
+
+            datasetResult.innerHTML = result.join('<br/>');
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "bower.json": "afcd1ae6ab7bd352e1b7666766c1a815",
+    "doc/promise.md": "95095a6275597a85f501d6e3b786be8c",
+    "doc/resolver.md": "407547f448f0cfabb328d2e9b724d232",
+    "History.md": "b3e60103e4c871b27605a96371062b4c",
+    "LICENSE": "f550cc6cbba5122380ad4cb648e3b1cd",
+    "package.json": "954d142c62ff293a97ad049eaf6c40aa",
+    "promise.js": "4876e11e2d37c7a34a1ed4a7b288864f",
+    "README.md": "c153a496e37ebb4926825923dead6579",
+    "src/promise.js": "b0056026c74bc7e3aae695b3e56dbefa",
+    "test/adapter.js": "43c0c4600386ea7ee248c26abee537b0",
+    "test/exceptionSpec.js": "39cefcf35dc2d9a80daa0d6ddc426283",
+    "test/resolverSpec.js": "4c2e11d2244df5c089f0d0a9b46578c6"
+}

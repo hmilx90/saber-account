@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Slider - Saber Widget Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="slider.css">
+    <link rel="stylesheet" href="demo.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+</head>
+
+<body>
+    <nav class="ui-bar" data-ui="primary header">
+        <a href="./" class="ui-btn" data-ui="primary">← 返回</a>
+        <h1 data-ui="title">Slider - Saber UI</h1>
+        <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+    </nav>
+
+    <nav class="ui-bar" data-ui="subheader">
+        <div class="ui-btns">
+            <a href="./basic.html" class="ui-btn">基本使用</a>
+            <a href="./flex.html" class="ui-btn">转屏支持</a>
+            <a href="./flex.html" class="ui-btn" data-ui="active">动态同步</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>标准</h2>
+        <div id="mySlider" class="ui-slider">
+            <div data-role="wrapper" id="mySliderWrapper">
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/2.png"></a>
+                </div>
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/4.png"></a>
+                </div>
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/1.png"></a>
+                </div>
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/3.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="ui-bar" data-ui="footer">
+        <div class="ui-btns">
+            <a href="#" class="ui-btn" data-ui="success" id="add">添加</a>
+            <a href="#" class="ui-btn" data-ui="danger" id="remove">删除</a>
+            <a href="#" class="ui-btn" data-ui="active" id="sync">自动同步</a>
+        </div>
+    </nav>
+
+    <script>
+    require(
+        [
+            'saber-tap',
+            'saber-dom',
+            'saber-widget',
+            'saber-widget/Slider'
+        ],
+        function( Tap, dom, widget, Slider ) {
+            Tap.mixin( document.body );
+
+            slider = widget.slider( dom.g( 'mySlider' ) );
+
+            dom.g( 'add' ).onclick = function () {
+                var item = document.createElement( 'div' );
+                dom.setData( item, 'role', 'item' );
+                item.innerHTML = [
+                    '<a href="http://www.google.com/">',
+                    '<img src="./img/' + ( Math.floor( Math.random() * 10 ) % 3 + 1 ) + '.png">',
+                    '</a>'
+                ].join( '' );
+                dom.g( 'mySliderWrapper' ).appendChild( item );
+
+                syncSlider();
+            };
+
+            dom.g( 'remove' ).onclick = function () {
+                var wrapper = dom.g( 'mySliderWrapper' );
+                wrapper.removeChild( wrapper.lastElementChild );
+
+                syncSlider();
+            };
+
+            dom.g( 'sync' ).onclick = function () {
+                autoSync = !autoSync;
+
+                dom.setData( this, 'ui', ( autoSync ? ' active' : '' ) );
+
+                syncSlider();
+            };
+
+            var autoSync = true;
+            function syncSlider () {
+                if ( autoSync ) {
+                    slider.sync();
+                }
+            }
+        }
+    );
+
+    document.addEventListener( 'touchstart', function(){}, false );
+    </script>
+</body>
+</html>

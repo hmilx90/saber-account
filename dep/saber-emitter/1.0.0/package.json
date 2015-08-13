@@ -1,0 +1,21 @@
+{
+    "name": "saber-emitter",
+    "version": "1.0.0",
+    "description": "一个适用于移动端的事件发射器。",
+    "main": "emitter",
+    "maintainers": [
+        { "name": "firede", "email": "firede@firede.us" }
+    ],
+    "contributors": [
+        { "name": "zfkun", "email": "zfkun@msn.com" }
+    ],
+    "scripts": {
+        "test": "./node_modules/.bin/phantomjs test/run-jasmine.js test/runner.html"
+    },
+    "devDependencies": {
+        "phantomjs": "~1.9"
+    },
+    "license": "MIT",
+    "repository": "git://github.com/ecomfe/saber-emitter.git",
+    "bugs": "https://github.com/ecomfe/saber-emitter/issues"
+}

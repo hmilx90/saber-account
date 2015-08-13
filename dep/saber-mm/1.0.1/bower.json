@@ -1,0 +1,35 @@
+{
+  "name": "saber-mm",
+  "version": "1.0.1",
+  "description": "MVP Implementation",
+  "main": "main",
+  "maintainers": [
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "saber-lang": "~2.0.1",
+    "saber-promise": "~2.0.0",
+    "saber-emitter": "~2.0.0",
+    "saber-dom": "~1.0.0",
+    "saber-widget": "~1.0.0",
+    "etpl": "~3.0.0"
+  },
+  "devDependencies": {
+    "phantomjs": "~1.9.7-1"
+  },
+  "license": "MIT",
+  "repository": "git://github.com/ecomfe/saber-mm.git",
+  "bugs": "https://github.com/ecomfe/saber-mm/issues",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "doc",
+    "demo"
+  ]
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Toolbar Demo</title>
+    <link rel="stylesheet" href="src/common/css/main.css" />
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-8/esl.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>App Name</h1>
+    </div>
+    <div id="view"><div>Loading...</div></div>
+
+<script>
+    require.config({
+        baseUrl: './src',
+        packages: [
+            {
+                name: 'er',
+                location: '../../dep/er/3.0.3/src'
+            },
+            {
+                name: 'saber-viewport',
+                location: '../../../src'
+            },
+            {
+                name: 'saber-lang',
+                location: '../../dep/saber-lang/1.0.0/src'
+            },
+            {
+                name: 'saber-promise',
+                location: '../../dep/saber-promise/1.0.0/src',
+                main: 'promise'
+            },
+            {
+                name: 'saber-dom',
+                location: '../../dep/saber-dom/1.0.0/src'
+            },
+            {
+                name: 'saber-run',
+                location: '../../dep/saber-run/1.0.0/src'
+            },
+            {
+                name: 'saber-tap',
+                location: '../../dep/saber-tap/1.0.0/src',
+                main: 'tap'
+            },
+            {
+                name: 'saber-emitter',
+                main: 'emitter',
+                location: '../../dep/saber-emitter/1.0.0/src'
+            }
+        ]
+    });
+
+    require(
+        [
+            'common/main',
+            'er/events',
+            'saber-tap'
+        ],
+        function (main, events, Tap) {
+            Tap.mixin( document.body );
+
+            events.on('error', function (error) {
+                console.log(error);
+            });
+            main.init('view');
+        }
+    );
+</script>
+</body>
+</html>

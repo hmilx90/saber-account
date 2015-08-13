@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Animation Demo</title>
+    <link rel="stylesheet" type="text/css" href="animation.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-6/esl.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box"></div>
+    </div>
+    <div class="panel" id="panel">
+        <h3>Methods</h3>
+        <div class="content">
+            <p class="item" data-method="move"><strong>.move</strong>(<input type="text" value="10, 10"/>)</p>
+            <p class="item" data-method="moveTo"><strong>.moveTo</strong>(<input type="text" value="100, 100"/>)</p>
+            <p class="item" data-method="rotate"><strong>.rotate</strong>(<input type="text" value="140"/>)</p>
+            <p class="item" data-method="rotateTo"><strong>.rotateTo</strong>(<input type="text" value="220"/>)</p>
+            <p class="item" data-method="skew"><strong>.skew</strong>(<input type="text" value="30"/>)</p>
+            <p class="item" data-method="skewTo"><strong>.skewTo</strong>(<input type="text" value="60"/>)</p>
+            <p class="item" data-method="scale"><strong>.scale</strong>(<input type="text" value="0.1"/>)</p>
+            <p class="item" data-method="scaleTo"><strong>.scaleTo</strong>(<input type="text" value="1.5"/>)</p>
+            <p class="item" data-method="duration"><strong>.duration</strong>(<input type="text" value="0.5"/>)</p>
+            <p class="item" data-method="delay"><strong>.delay</strong>(<input type="text" value="3"/>)</p>
+            <p class="item" data-method="ease"><strong>.ease</strong>(<input type="text" value="in-out"/>)</p>
+        </div>
+        <div class="opt"><input value=".run()" type="button" id="btnRun"/>&nbsp;<input value=".end()" type="button" id="btnEnd" disabled="disabled"/></div>
+    </div>
+    <script>
+        require.config({
+            packages: [
+                {
+                    name: 'saber-run',
+                    location: '../src'
+                },
+                {
+                    name: 'saber-dom',
+                    location: './dep/saber-dom/1.0.0/src'
+                },
+                {
+                    name: 'saber-lang',
+                    location: './dep/saber-lang/1.0.0/src'
+                },
+                {
+                    name: 'saber-promise',
+                    location: './dep/saber-promise/1.0.0/src',
+                    main: 'promise'
+                }
+            ]
+        });
+
+        require(['animation'], function (animation) {
+            animation.enter();
+        });
+    </script>
+</body>
+</html>

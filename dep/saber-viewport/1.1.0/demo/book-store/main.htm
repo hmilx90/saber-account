@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Book Store</title>
+    <link rel="stylesheet" href="src/common/layout.css">
+    <link rel="stylesheet" href="src/book/list.css">
+    <link rel="stylesheet" href="src/cart/list.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-8/esl.js"></script>
+    <script src="src/common/jquery.js"></script>
+    <script src="src/common/underscore-min.js"></script>
+</head>
+<body>
+    <div id="page">
+        <h1>Book Store</h1>
+        <div id="nav-wrap">
+            <nav id="nav">
+                <ul>
+                    <li id="link-to-book-list"><a href="#/book/list">图书列表</a></li>
+                    <li id="link-to-cart"><a href="#/cart/list">购物车</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="viewport"></div>
+    </div>
+<script>
+    require.config({
+        baseUrl: './src',
+        packages: [
+            {
+                name: 'er',
+                location: '../../dep/er/3.0.3/src'
+            },
+            {
+                name: 'saber-viewport',
+                location: '../../../src'
+            },
+            {
+                name: 'saber-lang',
+                location: '../../dep/saber-lang/1.0.0/src'
+            },
+            {
+                name: 'saber-promise',
+                location: '../../dep/saber-promise/1.0.0/src',
+                main: 'promise'
+            },
+            {
+                name: 'saber-dom',
+                location: '../../dep/saber-dom/1.0.0/src'
+            },
+            {
+                name: 'saber-run',
+                location: '../../dep/saber-run/1.0.0/src'
+            },
+            {
+                name: 'saber-tap',
+                location: '../../dep/saber-tap/1.0.0/src',
+                main: 'tap'
+            },
+            {
+                name: 'saber-emitter',
+                main: 'emitter',
+                location: '../../dep/saber-emitter/1.0.0/src'
+            }
+        ]
+    });
+    require(
+        [
+            'er', 'er/tpl', 'er/events', 'er/ajax',
+            'er/Deferred', 'er/template', 'er/config',
+            'common/database', 'book/init', 'cart/init', 'common/init',
+            'saber-viewport/adapter/er', 'saber-viewport/transition/slide'
+        ],
+        function(er, tpl, events, ajax, Deferred, template, config, database, book, cart, common, viewport) {
+            events.on(
+                'error',
+                function(error) {
+                    console.log(error);
+                }
+            );
+
+            viewport('viewport', {transition: 'slide'});
+
+            config.indexURL = '/book/list';
+            er.start();
+
+            var linkToCart = $('#link-to-cart > a');
+            function updateBoughtNumber() {
+                var count = this.boughtBooks.length;
+                var text = '购物车';
+                if (count > 0) {
+                    text += '(' + count + ')';
+                }
+                linkToCart.text(text);
+            }
+            cart.on('add', updateBoughtNumber);
+            cart.on('remove', updateBoughtNumber);
+            cart.on('clear', updateBoughtNumber);
+
+            var topEdge = $('#nav').offset().top;
+            var body = $('body');
+            var document = $('html');
+            var navigator = $('#nav');
+            function adjustNavigator() {
+                var scrollTop =
+                    Math.max(body.scrollTop(), document.scrollTop());
+                var top = topEdge - scrollTop;
+                if (top <= 0) {
+                    navigator.addClass('fix-on-top');
+                }
+                else {
+                    navigator.removeClass('fix-on-top');
+                }
+            }
+
+            $(window).on('scroll', adjustNavigator);
+            adjustNavigator();
+        }
+    );
+</script>
+</body>
+</html>

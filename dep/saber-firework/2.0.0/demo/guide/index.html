@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Guide</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  </head>
+  <body>
+    <div id="viewport"></div>
+    <script>
+        require.config({
+            baseUrl: 'src',
+            packages: [
+                {
+                    name: 'saber-firework',
+                    location: '../../../../src'
+                },
+                {
+                    name: 'saber-mm',
+                    location: '../../dep/saber-mm/1.0.0/src'
+                },
+                {
+                    name: 'saber-router',
+                    location: '../../dep/saber-router/2.0.0/src'
+                },
+                {
+                    name: 'saber-viewport',
+                    location: '../../dep/saber-viewport/1.1.0/src'
+                },
+                {
+                    name: 'saber-run',
+                    location: '../../dep/saber-run/1.0.0/src'
+                },
+                {
+                    name: 'saber-uri',
+                    location: '../../dep/saber-uri/1.0.6/src'
+                },
+                {
+                    name: 'saber-dom',
+                    location: '../../dep/saber-dom/1.0.0/src'
+                },
+                {
+                    name: 'saber-emitter',
+                    location: '../../dep/saber-emitter/2.0.0/src',
+                    main: 'emitter'
+                },
+                {
+                    name: 'saber-lang',
+                    location: '../../dep/saber-lang/2.0.0/src'
+                },
+                {
+                    name: 'fastclick',
+                    location: '../../dep/fastclick/1.0.6/src',
+                    main: 'fastclick'
+                },
+                {
+                    name: 'saber-promise',
+                    location: '../../dep/saber-promise/2.0.0/src',
+                    main: 'promise'
+                },
+                {
+                    name: 'etpl',
+                    location: '../../dep/etpl/3.0.1/src'
+                },
+                {
+                    name: 'saber-widget',
+                    location: '../../dep/saber-widget/1.4.0/src'
+                }
+
+            ]
+        });
+
+        require(['app']);
+    </script>
+  </body>
+</html>

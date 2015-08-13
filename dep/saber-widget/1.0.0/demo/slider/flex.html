@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Slider - Saber Widget Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="slider.css">
+    <link rel="stylesheet" href="demo.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+</head>
+
+<body>
+    <nav class="ui-bar" data-ui="primary header">
+        <a href="./" class="ui-btn" data-ui="primary">← 返回</a>
+        <h1 data-ui="title">Slider - Saber UI</h1>
+        <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+    </nav>
+
+    <nav class="ui-bar" data-ui="subheader">
+        <div class="ui-btns">
+            <a href="./basic.html" class="ui-btn">基本使用</a>
+            <a href="./flex.html" class="ui-btn" data-ui="active">转屏支持</a>
+            <a href="./sync.html" class="ui-btn">动态同步</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>标准</h2>
+        <div class="ui-slider">
+            <div data-role="wrapper">
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/2.png"></a>
+                </div>
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/4.png"></a>
+                </div>
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/1.png"></a>
+                </div>
+                <div data-role="item">
+                    <a href="http://www.baidu.com/"><img src="./img/3.png"></a>
+                </div>
+            </div>
+        </div>
+
+        <h2>带标题</h2>
+        <div class="ui-slider" data-ui="primary">
+            <div data-role="wrapper">
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/1.png"></a>
+                    <p>1,啊大哥神的gas大噶的撒个说</p>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/2.png"></a>
+                    <p>2,按时打发上帝发誓的发方法</p>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/3.png"></a>
+                    <p>3,阿神的gas大噶撒旦gas的</p>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/4.png"></a>
+                    <p>4,啊神的gas大噶说的噶苏撒旦个</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>带dot</h2>
+        <div class="ui-slider">
+            <div data-role="wrapper">
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/3.png"></a>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/2.png"></a>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/4.png"></a>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/1.png"></a>
+                </div>
+            </div>
+            <div data-role="dot">
+                <b class="active"></b>
+                <b></b>
+                <b></b>
+                <b></b>
+            </div>
+        </div>
+
+        <h2>定宽</h2>
+        <div class="ui-slider" style="width: 250px; margin: 0 auto;">
+            <div data-role="wrapper">
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/1.png"></a>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/4.png"></a>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/3.png"></a>
+                </div>
+                <div>
+                    <a href="http://www.baidu.com/"><img src="./img/2.png"></a>
+                </div>
+            </div>
+        </div>
+
+        <h2>处女座</h2>
+        <div class="ui-slider">
+            <div data-role="wrapper">
+                <img src="./img/4.png">
+                <img src="./img/3.png">
+                <img src="./img/2.png">
+                <img src="./img/1.png">
+            </div>
+        </div>
+    </div>
+
+    <nav class="ui-bar" data-ui="footer">
+        <div class="ui-btns">
+            <a href="#" class="ui-btn" data-ui="small danger" data-role="disable">禁用flex插件</a>
+            <a href="#" class="ui-btn" data-ui="small success" data-role="enable">启用flex插件</a>
+        </div>
+    </nav>
+
+    <script>
+    require(
+        [
+            'saber-tap',
+            'saber-dom',
+            'saber-widget',
+            'saber-widget/Slider',
+            'saber-widget/plugin/SliderFlex'
+        ],
+        function( Tap, dom, widget, Slider ) {
+            // 点击延迟修正
+            Tap.mixin( document.body );
+
+            // 初始化
+            sliders = [];
+            dom.queryAll( '.ui-slider' ).forEach(
+                function ( node ) {
+                    sliders.push( widget.slider( node, { flex: true } ) );
+                }
+            );
+
+            // 自定义dot
+            sliders[ 2 ].on( 'change', function ( ev, from, to ) {
+                dom.children( dom.query( '[data-role=dot]', this.get( 'main' ) ) ).forEach(
+                    function ( node, i ) {
+                        dom[ i === to ? 'addClass' : 'removeClass' ]( node, 'active' );
+                    }
+                );
+            });
+
+            // 控制按钮
+            dom.query( '.ui-bar[data-ui~=footer]' ).addEventListener(
+                'click',
+                function ( ev ) {
+                    var target = ev.target;
+                    if ( dom.hasClass( target, 'ui-btn' ) ) {
+                        ev.preventDefault();
+
+                        var isEnable = dom.getData( target, 'role' ) === 'enable';
+                        sliders.forEach(
+                            function ( slider ) {
+                                slider.set( 'flex', isEnable );
+                            }
+                        );
+                    }
+                }
+            );
+        }
+    );
+
+    document.addEventListener( 'touchstart', function(){}, false );
+    </script>
+</body>
+</html>

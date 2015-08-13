@@ -1,0 +1,41 @@
+{
+  "name": "saber-mm",
+  "version": "1.0.1",
+  "description": "MVP Implementation",
+  "main": "main",
+  "maintainers": [
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
+    }
+  ],
+  "repository": "git://github.com/ecomfe/saber-mm.git",
+  "bugs": "https://github.com/ecomfe/saber-mm/issues",
+  "edp": {
+    "dependencies": {
+      "saber-lang": "~2.0.1",
+      "saber-promise": "~2.0.0",
+      "saber-emitter": "~2.0.0",
+      "saber-dom": "~1.0.0",
+      "saber-widget": "~1.0.0",
+      "etpl": "~3.0.0"
+    }
+  },
+  "scripts": {
+    "pretest": "node -e \"$(curl -sf http://saberlabs.github.io/static/test/depend.js)\"",
+    "test": "jasmine-node --verbose test/runSpec.js && phantomjs test/run-jasmine.js test/runner.html"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "etpl": "^3.0.0",
+    "saber-emitter": "^2.0.0",
+    "saber-lang": "^2.0.1",
+    "saber-promise": "^2.0.0"
+  },
+  "devDependencies": {
+    "amder": "^0.1.0",
+    "c2a": "^0.2.0",
+    "jasmine-node": "^2.0.0-beta4",
+    "phantomjs": "^1.9.16"
+  }
+}

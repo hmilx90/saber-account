@@ -1,0 +1,42 @@
+{
+  "name": "saber-firework",
+  "version": "2.0.0",
+  "description": "移动端`SPA`开发框架",
+  "main": "main",
+  "maintainers": [
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "mycoin",
+      "email": "nqliujiangtao@gmail.com"
+    }
+  ],
+  "edp": {
+    "dependencies": {
+      "etpl": "~3.0.0",
+      "saber-viewport": "~1.1.0",
+      "saber-mm": "~1.0.0",
+      "saber-router": "~2.0.0",
+      "saber-dom": "~1.0.0",
+      "saber-emitter": "~2.0.0",
+      "saber-lang": "~2.0.0",
+      "fastclick": "~1.0.6",
+      "saber-promise": "~2.0.0"
+    }
+  },
+  "devDependencies": {
+    "phantomjs": "^1.9.16"
+  },
+  "scripts": {
+    "pretest": "node -e \"$(curl -sf http://saberlabs.github.io/static/test/depend.js)\";node test/ws.js start",
+    "test": "phantomjs test/run-jasmine.js http://localhost:8848/test/runner.html",
+    "posttest": "node test/ws.js stop"
+  },
+  "license": "MIT",
+  "repository": "git://github.com/ecomfe/saber-firework.git",
+  "bugs": "https://github.com/ecomfe/saber-firework/issues"
+}

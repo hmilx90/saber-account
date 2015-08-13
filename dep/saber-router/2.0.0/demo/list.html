@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>Demo</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-6/esl.js"></script>
+    <script>
+        require.config({
+            packages: [
+                {
+                    name: 'saber-router',
+                    location: '../src'
+                },
+                {
+                    name: 'saber-lang',
+                    location: 'dep/saber-lang/1.0.0/src'
+                },
+                {
+                    name: 'saber-uri',
+                    location: 'dep/saber-uri/1.0.4/src'
+                }
+            ]
+        });
+    </script>
+</head>
+<body>
+    <h1>Hello</h1>
+    <div id="content"></div>
+    <p><a id="btn">返回</a></p>
+    <ul>
+        <li><a href="/demo/index.html">index</a></li>
+        <li><a href="/demo/product.html?id=100">product 100</a></li>
+    </ul>
+    <script>
+        require(['saber-router', 'app', 'saber-router/controller/page'], function (router, app, controller) {
+            router.controller(controller);
+            router.add('/demo/list.html', app.list);
+            router.start();
+        });
+    </script>
+</body>
+</html>

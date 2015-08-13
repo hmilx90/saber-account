@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>LinkageMenu</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        'baseUrl': '../src',
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+    <link rel="stylesheet" href="demo.css">
+
+</head>
+
+<body>
+<nav class="ui-bar" data-ui="primary header">
+    <a href="../" class="ui-btn" data-ui="primary">← 返回</a>
+    <h1 data-ui="title">LinkageMenu - Saber UI</h1>
+    <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+</nav>
+<section>
+    <div id="menu3"></div>
+</section>
+<script>
+   require(
+        [
+            'saber-dom',
+            'saber-widget',
+            'saber-widget/LinkageMenu'
+        ],
+        function( dom, widget ) {
+            var linkageMenu3 = widget.linkageMenu(
+                document.getElementById('menu3'),
+                {
+                    // 数据源
+                    datasource: [
+                        {
+                            name: '北京',
+                            value: 1,
+                            children: [
+                                {
+                                    name: '北京',
+                                    value: 11,
+                                    children: [
+                                        {
+                                            name: '海淀区',
+                                            value: 111
+                                        },
+                                        {
+                                            name: '朝阳区',
+                                            value: 112
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: '广东',
+                            value: 2,
+                            children: [
+                                {
+                                    name: '广州市',
+                                    value: 21,
+                                    children: [
+                                        {
+                                            name: '番禺区',
+                                            value: 211
+                                        },
+                                        {
+                                            name: '天河区',
+                                            value: 212
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: '揭阳市',
+                                    value: 22,
+                                    children: [
+                                        {
+                                            name: '惠来县',
+                                            value: 221
+                                        },
+                                        {
+                                            name: '普宁市',
+                                            value: 222
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    // 默认选中值
+                    // 如果不传的话，非最后一级的菜单会默认选中第一个
+                    values: [1, 11, 112]
+                }
+            );
+            linkageMenu3.on('select', function(e, data) {console.log(data);});
+        }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+@require 'rider-ui/default'
+
+
+.container
+    padding: 88px _
+
+    h2
+        margin: 10px 0
+
+    .demos
+        padding: 10px
+
+        .ui-btn
+            margin: 10px _
+
+    .segment
+        text-align: center
+        padding 10px
+
+
+.ui-slider
+    relative: _
+
+    [data-role~=item]
+        relative: _
+        text-align: center
+        background: #e3e3e3
+
+        a
+            display: inline-block
+
+        img
+            vertical-align: middle
+        p
+            absolute: _ _ 0 _
+            width: 100%
+            padding: 6px 0
+            background: rgba(0, 0, 0, 0.5)
+            color: #fff
+            text-align: left
+            text-indent: 10px
+
+            ellipsis()
+
+
+    [data-role~=dot]
+        absolute: _ 0 8px _
+        padding: 0 6px
+        text-align: right
+
+        > b
+            display: inline-block
+            margin: 0 4px
+            size: 6px
+            border-radius: 3px
+            background: rgba(150, 150, 150, 0.8)
+
+            &.active,
+            &[{$-ui-attr}~=active]
+                background: #fff

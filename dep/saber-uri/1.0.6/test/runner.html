@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Jasmine Spec Runner v2.0.0</title>
+
+    <link rel="stylesheet" type="text/css" href="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.css">
+
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine-html.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console.js"></script>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-6/esl.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/amd-boot.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console-reporter.js"></script>
+
+    <script>
+        require.config({
+            baseUrl: './',
+
+            packages: [
+                {
+                    name: 'saber-lang',
+                    location: './dep/saber-lang/1.0.0/src'
+                },
+                {
+                    name: 'saber-uri',
+                    location: '../src'
+                }
+            ]
+        });
+
+        require([
+                'boot',
+                'parse-query.spec',
+                'stringify-query.spec',
+                'uri-parser.spec',
+                'abstract.spec',
+                'scheme.spec',
+                'host.spec',
+                'port.spec',
+                'path.spec',
+                'query.spec',
+                'fragment.spec',
+                'uri.spec'
+            ], 
+            function (boot) {
+                boot();
+            }
+        );
+    </script>
+</head>
+
+<body>
+</body>
+</html>

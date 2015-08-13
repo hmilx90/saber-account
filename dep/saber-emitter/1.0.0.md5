@@ -1,0 +1,10 @@
+{
+    "demo/basic.html": "cf660299d28abfe4ee77567b0d8efb86",
+    "package.json": "b7cc51764f7386ef2637d6380429a346",
+    "History.md": "4f7aa666bb4117936a0e272255c20cf4",
+    "README.md": "7497aeedfc90f5ee343a7886d34ce8e4",
+    "src/emitter.js": "c096909bda47ff604b0dbe4b123d20c0",
+    "test/emitter.spec.js": "8aa3e010f4b03ea061c464da6c15790b",
+    "test/run-jasmine.js": "7c0d964113df9f083f21291056e23f0a",
+    "test/runner.html": "15c398dd9be910b020b8a2b4a4abcc3e"
+}

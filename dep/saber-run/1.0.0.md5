@@ -1,0 +1,19 @@
+{
+    "demo/animation.css": "d624ea93a9dd948362974de8b0eac5b4",
+    "demo/animation.html": "e67ba3f3c84635980009b99c7574f9a1",
+    "demo/animation.js": "4fa5a50dfe57df3e720a3a4cba24f5e3",
+    "doc/animation.md": "e42828c69e29059729e245e3194c8e03",
+    "History.md": "d50f009a57ea3cb0b8cc8f2b1a19ced7",
+    "package.json": "26c8c47a8f88a3525e57f56baee37d32",
+    "README.md": "f2410aa874694e23c33f0ed967b31bbf",
+    "src/Animation.js": "3018714db58e508a0478823521b8a48d",
+    "src/main.js": "c9b35aec2a5e95045746ca45ea550bb2",
+    "src/transition.js": "00cf2ed326bdd4afc28c7b6d76a67743",
+    "src/util.js": "af3fa311bfc73162970b936341435495",
+    "test/animation.spec.js": "7fbf74e7bd25274bdb5093174b57fafa",
+    "test/consoleReporter.js": "9c4135df4a760924f3a7c495771b4a45",
+    "test/run-jasmine.js": "371a59e4703a5f60e59e63ef68a551ba",
+    "test/runner.html": "978149d218acf2e2d4ff6212137d08bb",
+    "test/transition.spec.js": "7e1e4c4733f596c021e62cddf9445190",
+    "test/util.spec.js": "c70e0b41e4b7996a52840ecee209af90"
+}

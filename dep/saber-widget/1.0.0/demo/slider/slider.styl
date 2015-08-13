@@ -1,0 +1,49 @@
+// Rider UI 默认主题
+//
+// @desc    轮播图
+// @author  zfkun(zfkun@msn.com)
+
+
+@require 'rider-ui/core'
+
+
+$-role-attr ?= 'data-role'
+
+
+
+// mixins
+// ================
+
+// base
+ui-slider-base()
+    width: 100%
+    overflow: hidden
+    user-select: none
+    -webkit-touch-callout: none
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+    backface-visibility: hidden
+    transform: translate3d(0%, 0, 0) scale3d(1, 1, 1)
+    transform-style: preserve-3d
+
+    [{$-role-attr}~=wrapper]
+        backface-visibility: hidden
+        transform: translate3d(0%, 0, 0) scale3d(1, 1, 1)
+        transform-style: preserve-3d
+
+        [{$-role-attr}~=item]
+            float: left
+            box-sizing: border-box
+            // transform-style: preserve-3d;
+            // transform: translate3d(0, 0, 0);
+
+
+// variables
+// ================
+
+
+// exports
+// ================
+
+.ui-slider
+    ui-slider-base()

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Jasmine Spec Runner</title>
+
+    <link rel="stylesheet" type="text/css" href="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.css">
+
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine-html.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/amd-boot.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console-reporter.js"></script>
+</head>
+<body>
+    <script>
+    require.config({
+        packages: [
+            {
+                name: 'saber-emitter',
+                location: '../src',
+                main: 'emitter'
+            }
+        ]
+    });
+
+    require(
+        [
+            'boot',
+            'emitter.spec'
+        ],
+        function (boot) {
+            boot();
+        }
+    );
+    </script>
+</body>
+</html>

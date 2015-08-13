@@ -1,0 +1,44 @@
+{
+    "name": "account-spa",
+    "version": "0.0.1",
+    "description": "edp project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "edp": {
+        "wwwroot": "/",
+        "depDir": "dep",
+        "srcDir": "src",
+        "loaderAutoConfig": "js,htm,html,tpl,vm,phtml",
+        "loaderUrl": "http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js",
+        "dependencies": {
+            "etpl": "~3.0.1",
+            "fastclick": "~1.0.6",
+            "saber-dom": "~1.0.0",
+            "saber-emitter": "~2.0.0",
+            "saber-firework": "~2.0.0",
+            "saber-lang": "~2.0.1",
+            "saber-mm": "~1.0.1",
+            "saber-promise": "~2.0.0",
+            "saber-router": "~2.0.0",
+            "saber-run": "~1.0.0",
+            "saber-string": "~1.0.0",
+            "saber-uri": "~1.0.6",
+            "saber-viewport": "~1.1.0",
+            "saber-widget": "~1.0.0",
+            "saber-ajax": "~2.1.0"
+        },
+        "mobile": {
+            "theme": "spa"
+        }
+    },
+    "dependencies": {},
+    "author": "",
+    "repository": "empty",
+    "license": "BSD",
+    "readme": "README",
+    "devDependencies": {
+        "edp-provider-rider": "^2.0.0"
+    }
+}

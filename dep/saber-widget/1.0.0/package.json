@@ -1,0 +1,30 @@
+{
+  "name": "saber-widget",
+  "version": "1.0.0",
+  "description": "适合移动端的UI组件库",
+  "main": "main",
+  "maintainers": [
+    { "name": "redmed", "email": "qiaogang@baidu.com" }
+  ],
+  "contributors": [
+    { "name": "zfkun", "email": "zfkun@msn.com" },
+    { "name": "junmer", "email": "junemr@foxmail.com" },
+    { "name": "Firede", "email": "firede@firede.us" }
+  ],
+  "scripts": {
+    "pretest": "node -e \"$(curl -sf http://saberlabs.github.io/static/test/depend.js)\"",
+    "test": "./node_modules/.bin/phantomjs test/run-jasmine.js test/runner.html"
+  },
+  "dependencies": {
+    "saber-lang": "~1.0.0",
+    "saber-dom": "~1.0.0",
+    "saber-emitter": "~1.0.0",
+    "saber-string": "~1.0.0"
+  },
+  "devDependencies": {
+    "phantomjs": "~1.9"
+  },
+  "license": "MIT",
+  "repository": "git://github.com/ecomfe/saber-widget.git",
+  "bugs": "https://github.com/ecomfe/saber-widget/issues"
+}

@@ -1,0 +1,14 @@
+{
+    "History.md": "35824cb32dc0672e977ab791c0683ad6",
+    "package.json": "df3bdc6b7570f4b458518d7b8c1daff7",
+    "README.md": "b5e242fe8a4bf10101f0b1f913c53f82",
+    "src/camelize.js": "2d8c863f74d5e4a361152786e1e4a1de",
+    "src/dasherize.js": "4109f17739c9fac14ceaa18e9a47dc8d",
+    "src/decodeHTML.js": "9decea3ee7e883d43ac3fdcf5f586b5d",
+    "src/encodeHTML.js": "60fcb77e213ac42b46cdd2a18d5db651",
+    "src/format.js": "f8f673ccc12ee31dfca8e41443a78cd4",
+    "test/run-jasmine.js": "7c0d964113df9f083f21291056e23f0a",
+    "test/runner.html": "880891a3ece5ce0cfbce41919e980717",
+    "src/main.js": "8e729d0f2f1270b25ac7b61bd7c0185e",
+    "test/string.spec.js": "a8270b1f6bfb2bb8e782d99e49d38e2a"
+}

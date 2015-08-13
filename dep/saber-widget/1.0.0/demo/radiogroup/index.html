@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>RadioGroup DEMO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        'baseUrl': '../src',
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+    <link rel="stylesheet" href="demo.css">
+
+</head>
+
+<body>
+    <nav class="ui-bar" data-ui="primary header">
+        <a href="../" class="ui-btn" data-ui="primary">← 返回</a>
+        <h1 data-ui="title">RadioGroup - Saber UI</h1>
+        <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+    </nav>
+
+    <main>
+        <h3>基于现有 DOM 结构构建</h3>
+        <nav class="bar menu">
+            <div data-role="radio" data-value="region">省市地区</div>
+            <div data-role="radio" data-value="level">等级职称</div>
+            <div data-role="radio" data-value="date" data-checked>预约时间</div>
+        </nav>
+        <h3>基于纯数据构建</h3>
+        <div class="bar fate"></div>
+        <h3>自定义选项生成器</h3>
+        <div class="list custom"></div>
+    </main>
+
+<script>
+    define('global/fate', [
+        { name: 'Saber', value: 11 },
+        { name: 'Rider', value: 12 },
+        { name: 'Archer', value: 13 },
+        { name: 'Caster', value: 14 }
+    ]);
+
+    define('global/custom', [
+        { text: '海淀区', id: 11, count: 195 },
+        { text: '朝阳区', id: 12, count: 241 },
+        { text: '东城区', id: 13, count: 167 },
+        { text: '西城区', id: 14, count: 122 },
+        { text: '昌平区', id: 15, count: 89 },
+        { text: '宣武区', id: 16, count: 58 },
+        { text: '丰台区', id: 17, count: 57 }
+    ]);
+
+
+    require(
+        [
+            'saber-dom',
+            'saber-widget',
+            'global/fate',
+            'global/custom',
+            'saber-widget/RadioGroup'
+        ],
+        function(dom, widget, fateData, customData) {
+            // demo 1
+            var menu = dom.query('.menu');
+            var menuGroup = widget.radioGroup(menu);
+
+            menuGroup.on('valuechange', function(ev, oldValue, newValue) {
+                console.log('old value: ' + oldValue + ', new value: ' + newValue);
+            });
+
+            menuGroup.on('click', function(ev, oldValue, newValue) {
+                if (oldValue === newValue) {
+                    this.set('value', null);
+                    console.log('点了已选中的选项，取消选中状态');
+                }
+            });
+
+            // demo 2
+            var fate = dom.query('.fate');
+            var fateGroup = widget.radioGroup( fate, {
+                datasource: fateData,
+                value: 12
+            });
+            fateGroup.on('valuechange', function () {
+                alert('id: ' + this.get('value'));
+            });
+
+            // demo 3
+            var custom = dom.query('.custom');
+
+            function getCustomItemHtml(data) {
+                var checkedValue = this.get('value');
+                var checked = checkedValue === data.id ? ' data-checked' : '';
+                return ''
+                    + '<div data-role="radio" data-value="' + data.id + '"' + checked + '>'
+                        + data.text
+                        + '<span class="count">' + data.count + '</span>'
+                    + '</div>';
+            }
+
+            var customGroup = widget.radioGroup( custom, {
+                datasource: customData,
+                value: 15,
+                getItemHtml: getCustomItemHtml
+            });
+
+            // customGroup.set('value', 15);
+
+            customGroup.on('valuechange', function () {
+                var value = this.get('value');
+                var item = this.getItemByValue(value);
+                var count = dom.query('.count', item).innerHTML;
+                console.log('Value: ' + value + ', Count: ' + count);
+            });
+        }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+@require 'rider-ui/default'
+
+section
+    padding: 60px 0
+
+.linkage-menu
+    display: flex
+    font-size: 15px
+    height: 365px
+    overflow: hidden
+    .linkage-item
+        flex: 1
+        background: #fff
+        border-right: 1px solid #ececec
+        height: 100%
+        li
+            height: 44px
+            line-height: 44px
+            position: relative
+            span
+                padding: 0 15px
+                display: block
+                ellipsis()
+        .linkage-item-cur
+            background: #fff
+            color: #07b8dd
+    .linkage-item:first-child
+        background: #f0f4f7
+        li
+            border-bottom: 1px solid #ececec
+        .linkage-item-cur
+            &::after
+                position: absolute
+                top: 0
+                right: -1px
+                content: ''
+                width: 1px
+                height: 100%
+                background: #fff
+    .linkage-item:last-child
+        border-right: 0
+        li 
+            border: 0
+            background: #fff
+        .linkage-item-cur
+                &::after
+                    content: ''
+    .linkage-item-disabled
+        color: #c6c6c6

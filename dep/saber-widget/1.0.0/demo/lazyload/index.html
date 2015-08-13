@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="menglingjun" />
+    <title>lazy load demo</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        'baseUrl': '../src',
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+    <link rel="stylesheet" href="demo.css">
+
+</head>
+
+<body>
+
+    <nav class="ui-bar" data-ui="primary header">
+        <a href="../" class="ui-btn" data-ui="primary">← 返回</a>
+        <h1 data-ui="title">LazyLoad - Saber UI</h1>
+        <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+    </nav>
+
+    <article>
+
+        <img data-original="http://b.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=6fb5a7f6dab44aed4d43b6b6d275ec64/3801213fb80e7becbd4aa75d2f2eb9389a504fc2d462b3c6.jpg">
+        <img data-original="http://b.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=5026165a277f9e2f6438155a7e598241/9a504fc2d56285351470769d90ef76c6a6efce1b9c164bc6.jpg">
+        <img data-original="http://c.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=929d781465380cd7f213aabfc02dc651/ac6eddc451da81cb1b3804695266d0160824ab18962b198b.jpg">
+        <img data-original="http://a.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=89a71fa05982b2b7b392319650c4a08a/5366d0160924ab18bfc8669335fae6cd7a899e510eb3138b.jpg">
+        <img data-original="http://b.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=4134388d4c086e067ea5371963611091/a6efce1b9d16fdfa56fc6252b48f8c5495eef01f3b2943c6.jpg">
+        <img data-original="http://e.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=92ab8c190a7b020818c437b303b099b6/fcfaaf51f3deb48f70f90562f01f3a292cf5e0fe982540c6.jpg">
+        <img data-original="http://h.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=e40cc49d4b36acaf4ded9eae1db0e675/e7cd7b899e510fb320c7f033d933c895d043ad4bd0132c8b.jpg">
+
+    </article>
+
+
+
+    <article>
+
+        <img data-original="http://b.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=6fb5a7f6dab44aed4d43b6b6d275ec64/3801213fb80e7becbd4aa75d2f2eb9389a504fc2d462b3c6.jpg">
+        <img data-original="http://b.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=5026165a277f9e2f6438155a7e598241/9a504fc2d56285351470769d90ef76c6a6efce1b9c164bc6.jpg">
+        <img data-original="http://c.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=929d781465380cd7f213aabfc02dc651/ac6eddc451da81cb1b3804695266d0160824ab18962b198b.jpg">
+        <img data-original="http://a.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=89a71fa05982b2b7b392319650c4a08a/5366d0160924ab18bfc8669335fae6cd7a899e510eb3138b.jpg">
+        <img data-original="http://b.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=4134388d4c086e067ea5371963611091/a6efce1b9d16fdfa56fc6252b48f8c5495eef01f3b2943c6.jpg">
+        <img data-original="http://e.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=92ab8c190a7b020818c437b303b099b6/fcfaaf51f3deb48f70f90562f01f3a292cf5e0fe982540c6.jpg">
+        <img data-original="http://h.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=e40cc49d4b36acaf4ded9eae1db0e675/e7cd7b899e510fb320c7f033d933c895d043ad4bd0132c8b.jpg">
+
+    </article>
+<script>
+   require(
+        [
+            'saber-widget',
+            'saber-widget/LazyLoad'
+        ],
+        function( widget ) {
+
+            lazyLoader = widget.lazyLoad( null, { animate: true } );
+
+            lazyLoader.on( 'load', function ( ev, node ) {
+                console.info( 'load', node );
+            });
+
+            lazyLoader.on( 'complete', function () {
+                console.info( 'complete' );
+            });
+
+        }
+    );
+</script>
+</body>
+</html>

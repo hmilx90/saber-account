@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Widget - Saber Widget Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="demo.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+
+    <script>
+    require.config({
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': '../dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': '../dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': '../dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': '../dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-tap',
+                'location': '../dep/saber-tap/1.0.0/src',
+                'main': 'tap'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../../src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-ajax',
+                'location': '../dep/saber-ajax/1.0.0/src',
+                'main': 'ajax'
+            },
+            {
+                'name': 'saber-promise',
+                'location': '../dep/saber-promise/1.0.0/src',
+                'main': 'promise'
+            },
+            {
+                'name': 'hammer',
+                'location': '../dep/hammer/1.1.3/src',
+                'main': 'hammer'
+            },
+            {
+                'name': 'saber-string',
+                'location': '../dep/saber-string/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-run',
+                'location': '../dep/saber-run/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-scroll',
+                'location': '../dep/saber-scroll/1.0.0/src',
+                'main': 'main'
+            }
+        ]
+    });
+    </script>
+
+</head>
+
+<body>
+
+<nav class="ui-bar" data-ui="primary header">
+    <a href="../" class="ui-btn" data-ui="primary">← 返回</a>
+    <h1 data-ui="title">Slider - Saber UI</h1>
+    <a href="https://github.com/ecomfe/saber-widget" class="ui-btn" data-ui="primary">主页</a>
+</nav>
+
+<div class="container"></div>
+
+<script>
+require(
+
+    [
+        'saber-widget',
+        'saber-widget/Widget'
+    ],
+
+    function( widget, Widget ) {
+        w1 = new Widget( {
+
+            main: document.body,
+
+            foo: 'baidu',
+
+            bar: {
+                a: 1,
+                b: 2
+            },
+
+            onPropertychange: function ( ev ) {
+                console.info( ev.type, [].slice.call( arguments, 1 ) );
+            }
+
+        } );
+
+        console.info( 'foo: ', w1.get( 'foo') );
+        console.info( 'bar: ', w1.get( 'bar' ) );
+        console.info( 'hello: ', w1.get( 'hello' ) );
+
+        w1.set( 'bar', { c: 'ccc', d: true } );
+        console.info( 'bar:', w1.get( 'bar' ) );
+
+        w1.set( 'foo', [ 'baidu', 'cs' ], { silent: true } );
+        console.info( 'foo:', w1.get( 'foo' ) );
+
+        w1.set( 'foo', [ 1, 2, 3 ], { override: true } );
+        console.info( 'foo:', w1.get( 'foo' ) );
+
+        widget.dispose(  );
+    }
+
+);
+</script>
+</body>
+</html>

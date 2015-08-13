@@ -1,0 +1,13 @@
+{
+    "name": "fastclick",
+    "description": "Polyfill to remove click delays on browsers with touch UIs.",
+    "version": "1.0.6",
+    "main": "fastclick",
+    "author": {
+        "name": "Rowan Beentje",
+        "email": "rowan.beentje@ft.com"
+    },
+    "licenses": "MIT",
+    "repository": "git@github.com:ecomfe/dep-fastclick.git",
+    "bugs": "https://github.com/eightmedia/fastclick.js/issues"
+}

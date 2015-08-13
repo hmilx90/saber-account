@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Jasmine Spec Runner</title>
+    <link rel="stylesheet" href="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine-html.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/amd-boot.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console-reporter.js"></script>
+</head>
+
+<body>
+    <script>
+    require.config({
+        'paths': {},
+        'packages': [
+            {
+                'name': 'saber-lang',
+                'location': './dep/saber-lang/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-emitter',
+                'location': './dep/saber-emitter/1.0.0/src',
+                'main': 'emitter'
+            },
+            {
+                'name': 'saber-dom',
+                'location': './dep/saber-dom/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-matchmedia',
+                'location': './dep/saber-matchmedia/1.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'saber-widget',
+                'location': '../src',
+                'main': 'main'
+            }
+        ]
+    });
+
+
+    require(
+        [
+            'boot',
+            'main.spec'
+        ],
+        function ( boot ) {
+            boot();
+        }
+    );
+
+    </script>
+</body>
+</html>

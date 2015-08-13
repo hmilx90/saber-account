@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="src/common/css/homepage.css" />
+    <title>移动记账本</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        baseUrl: 'src',
+        paths: {
+        },
+        packages: [
+            {
+                name: 'etpl',
+                location: '../dep/etpl/3.0.1/src',
+                main: 'main'
+            },
+            {
+                name: 'fastclick',
+                location: '../dep/fastclick/1.0.6/src',
+                main: 'fastclick'
+            },
+            {
+                name: 'saber-ajax',
+                location: '../dep/saber-ajax/2.1.0/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-dom',
+                location: '../dep/saber-dom/1.0.0/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-emitter',
+                location: '../dep/saber-emitter/2.0.0/src',
+                main: 'emitter'
+            },
+            {
+                name: 'saber-firework',
+                location: '../dep/saber-firework/2.0.0/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-lang',
+                location: '../dep/saber-lang/2.0.1/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-mm',
+                location: '../dep/saber-mm/1.0.1/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-promise',
+                location: '../dep/saber-promise/2.0.0/src',
+                main: 'promise'
+            },
+            {
+                name: 'saber-router',
+                location: '../dep/saber-router/2.0.0/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-run',
+                location: '../dep/saber-run/1.0.0/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-string',
+                location: '../dep/saber-string/1.0.0/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-uri',
+                location: '../dep/saber-uri/1.0.6/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-viewport',
+                location: '../dep/saber-viewport/1.1.0/src',
+                main: 'main'
+            },
+            {
+                name: 'saber-widget',
+                location: '../dep/saber-widget/1.0.0/src',
+                main: 'main'
+            }
+        ]
+
+    });
+    </script>
+</head>
+
+<body>
+
+<div id="viewport"></div>
+
+<script>
+    require(['app'], function (app) {
+        app.init();
+    });
+</script>
+</body>
+</html>

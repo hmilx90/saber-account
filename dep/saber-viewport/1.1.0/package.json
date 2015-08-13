@@ -1,0 +1,32 @@
+{
+    "name": "saber-viewport",
+    "version": "1.1.0",
+    "description": "移动端页面视口管理，提供页面转场功能",
+    "main": "main",
+    "maintainers": [
+        {
+            "name": "treelite",
+            "email": "c.xinle@gmail.com"
+        }
+    ],
+    "contributors": [
+        {
+            "name": "firede",
+            "email": "firede@firede.us"
+        }
+    ],
+    "dependencies": {
+        "saber-lang": "~1.0.0",
+        "saber-dom": "~1.0.0",
+        "saber-promise": "~1.0.0",
+        "saber-run": "~1.0.0",
+        "saber-emitter": "~1.0.0"
+    },
+    "devDependencies": {
+        "er": "~3.0.2",
+        "saber-tap": "~0.1.0-1"
+    },
+    "license": "BSD",
+    "repository": "git://github.com/ecomfe/saber-viewport.git",
+    "bugs": "https://github.com/ecomfe/saber-viewport/issues"
+}

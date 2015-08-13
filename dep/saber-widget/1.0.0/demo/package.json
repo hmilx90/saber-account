@@ -1,0 +1,33 @@
+{
+    "name": "demo",
+    "version": "0.0.1",
+    "description": "saber widget demo",
+    "private": true,
+    "main": "index.js",
+    "edp": {
+        "wwwroot": "/",
+        "depDir": "dep",
+        "srcDir": "src",
+        "loaderAutoConfig": "js,htm,html,tpl,vm,phtml",
+        "loaderUrl": "http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js",
+        "dependencies": {
+            "saber-lang": "~1.0.0",
+            "saber-emitter": "~1.0.0",
+            "saber-dom": "~1.0.0",
+            "saber-matchmedia": "~1.0.0",
+            "saber-tap": "~1.0.0",
+            "saber-ajax": "~1.0.0",
+            "saber-promise": "~1.0.0",
+            "hammer": "1.x",
+            "saber-string": "~1.0.0",
+            "saber-scroll": "~1.0.0",
+            "saber-run": "~1.0.0"
+        }
+    },
+    "dependencies": {
+        "edp-provider-rider": "~0.4.0",
+        "rider-ui": "~0.1.1"
+    },
+    "author": "zfkun@msn.com",
+    "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+    "doc/function.md": "64856d72f9c3197effaa42b165454ebc",
+    "doc/type.md": "d578d814dfb4bd766b183c429ad3339b",
+    "History.md": "73963b6d2245b2690fb247c86fff0e20",
+    "package.json": "c5819e2300dc5cac7e8483475436ddf0",
+    "README.md": "5f86964296870944901aadc9e40f1495",
+    "src/bind.js": "5520feb891e74f466fbbe0df413821af",
+    "src/curry.js": "2dfc5d7f62487b7235b2c9292240464c",
+    "src/extend.js": "6e38f00ef9c877f4bd645610d5bff3eb",
+    "src/function/aspect.js": "3cd328314c22755e732f7c70f82f0946",
+    "src/function/debounce.js": "e17e0a1f310a8fe6e61eecdf48f8bf92",
+    "src/function/throttle.js": "56ef75b83f2b9d2458c22753a20fd0be",
+    "src/inherits.js": "f4b14b644d9130a327ec9b1f0c2490cd",
+    "src/main.js": "913df9212e164a02eb3374c5eba8d9b9",
+    "src/type.js": "0969c8fc205baafcc5c9d386ab3d0095",
+    "test/function.spec.js": "c0712290fab050cccb9aa0e7dea61aaf",
+    "test/lang.spec.js": "55dc2f9164c3fb072e2c486f50dc796a",
+    "test/run-jasmine.js": "7c0d964113df9f083f21291056e23f0a",
+    "test/runner.html": "c88f2ab1f455535e7e2bea32f030767e",
+    "test/type.spec.js": "48d59048c7d6b3cace102260adc8d644"
+}

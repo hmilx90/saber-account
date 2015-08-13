@@ -1,0 +1,92 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    background-color: #F0F0F0;
+    font-family: arial;
+    -wekbit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    height: 45px;
+    background: #F7F7F7;
+    text-align: center;
+    line-height: 45px;
+    color: #333;
+}
+
+.header h1 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    height: 44px;
+    border-top: 1px solid #0054C6;
+    border-bottom: 1px solid #0054C6;
+    background: #0054C6;
+    line-height: 44px;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.nav .button {
+    height: 44px;
+    background: #3A7FDE;
+}
+
+.nav a.button:visited {
+    color: #FFF;
+}
+
+.nav .button-nav {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.nav .button-search {
+    margin-left: 1px;
+    width: 40px;
+}
+
+.nav .button-share {
+    margin-left: 1px;
+    width: 40px;
+}
+
+.nav .button-return {
+    padding: 0 8px;
+    background:#0054C6;
+}
+
+.nav .button.cur {
+    background: #0054C6;
+}
+
+.nav .title {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    height: 44px;
+    background: #3A7FDE;
+}

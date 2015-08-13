@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <title>Jasmine Spec Runner</title>
+        <link rel="stylesheet" type="text/css" href="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.css">
+        <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.js"></script>
+        <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine-html.js"></script>
+        <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console.js"></script>
+        <script src="http://saberlabs.github.io/static/jasmine/2.0.0/boot.js"></script>
+        <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console-reporter.js"></script>
+        <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-6/esl.js"></script>
+    </head>
+    <body>
+        <script>
+        require.config({
+            baseUrl: './',
+            packages: [
+                {
+                    name: 'saber-mm',
+                    location: '../src'
+                },
+                {
+                    name: 'saber-widget',
+                    location: 'dep/saber-widget/1.0.0/src'
+                },
+                {
+                    name: 'saber-string',
+                    location: 'dep/saber-string/1.0.0/src'
+                },
+                {
+                    name: 'saber-emitter',
+                    location: 'dep/saber-emitter/2.0.0/src',
+                    main: 'emitter'
+                },
+                {
+                    name: 'saber-lang',
+                    location: 'dep/saber-lang/2.0.1/src'
+                },
+                {
+                    name: 'saber-dom',
+                    location: 'dep/saber-dom/1.0.0/src'
+                },
+                {
+                    name: 'saber-promise',
+                    location: 'dep/saber-promise/2.0.0/src',
+                    main: 'promise'
+                },
+                {
+                    name: 'etpl',
+                    location: 'dep/etpl/3.0.0/src'
+                }
+            ]
+        });
+        
+        require(['spec/event', 'spec/presenter', 'spec/abstractView', 'spec/view', 'spec/model', 'spec/main']);
+
+        </script>
+    </body>
+</html>

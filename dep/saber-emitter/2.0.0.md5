@@ -1,0 +1,14 @@
+{
+    "bower.json": "3ecc52d65948e6eb2d2aa29262d4fd3d",
+    "demo/basic.html": "3d81ea75fa96af0019c6dc2b256ed50b",
+    "emitter.js": "bd42ef9135ccfbdc7da8cec5f9e86076",
+    "History.md": "35a84614f2b48b4c0ec32ab55c74678a",
+    "LICENSE": "f550cc6cbba5122380ad4cb648e3b1cd",
+    "package.json": "65f26f72002118241499d4b2c0a60be5",
+    "README.md": "c66678cc7229f3b4eeee5eb14cd1a06a",
+    "src/emitter.js": "071aa116b4439d2d46116301c01849df",
+    "test/run-jasmine.js": "374d5b4feecc92894abe0430fabd1367",
+    "test/runner.html": "6e7ef703b82a1dd4db3204e84433ff61",
+    "test/runSpec.js": "08540fd63e2efe4a07bb371e2a1480b6",
+    "test/spec/emitter.js": "f3b2515c29540a0ca6de25d98d102ac6"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "saber-router",
+  "version": "2.0.0",
+  "description": "适用于移动端的路由控制，支持hash、popstate与多页面",
+  "main": "main",
+  "maintainers": [
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
+    }
+  ],
+  "scripts": {
+    "pretest": "node -e \"$(curl -sf http://saberlabs.github.io/static/test/depend.js)\";node test/ws.js start",
+    "test": "phantomjs test/run-jasmine.js http://localhost:8848/test/runner.html",
+    "posttest": "node test/ws.js stop"
+  },
+  "edp": {
+    "dependencies": {
+      "saber-lang": "~2.0.0",
+      "saber-uri": "~1.0.6"
+    }
+  },
+  "devDependencies": {
+    "phantomjs": "^1.9.16"
+  },
+  "license": "MIT",
+  "repository": "git://github.com/ecomfe/saber-router.git",
+  "bugs": "https://github.com/ecomfe/saber-router/issues"
+}

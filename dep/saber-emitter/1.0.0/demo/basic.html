@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>emitter base usage</title>
+        <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+    </head>
+    <body>
+        <p>please view source &amp; console's output.</p>
+        <script>
+        require.config({
+            packages: [
+                {
+                    name: 'saber-emitter',
+                    location: '../src',
+                    main: 'emitter'
+                }
+            ]
+        });
+        require(['saber-emitter'], function(Emitter) {
+            var emitter = new Emitter();
+
+            function greeting(name) {
+                console.log('Hello, ' + name + '!');
+            }
+
+            // add listener
+            emitter.on('greeting', greeting);
+
+            // output: Hello, Firede!
+            emitter.emit('greeting', 'Firede');
+
+            // remove listener
+            emitter.off('greeting');
+
+            // do nothing (listener has been removed)
+            emitter.emit('greeting', 'World');
+
+            // add listener just emit once
+            emitter.once('hi', greeting);
+
+            // output: Hello, EcomFE!
+            emitter.emit('hi', 'EcomFE');
+
+            // do nothing (listener has been removed)
+            emitter.emit('hi', 'World');
+        });
+        </script>
+    </body>
+</html>

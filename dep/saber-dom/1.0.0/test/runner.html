@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Jasmine Spec Runner</title>
+
+    <link rel="stylesheet" type="text/css" href="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.css">
+
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine-html.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/boot.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console-reporter.js"></script>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+    <style>
+    #test-container {
+        width: 100%;
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+    }
+    .active {
+        color: red;
+        font-size: 15px;
+    }
+
+    #title {
+        margin: 10px 5px;
+        padding: 10px;
+    }
+
+    #fly {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid #CCC;
+        top: 100px;
+        left: 150px;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="test-container">
+        <h1 id="title">test case.</h1>
+        <ul class="list">
+            <li class="active">1</li>
+            <li style="color:#ffa;font-size:11px;">2</li>
+            <li id="li-item">3</li>
+            <li>4</li>
+        </ul>
+        <div class="panel active">panel 1</div>
+        <div class="panel">panel 2</div>
+        <div class="panel">panel 3</div>
+        <div class="panel">panel 4</div>
+        <div class="panel c3">
+            <p class="c2">
+                Hi, 
+                <span class="c1">
+                    foo bar
+                    <span id="closest-test">baz</span>
+                    yo!
+                </span>
+            </p>
+        </div>
+        <div id="fly"></div>
+        <div class="data-one" data-id="hello world"></div>
+        <div class="data-two" data-id="" data-ui=""></div>
+        <div class="data-three"></div>
+    </div>
+
+    <script>
+    require.config({
+        packages: [
+            {
+                name: 'saber-dom',
+                location: '../src',
+                main: 'main'
+            }
+        ]
+    });
+
+    require(
+        [
+            'selector.spec',
+            'css.spec',
+            'traversal.spec',
+            'data.spec'
+        ]
+    );
+    </script>
+</body>
+</html>

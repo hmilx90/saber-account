@@ -1,0 +1,73 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    right: 150px;
+    border: 1px solid #CCC;
+}
+
+.box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 60px;
+    width: 60px;
+    background: #333;
+}
+
+.panel {
+    position: absolute;
+    font-size: 12px;
+    top: 5px;
+    right: 5px;
+    width: 140px;
+    bottom: 5px;
+}
+
+.panel .content {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    left: 0;
+    bottom: 20px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.panel input[type=text] {
+    width: 30px;
+}
+
+.panel h3 {
+    margin: 0 0 10px;
+    padding: 0 0 5px;
+    text-align: right;
+    border-bottom: 1px solid #CCC;
+}
+
+.panel .item {
+    margin: 0 5px 10px;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    cursor: pointer;
+}
+
+.panel .item-active {
+    background: #CCC;
+}
+
+.panel .opt {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}

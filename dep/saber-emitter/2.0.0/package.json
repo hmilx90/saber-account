@@ -1,0 +1,33 @@
+{
+  "name": "saber-emitter",
+  "version": "2.0.0",
+  "description": "一个适用于移动端的事件发射器，兼容node环境",
+  "main": "emitter",
+  "maintainers": [
+    {
+      "name": "firede",
+      "email": "firede@firede.us"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "zfkun",
+      "email": "zfkun@msn.com"
+    },
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
+    }
+  ],
+  "scripts": {
+    "test": "jasmine-node --verbose test/runSpec.js && phantomjs test/run-jasmine.js test/runner.html"
+  },
+  "devDependencies": {
+    "amder": "^0.1.0",
+    "jasmine-node": "^2.0.0-beta4",
+    "phantomjs": "^1.9.16"
+  },
+  "license": "MIT",
+  "repository": "git://github.com/ecomfe/saber-emitter.git",
+  "bugs": "https://github.com/ecomfe/saber-emitter/issues"
+}

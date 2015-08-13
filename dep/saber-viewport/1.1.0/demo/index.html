@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>ViewPort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-8/esl.js"></script>
+    <script>
+        require.config({
+            packages: [
+                {
+                    name: 'saber-viewport',
+                    location: '../src'
+                },
+                {
+                    name: 'saber-lang',
+                    location: './dep/saber-lang/1.0.0/src'
+                },
+                {
+                    name: 'saber-promise',
+                    location: './dep/saber-promise/1.0.0/src',
+                    main: 'promise'
+                },
+                {
+                    name: 'saber-dom',
+                    location: './dep/saber-dom/1.0.0/src'
+                },
+                {
+                    name: 'saber-run',
+                    location: './dep/saber-run/1.0.0/src'
+                },
+                {
+                    name: 'saber-emitter',
+                    main: 'emitter',
+                    location: './dep/saber-emitter/1.0.0/src'
+                }
+            ]
+        });
+    </script>
+    <style>
+        h1 {
+            margin: 0;
+        }
+        .bar {
+            background: #F0F;
+            color: #FFF;
+            line-height: 1.5;
+        }
+        .bar a {
+            margin: 0 5px;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <p id="opt"><a href="#"></a></p>
+    <div id="viewport" style="overflow: hidden">
+        <h1>Loadding...</h1>
+    </div>
+    <script>
+        require(['saber-viewport', 'saber-viewport/transition/fadeInOut', 'saber-viewport/transition/slide'], function (viewport) {
+
+            var transitions = ['slide', 'fadeInOut'];
+
+            var curTransition;
+
+            function renderOpt(transition) {
+                var html = [];
+                for (var i = 0, item; item = transitions[i]; i++) {
+                    if (item == transition) {
+                        html.push('<u>' + item + '</u>');
+                    }
+                    else {
+                        html.push('<span>' + item + '</span>');
+                    }
+                }
+
+                curTransition = transition;
+                document.getElementById('opt').innerHTML = html.join('&nbsp;');
+            }
+
+            function render(url) {
+                var html = ['<h1>' + url + '</h1>', '<div class="bar" data-viewport-bar="nav" data-name="nav'+ url +'">'];
+                for (var i = 0; i < 5; i++) {
+                    html.push('<a data-link="'+ i +'" href="#">Link ' + i + '</a>&nbsp;');
+                }
+                html.push('</div>');
+                return html.join('');
+            }
+            
+            function load(url) {
+                var page = viewport.load(url);
+                page.main.innerHTML = render(url);
+                page.enter(curTransition);
+            }
+
+            document.getElementById('opt').onclick = function (e) {
+                var target = e.target; 
+                if (target.tagName.toLowerCase() == 'span') {
+                    var value = target.innerHTML;
+                    renderOpt(value);
+                    return false;
+                }
+            };
+
+            document.getElementById('viewport').onclick = function (e) {
+                var target = e.target;
+
+                if (target.tagName.toLowerCase() == 'a') {
+                    load(target.getAttribute('data-link'));
+                    return false;
+                }
+            };
+
+            renderOpt('slide');
+            viewport.init(document.getElementById('viewport'));
+            load('0');
+        });
+    </script>
+</body>
+</html>

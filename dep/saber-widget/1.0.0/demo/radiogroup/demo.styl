@@ -1,0 +1,48 @@
+@require 'rider-ui/default'
+
+main
+    padding: 44px 10px _
+
+    h3
+        margin: 1.5em _ .5em
+
+.bar
+    display: flex
+    background: #def
+    text-align: center
+    font-size: rem(14)
+
+    [data-role="radio"]
+        flex: 1
+        border-right: 1px solid #abc
+        padding: 10px _
+        &:last-child
+            border-right: none
+        &[data-checked]
+            font-weight: 700
+            background: #cde
+
+.list
+    padding: 5px 1px
+    background: #cde
+    border-radius: 5px
+
+    [data-role="radio"]
+        background: #def
+        line-height: 2em
+        padding: 0 10px
+        border-bottom: 1px solid #cde
+        position: relative
+        &:last-child
+            border-bottom: none
+        .count
+            absolute: 7px 8px _ _
+            font-size: rem(12)
+            line-height: 1em
+            padding: 3px 5px
+            background: #69c
+            color: #fff
+        &[data-checked]
+            background: #fff
+            .count
+                background: #acf
