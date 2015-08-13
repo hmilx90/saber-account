@@ -13,6 +13,6 @@
     </div>
 
 </div>
-<img class="bg" src="src/css/img/home_life.jpg">
-<a class="edit-btn" href="edit.html">记一笔</a>
+<img class="bg" src="./src/common/css/img/home_life.jpg">
+<a class="edit-btn" href="#edit">记一笔</a>
 
