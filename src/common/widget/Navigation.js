@@ -96,12 +96,11 @@ define(function (require) {
 
         this.addEvent(mask, 'click', bind(this.hide, this));
 
-        this.addEvent(dom.query('ul li:first-child', wrapper), 'click', function (e) {
-            // var target = e.target;
-            // if (target.tagName === 'A' && target.className.indexOf('btn-share') >= 0) {
-            //     me.emit('share');
-            // }
-            me.hide();
+        this.addEvent(dom.query('ul', wrapper), 'click', function (e) {
+            var target = e.target;
+            if (target.tagName === 'A' && target.href.match(/#.*/g)[0].substring(1) === location.hash.substring(2)) {
+                me.hide();
+            }
         });
     };
 
