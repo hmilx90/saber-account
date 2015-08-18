@@ -1,13 +1,15 @@
 <!--target: list-->
 <div class="header">
-    <span class="nav-btn"></span>收支明细
+    <span class="nav-btn"></span>
+    <!--<a href="#list"><span class="icon-list"></span></a>-->
+    收支明细
     <a href="#share"><span class="icon-share2"></span></a>
 </div>
 
 <div id="list-wrap">
 <div id="main" class="main">
     <div class="time-line">
-            <a href="javascript:void(0);" class="direction-left"> < </a>
+            <a href="javascript:void(0);" class="direction-left"> &lt; </a>
             <a href="javascript:void(0);" class="direction-right"> > </a>
             <span class="time">2015年3月</span>
         </div>

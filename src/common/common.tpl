@@ -9,7 +9,7 @@
     </ul>
 </section>
 <footer>
-    <p>&copy;copy right 杨帆移动组出品</p>
+    <p>&copy;copy right 扬帆移动组出品</p>
     <p>版本${config.version}</p>
     
 </footer>
