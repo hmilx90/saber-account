@@ -46,3 +46,84 @@ body
 
 a
     color: #7d7d7d;
+
+
+/* 全局样式 */
+.ui-mask
+    position: fixed
+    background: rgba(0, 0, 0, 0.5)
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    z-index: 100
+
+.header
+    position: relative
+
+.nav-btn
+    position: absolute
+    left: 19px
+    top: 14px
+    &:before
+        content: "\e60a"
+        font-family: 'icomoon'
+        speak: none
+        font-style: normal
+        font-weight: normal
+        font-variant: normal
+        text-transform: none
+        line-height: 1
+        
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+        
+        font-size: 21px
+        color: #5bbfbf
+        width: 21px
+        height: 21px
+        display: block
+
+.showNav
+    left: 0px!important
+.nav-sidebar
+    position: fixed
+    background-color: #e8eaea
+    top: 0
+    bottom: 0
+    left: -235px
+    right: 30px
+    z-index: 101
+    width: 235px
+    box-shadow: -4px 0px 6px #cfcfcf inset
+    transition: left .25s cubic-bezier(0,0,0.58,1.0)
+    header
+        height: 65px
+        line-height: 1000px
+        overflow: hidden
+        bg2x: './img/navtop.png'
+        background-position: 20px 10px
+        background-color: #e8eaea
+    .sidebar-body li
+        line-height: 53px
+        background: white
+        border-bottom: 1px solid #c7c7c7
+        font-size: 20px
+        color: #7a7a7a
+        a
+            display: block
+            padding-left: 34px
+    footer p
+        font-size: 10px
+        color: #7a7a7a
+        margin: 0
+        line-height: 18px
+    footer
+        margin-bottom: 10px
+        text-align: center
+        position: absolute
+        bottom: 59px
+        left: 0
+        right: 0
+
