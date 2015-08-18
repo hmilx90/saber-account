@@ -1,6 +1,6 @@
 <!--target: list-->
 <div class="header">
-    <a href="#list"><span class="icon-list"></span></a>收支明细
+    <span class="nav-btn"></span>收支明细
     <a href="#share"><span class="icon-share2"></span></a>
 </div>
 
