@@ -1,6 +1,8 @@
 <!-- target:edit -->
     <div class="header">
-        <a href="#list"><span class="icon-list"></span></a>记一笔
+        <span class="nav-btn"></span>
+        <!--<a href="#list"><span class="icon-list"></span></a>-->
+        记一笔
         <a href="#share"><span class="icon-share2"></span></a>
     </div>
 <div id="edit-wrap">
