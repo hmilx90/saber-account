@@ -11,7 +11,9 @@ define(function (require) {
     var local = localStorage;
 
     config.fetch = function (query) {
-        return Resolver.resolved(query);
+        //var data = this.getItemInfo(id);
+
+        return Resolver.resolved();
     };
 
     /*

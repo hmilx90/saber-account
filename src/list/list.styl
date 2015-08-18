@@ -1,101 +1,102 @@
+/**
+ * @file list stylesheet
+ * @author wangshuo16
+ */
 @require '../common/css/common.styl'
-.time-line
-    height:40px;
-    background:#fcf9d6;
-    width:100%;
-    position: relative;
-    text-align: center;
-    color: #7d7d7d;
-    line-height: 40px;
-    font-size: 20px;
+#list-wrap
+    .time-line
+        height:40px;
+        background:#fcf9d6;
+        width:100%;
+        position: relative;
+        text-align: center;
+        color: #7d7d7d;
+        line-height: 40px;
+        font-size: 20px;
 
 
-.direction-left
-    position: absolute;
-    left: 10px;
-
-.detail
-    position: relative;
-    height: 27px;
-    padding-left: 10px;
-    padding-right: 10px;
-    line-height: 27px;
-    font-size: 15px;
-
-
-.part
-    float: left;
-    width: 43%;
-
-.direction-right
-    position: absolute;
-    right: 10px;
-
-.type
-    display: inline-block;
-    padding-right: 10px;
-
-.value
-    /*display: inline-block;*/
-    /*padding-right: 10px;*/
-
-.list-header 
-    height: 32px;
-    line-height: 32px;
-    font-size: 15px;
-    color: #7d7d7d;
-    border: 1px solid #bababa;
-    border-width: 2px 0;
-    text-align: center;
-
-.list-header span 
-    width: 50%;
-    float: left;
-    display: block;
-
-.title dt
-    background: #d2d2d2;
-    height: 20px;
-    line-height: 20px;
-    padding-left: 10px;
-    font-size: smaller;
-    position: relative;
-
-    a:after 
-        font-size: 0;
-        content: '';
-        height: 0;
-        width: 0;
-        border: 4px solid;
-        border-color: transparent transparent transparent #7d7d7d;
+    .direction-left
         position: absolute;
-        top: 5px;
-        right: 15px;
+        left: 10px;
 
-    a.open:after 
-        border-color: #7d7d7d transparent transparent transparent;
+    .direction-right
+        position: absolute;
+        right: 10px;
+    .detail
+        position: relative;
+        height: 27px;
+        padding-left: 10px;
+        padding-right: 10px;
+        line-height: 27px;
+        font-size: 15px;
+    .part
+        float: left;
+        width: 43%;
+    .type
+        display: inline-block;
+        padding-right: 10px;
 
+    .value
+        /*display: inline-block;*/
+        /*padding-right: 10px;*/
 
-.title dd
-    border-bottom: 1px solid #ccc;
-    height: 30px;
+    .list-header
+        height: 32px;
+        line-height: 32px;
+        font-size: 15px;
+        color: #7d7d7d;
+        border: 1px solid #bababa;
+        border-width: 2px 0;
+        text-align: center;
 
-    span
+    .list-header span
         width: 50%;
         float: left;
-        text-align: center;
-        line-height: 30px;
+        display: block;
 
-    span.red
-        color: #fc3e03;
+    .title dt
+        background: #d2d2d2;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 10px;
+        font-size: smaller;
+        position: relative;
 
-    span.green
-        color: #01b112;
+        a:after
+            font-size: 0;
+            content: '';
+            height: 0;
+            width: 0;
+            border: 4px solid;
+            border-color: transparent transparent transparent #7d7d7d;
+            position: absolute;
+            top: 5px;
+            right: 15px;
 
-.icon-pie-chart 
-    position: absolute;
-    top: 6px;
-    right: 10px;
+        a.open:after
+            border-color: #7d7d7d transparent transparent transparent;
+
+
+    .title dd
+        border-bottom: 1px solid #ccc;
+        height: 30px;
+
+        span
+            width: 50%;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+
+        span.red
+            color: #fc3e03;
+
+        span.green
+            color: #01b112;
+
+    .icon-pie-chart
+        position: absolute;
+        top: 6px;
+        right: 10px;
 
 
 

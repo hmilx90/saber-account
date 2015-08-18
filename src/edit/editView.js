@@ -18,7 +18,7 @@ define(function (require) {
             nodes['remark'] = $('#edit [name="remark"]')[0];
             nodes['num'] = $('#edit [node-type="num"]')[0];
         }
-    }
+    };
 
     /**
     * 保存时默认的存储数据
@@ -30,7 +30,7 @@ define(function (require) {
         number: '',
         msg: '',
         time: ''
-    }
+    };
 
     config.domEvents = {
         /**+

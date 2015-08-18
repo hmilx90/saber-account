@@ -1,9 +1,10 @@
 <!--target: mainHeader -->
 <div class="header">
-    <a href="#list"><span class="icon-menu"></span></a><span class="title">首页</span>
-    <a href="#share"><span class="icon-share"></span></a>
+    <a href="#list"><span class="icon-list"></span></a><span class="title">首页</span>
+    <a href="#share"><span class="icon-share2"></span></a>
 </div>
 
+<div id="index-wrap">
 <div class="index-main" class="top50">
     <div class="content">
         <p>收入：<span id="income">${income}</span>元</p>
@@ -15,4 +16,4 @@
 </div>
 <img class="bg" src="./src/common/css/img/home_life.jpg">
 <a class="edit-btn" href="#edit">记一笔</a>
-
+</div>

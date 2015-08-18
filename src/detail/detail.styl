@@ -1,54 +1,56 @@
 /**
 * @file detail
-* @author linjing03@
+* @author linjing03
+*         wangshuo16
 */
 
 @require '../common/css/common.styl'
-.time-line
-    height:40px;
-    background:#fcf9d6;
-    width:100%;
-    position: relative;
-    text-align: center;
-    color: #7d7d7d;
+
+#detail-wrap
+    .time-line
+        height:40px;
+        background:#fcf9d6;
+        width:100%;
+        position: relative;
+        text-align: center;
+        color: #7d7d7d;
+        line-height: 40px;
+        font-size: 20px;
 
 
-.direction-left
-    position: absolute;
-    left: 10px;
-    top: 5px;
+    .direction-left
+        position: absolute;
+        left: 10px;
 
-.detail
-    position: relative;
-    height: 40px;
-    width:80%;
-    margin:0 auto;
-    line-height: 40px;
 
-.part
-    float: left;
-    width: 50%;
+    .direction-right
+        position: absolute;
+        right: 10px;
 
-.direction-right
-    position: absolute;
-    right: 10px;
-    top: 5px;
+    .detail
+        position: relative;
+        height: 27px;
+        padding-left: 10px;
+        padding-right: 10px;
+        line-height: 27px;
+        font-size: 15px;
+        border-bottom: 1px solid #7d7d7d;
+    .part
+        float: left;
+        width: 50%;
+        text-align: center;
+    .type
+        display: inline-block;
+        padding-right: 10px;
 
-.type
-    display: inline-block;
-    padding-right: 10px;
 
-.value
-    display: inline-block;
-    padding-right: 10px;
+    .table-title
+        width: 80%;
+        margin: 7px auto;
 
-.table-title
-    width: 80%;
-    margin: 10px auto;
-
-.canvas-wrap
-    width: 80%;
-    margin: 10px auto;
-    height: 200px;
-    border: 1px solid #ccc;
+    .canvas-wrap
+        width: 80%;
+        margin: 0 auto;
+        height: 173px;
+        border: 1px solid #ccc;
 

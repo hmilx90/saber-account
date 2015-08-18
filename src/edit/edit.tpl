@@ -1,9 +1,9 @@
 <!-- target:edit -->
-<div id="edit">
     <div class="header">
         <a href="#list"><span class="icon-list"></span></a>记一笔
         <a href="#share"><span class="icon-share2"></span></a>
     </div>
+<div id="edit-wrap">
     <div class="classify" id="expenseBtn">
         <ul class="classify-list">
             <li class="active-cls"><div class="item-bg item-bg-1"><span class="icon-food"></span></div>餐饮</li>
