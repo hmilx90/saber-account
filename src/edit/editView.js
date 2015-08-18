@@ -5,7 +5,7 @@
 
 define(function (require) {
     var config = {};
-    var local = localStorage;
+    var local = localforage;
     var nodes = [];
     var dom = require('saber-dom');
 
@@ -82,8 +82,7 @@ define(function (require) {
                 list = JSON.parse(list);
             }
 
-            list.push(data);
-            list = JSON.stringify(list);
+            list[id] = data;
             local.setItem('list', list);
         },
 
