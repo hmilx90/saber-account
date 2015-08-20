@@ -37,7 +37,6 @@ define(function (require) {
             sum = income - expense;
         }
 
-
         return {
             sum: sum,
             income: income,
