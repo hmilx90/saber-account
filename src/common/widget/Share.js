@@ -55,8 +55,8 @@ define(function (require) {
      * @type {Array}
      */
     var TEXT_TPL = [
-        '享特权，收好礼，我正在 百度VIP “赚”钱，你也来壕一次吧！',
-        '通过百度权益中心在${name}购物有最高${num}%的返利，小伙伴快去看看吧',
+        '我正在使用移动记账本，你也来给自己算算帐吧！',
+        '在${name}的${num}%，小伙伴快去看看吧',
         '通过百度权益中心在${mall}购买“${name}”只需${price}，而且还有最高${num}元的返利，小伙伴快去看看吧'
     ];
 
@@ -143,14 +143,17 @@ define(function (require) {
                 ele.style.display = 'none';
             }
         }
+        runtime.mask = dom.query('.ui-mask');
+        if (!runtime.mask) {
+            var mask = runtime.mask = document.createElement('div');
+            mask.className = 'ui-mask';
+            dom.hide(mask);
+        }
 
-        var mask = runtime.mask = document.createElement('div');
-        mask.className = 'ui-mask';
-        dom.hide(mask);
 
         var wrapper = this.get('wrapper');
 
-        wrapper.appendChild(mask);
+        wrapper.appendChild(runtime.mask);
         wrapper.appendChild(main);
     };
 
@@ -170,7 +173,7 @@ define(function (require) {
                 me._share(target);
             };
         }
-        // 绑定页面上的分享按钮事件
+        // 绑定页面上的触发分享按钮事件
         if (this.get('shareBtn')) {
             this.addEvent(this.get('shareBtn'), 'click', this.show);
         }
@@ -212,7 +215,7 @@ define(function (require) {
             window.open(url);
         }
         else {
-            content = '<p class="share">' + content + ' http://vip.baidu.com </p><p class="tip">';
+            content = '<p class="share">' + content + '</p><p class="tip">';
             if (target === 'wechat') {
                 content += TIP_WECHAT;
             }
