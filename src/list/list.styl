@@ -54,13 +54,14 @@
         float: left;
         display: block;
 
-    .title dt
+    .title h4
         background: #d2d2d2;
         height: 20px;
         line-height: 20px;
         padding-left: 10px;
         font-size: smaller;
         position: relative;
+        border-bottom: 1px solid #bababa;
 
         a:after
             font-size: 0;
@@ -72,9 +73,6 @@
             position: absolute;
             top: 5px;
             right: 15px;
-
-        a.open:after
-            border-color: #7d7d7d transparent transparent transparent;
 
 
     .title dd
@@ -92,6 +90,13 @@
 
         span.green
             color: #01b112;
+
+    .toggle h4
+        a:after
+            border-color: #7d7d7d transparent transparent transparent;
+
+    .toggle dl
+        display: none;
 
     .icon-pie-chart
         position: absolute;

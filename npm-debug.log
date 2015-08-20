@@ -1,0 +1,25 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'd:\\ProgramFiles\\nodejs\\node.exe',
+1 verbose cli   'd:\\ProgramFiles\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'localforage' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 verbose stack Error: EPERM, mkdir 'C:\Windows\System32\UsersfengchuyanAppDataRoamingnpm'
+4 verbose stack     at Error (native)
+5 verbose cwd d:\yangfan\saber-account
+6 error Windows_NT 6.1.7601
+7 error argv "d:\\ProgramFiles\\nodejs\\node.exe" "d:\\ProgramFiles\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "localforage"
+8 error node v0.12.2
+9 error npm  v2.7.4
+10 error path C:\Windows\System32\UsersfengchuyanAppDataRoamingnpm
+11 error code EPERM
+12 error errno -4048
+13 error Error: EPERM, mkdir 'C:\Windows\System32\UsersfengchuyanAppDataRoamingnpm'
+13 error     at Error (native)
+13 error  { [Error: EPERM, mkdir 'C:\Windows\System32\UsersfengchuyanAppDataRoamingnpm']
+13 error   errno: -4048,
+13 error   code: 'EPERM',
+13 error   path: 'C:\\Windows\\System32\\UsersfengchuyanAppDataRoamingnpm' }
+14 error Please try running this command again as root/Administrator.
+15 verbose exit [ -4048, true ]

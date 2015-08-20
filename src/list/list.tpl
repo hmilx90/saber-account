@@ -27,18 +27,29 @@
         <span>项目</span>
         <span>金额</span>
     </div>
+    
     <div class="title">
-        <dt><a class="open" href="javascript:void(0);"><span>2015年7月3日</span></a></dt>
-        <dd><span>餐饮</span><span class="red">-30</span></dd>
-        <dd><span>餐饮</span><span class="red">-100</span></dd>
+        <h4><a class="open" href="javascript:void(0);"><span>2015年7月3日</span></a></h4>
+        <dl>
+        <!-- for: ${list} as ${listItem} -->
+            <!-- if: ${listItem}.type == 'expense' -->
+            <dd><span>餐饮</span><span class="red">-${listItem}.expense</span></dd>
+            <!-- else -->
+            <dd><span>餐饮</span><span class="red">${listItem}.income</span></dd>
+            <!-- /if -->
+        <!-- /for -->
+
+        </dl>
     </div>
 
     <div class="title">
-        <dt><a class="open" href="javascript:void(0);"><span>2015年7月3日</span></a></dt>
-        <dd><span>餐饮</span><span class="green">30</span></dd>
-        <dd><span>餐饮</span><span class="green">100</span></dd>
+        <h4><a class="open" href="javascript:void(0);"><span>2015年7月3日</span></a></h4>
+        <dl>
+            <dd><span>餐饮</span><span class="red">-30</span></dd>
+            <dd><span>餐饮</span><span class="red">-100</span></dd>
+        </dl>
     </div>
 </div>
 
-<a href="#list" class="edit-btn">记一笔</a>
+<a href="#edit" class="edit-btn">记一笔</a>
 </div>
