@@ -10,6 +10,7 @@ define(function () {
      * 取指定月份的数据
      * @param month 月
      * @param year 年
+     * @return {Promise} promise
      */
     config.getDataByMonth = function (month, year) {
         //无指定年月时，默认当前月
@@ -21,15 +22,13 @@ define(function () {
 
         var selectedData = {};
 
-        localforage.getItem('list').then(function (value) {
+        return localforage.getItem('list').then(function (value) {
             for(var k in value) {
                 var time = value[k].time;
                 if (time && start_date <= time && end_date > time) {
                     selectedData[k] = value[k];
                 }
             }
-        }).then(function () {
-            return selectedData;
         });
 
     };
