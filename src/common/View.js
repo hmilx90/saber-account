@@ -7,6 +7,7 @@ define(function (require) {
     var Base = require('saber-mm').View;
     var inherits = require('saber-lang').inherits;
     var dom = require('saber-dom');
+    var utilsCookie = require('./js/utils-cookie');
 
     function View(options) {
         Base.call(this, options);
@@ -22,66 +23,58 @@ define(function (require) {
     View.prototype.ready = function () {
         var widget = require('saber-widget');
         require('./widget/Navigation');
+        require('./widget/Share');
+        require('./widget/Confirm');
 
         // 初始化侧边导航
         var navbtn = this.query('.nav-btn');
         if (navbtn) {
-            nav = widget.navigation({
+            if (!this.constructor.prototype.navTplContent) {
+                // 将模板挂在原型上，避免重复初始化
+                View.prototype.navTplContent = this.template.render('nav-sidebar', {});
+            }
+            widget.navigation({
                 main: this.main,
                 btn: navbtn,
-                content: this.template.render('nav-sidebar', {})
-            });
-            nav.on('share', function () {
-                shareDialog.show();
+                content: View.prototype.navTplContent
             });
         }
 
         // 触发欢迎页
-        var isShowWelcome = getCookie('isShowWelcome');
+        var isShowWelcome = utilsCookie.getCookie('isShowWelcome');
         if (isShowWelcome !== 'yes') {
             this.redirect('welcome');
-            setCookie('isShowWelcome', 'yes', '100');
+            utilsCookie.setCookie('isShowWelcome', 'yes', '100');
+        }
+
+        // 分享组件初始化
+        this.confirmDialog = widget.confirm({wrapper: this.main});
+        var shareBtn = dom.query('.icon-share2');
+        if (shareBtn) {
+            var shareDialog = this.shareDialog = widget.share(
+                {
+                    content: this.template.render('shareDialog', {}),
+                    wrapper: this.main,
+                    confirm: this.confirmDialog,
+                    shareBtn: shareBtn
+                }
+            );
         }
 
         Base.prototype.ready.call(this);
     };
 
-
-
     /**
-     * 拿cookie
+     * 弹气泡API，用于页面调用
      *
-     * private
-     * @param {string} key cookie键
+     * @param {string} text 气泡文本
+     * @public
     */
-    function getCookie(key) {
-        if (document.cookie.length>0) { 
-            c_start=document.cookie.indexOf(key + "=")
-            if (c_start!=-1) {
-            c_start=c_start + key.length+1 
-            c_end=document.cookie.indexOf(";",c_start)
-            if (c_end==-1) c_end=document.cookie.length
-                return unescape(document.cookie.substring(c_start,c_end))
-            } 
-        }
-        return ""
-    }
+    View.prototype.balloon = function (text) {
+        var balloon = require('./widget/balloon');
+        balloon(text);
+    };
 
-    /**
-     * set cookie
-     *
-     * private
-     * @param {string} key cookie键
-     * @param {string} value cookie值
-     * @param {number} expiredays 过期天数
-    */
-    function setCookie(key, value, expiredays) {
-        var exdate = new Date();
-        exdate.setDate(exdate.getDate + expiredays);
-        document.cookie = key + '=' + escape(value)
-        + ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
-
-    }
 
     return View;
 });

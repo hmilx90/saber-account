@@ -3,7 +3,7 @@
     <span class="nav-btn"></span>
     <!--<a href="#list"><span class="icon-list"></span></a>-->
     <span class="title">首页</span>
-    <a href="#share"><span class="icon-share2"></span></a>
+    <span class="icon-share2"></span>
 </div>
 
 <div id="index-wrap">
