@@ -6,11 +6,11 @@
 define(function (require) {
 
     return [
-        {path: '/index', action: require('./index/index')},
-        {path: '/edit', action: require('./edit/edit')},
-        {path: '/detail', action: require('./detail/detail')},
-        {path: '/list', action: require('./list/list')},
-        {path: '/welcome', action: require('./welcome/index')}
+        {path: '/index', action: require('./index/index'), cached: true},
+        {path: '/edit', action: require('./edit/edit'), cached: true},
+        {path: '/detail', action: require('./detail/detail'), cached: true},
+        {path: '/list', action: require('./list/list'), cached: true},
+        {path: '/welcome', action: require('./welcome/index'), cached: true}
     ];
 
 });

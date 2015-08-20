@@ -11,6 +11,12 @@ define(function (require) {
 
     config.model = require('./detailModel');
 
+    config.events = {
+        'ready': function () {
+
+        }
+    };
+
     return config;
 
 });

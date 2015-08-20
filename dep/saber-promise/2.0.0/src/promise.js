@@ -505,7 +505,7 @@
     /**
      * 创建处于`fulfill`状态的Promise对象
      *
-     * @public
+     * @public-==[
      * @param {*} data 填充数据
      * @return {Promise}
      */
