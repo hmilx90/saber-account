@@ -4,7 +4,7 @@
  */
 
 define(function (require) {
-
+    /*
     var Resolver = require('saber-promise');
     var db = openDatabase('accountdb', '', 'account database', 2 * 1024 * 1024);
 
@@ -51,5 +51,6 @@ define(function (require) {
     };
 
     return config;
+    */
 
 });

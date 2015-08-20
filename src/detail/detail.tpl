@@ -3,7 +3,7 @@
     <span class="nav-btn"></span>
     <!--<a href="#list"><span class="icon-list"></span></a>-->
     统计分析
-    <a href="#share"><span class="icon-share2"></span></a>
+    <span class="icon-share2"></span>
 </div>
 <div id="detail-wrap">
     <div id="main" class="main">
