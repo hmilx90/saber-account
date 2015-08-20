@@ -14,3 +14,12 @@
     
 </footer>
 <!-- /target -->
+<!-- target: shareDialog -->
+<div class="targets">
+    <span data-action="wechat"><i></i>微信</span>
+    <span data-action="qq"><i></i>QQ</span>
+    <span data-action="weibo"><i></i>微博</span>
+    <span data-action="douban"><i></i>豆瓣</span>
+</div>
+<div class="btn-close">取消</div>
+<!-- /target -->

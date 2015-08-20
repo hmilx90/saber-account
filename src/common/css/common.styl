@@ -99,6 +99,11 @@ a
         height: 21px
         display: block
 
+.icon-share2
+    position: absolute
+    right: 19px
+    top: 14px
+
 .showNav
     left: 0px!important
 .nav-sidebar
@@ -141,3 +146,132 @@ a
         left: 0
         right: 0
 
+/* 确认弹窗 */
+.ui-confirm
+    fixed: 50% 15px _ 15px
+    padding: 15px 13px
+    color: #000
+    font-size: rem(15px)
+    text-align: center
+    z-index: 110
+    background: #FFF
+
+    [data-role="content"]
+        margin: 2px 0 17px
+        line-height: 1.5
+        font-size: 12px
+
+        .share
+            // 增加间距 设置边框
+            // 是为了区域选中更方便
+            margin: 20px 0
+            border: 1px solid #FFF
+            text-align: left
+
+        .tip
+            color: #CCC
+            font-size: rem(12px)
+            text-align: left
+
+    [data-role="bar"]
+        display: flex
+
+        span
+            display: block
+            flex: 1
+            height: 33px
+            line-height: 33px
+            border: 1px solid #7CC5C5
+
+        [data-role="btn-cancel"]
+            margin-right: 10px
+            background: #FFF
+            color: #7CC5C5
+
+        [data-role="btn-ok"]
+            background: #7CC5C5;
+            border-color: #ABABAB;
+            color: #FFF;
+
+/* 分享组件 */
+.ui-share
+    fixed: _ 0 0 0
+    z-index: 110
+    background: #FFF
+    color: #333
+    text-align: center
+    transition: all 0.3s ease-out
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+    .targets
+        padding: 20px 0 18px
+        overflow: hidden
+
+        span
+            display: inline-block
+            margin: 0 8px
+
+            i
+                display: block
+                margin: 0 auto 10px
+                position: relative
+                width: 59px
+                height: 59px
+                border: 1px solid #EEE
+                border-radius: 10px
+
+                &::before
+                    content: " "
+                    absolute: 50% _ _ 50%
+                    width: 40px
+                    height: 40px
+                    margin-left: -20px
+                    margin-top: -20px
+                    bg2x: './img/sprite.png'
+                    background-position: 0 -300px
+
+            &[data-action="wechat"]
+                    i
+                        &::before
+                            background-position: 0 -300px
+
+            &[data-action="qq"]
+                    i
+                        &::before
+                            background-position: -40px -300px
+
+            &[data-action="weibo"]
+                    i
+                        &::before
+                            background-position: -80px -300px
+
+            &[data-action="douban"]
+                    i
+                        &::before
+                            background-position: -120px -300px
+
+    .btn-close
+        height: 49px
+        line-height: 49px
+        border-top: 1px solid #EEE
+
+.ui-share-hidden
+    bottom: -200px
+    visibility: hidden
+
+
+/* 气泡提示 */
+.ui-balloon
+    fixed: _ 50px 20px
+    padding: 15px
+    text-align: center
+    font-size: rem(15px)
+    line-height: 1.5
+    color: #FFF
+    background: rgba(0, 0, 0, 0.7)
+    z-index: 200
+    transition: all 0.5s ease-out
+
+.ui-balloon-hidden
+    opacity: 0
+    visibility: hidden
