@@ -8,15 +8,14 @@ define(function (require) {
     var local = localforage;
     var nodes = [];
     var dom = require('saber-dom');
+    var router = require('saber-router');
 
     config.template = require('./edit.tpl');
 
 
     config.events = {
         ready: function () {
-            node = document.getElementById('edit');
-            nodes['remark'] = $('#edit [name="remark"]')[0];
-            nodes['num'] = $('#edit [node-type="num"]')[0];
+            this.getElements();
         }
     };
 
@@ -32,12 +31,45 @@ define(function (require) {
         time: ''
     };
 
+
+    /*
+    * 从列表页跳过来的话，数据回填渲染页面
+    */
+    config.renderPage = function (data) {
+        nodes.num.innerHTML = data.number;
+        nodes.num.setAttribute('origin', data.number);
+
+        if (data.msg) {
+            nodes.remark.value = data.msg;
+        }
+
+        if(data.sort !== this.accountInfo.sort) {
+            $('.sortlist .active').removeClass('active');
+            $('#edit-wrap [sort=' + data.sort + ']').find('div').addClass('active');
+        }
+
+        if (data.type !== this.accountInfo.type) {
+            $('#tab-bnt .active').removeClass('active');
+            $('#tab-bnt [type=' + data.type + ']').addClass('active');
+        }
+    }
+
+    /*
+    * 获取页面中常操作的Dom元素;
+    */
+    config.getElements = function () {
+        nodes['remark'] = $('#edit-wrap [name="remark"]')[0];
+        nodes['num'] = $('#edit-wrap [node-type="num"]')[0];
+    }
+
+
     config.domEvents = {
         /**+
         * 计算器的一些方法
         * @param {DOM element} 显示的钱数的节点
         */
         'click:.keyboard p': function (ele) {
+            nodes.num.focus();
             if (nodes.num.innerHTML === '0.0'){
                 nodes.num.innerHTML = '';
             }
@@ -46,6 +78,7 @@ define(function (require) {
         },
 
         'click:.back': function () {
+            nodes.num.focus();
             var str = nodes.num.innerHTML;
             if (str) {
                 var len = str.length;
@@ -56,7 +89,9 @@ define(function (require) {
 
         'click:.clear': function () {
             nodes.num.innerHTML = '0.0';
+            nodes.num.focus();
         },
+
         /*
         * 保存记账数据
         */
@@ -64,26 +99,30 @@ define(function (require) {
             var _this = this;
             var time = new Date().getTime();
             var id = 't' + time;
-            var data = {};
-            var number = Number(nodes.num.innerHTML);
+
+            var number = nodes.num.innerHTML;
+            // 没有输入花费金额，不跳转到列表页
+            if (number === nodes.num.getAttribute('origin')) {
+                return;
+            }
+
+            number = Number(number);
             number = Math.round(number);
 
             _this.accountInfo.msg = nodes.remark.value;
             _this.accountInfo.number = number;
             _this.accountInfo.time = time;
 
-            data[id] = _this.accountInfo;
+            local.getItem('list', function (err, list) {
+                if (!list) {
+                    list = [];
+                }
+                list[id] = _this.accountInfo;
 
-            var list = local.getItem('list');
-            if (!list) {
-                list = [];
-            }
-            else {
-                list = JSON.parse(list);
-            }
-
-            list[id] = data;
-            local.setItem('list', list);
+                local.setItem('list', list, function (err,value) {
+                    router.redirect("/list");
+                });
+            });
         },
 
         /**
@@ -93,8 +132,9 @@ define(function (require) {
             var sort = ele.getAttribute('sort');
             this.accountInfo.sort = sort;
 
-            $('.classify li').removeClass('active');
-            dom.addClass(ele,'active');
+            $('.classify .active').removeClass('active');
+            var item = ele.getElementsByTagName('div')[0];
+            dom.addClass(item,'active');
         },
 
         'click:.tab-line span': function (ele) {
