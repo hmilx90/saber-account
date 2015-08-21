@@ -111,27 +111,48 @@ define(function (require) {
             /*
             * 将总花销记录到localforage;
             */
-            var tag = 'totalExpense';
-            var type = 'expense';
-            if (_this.accountInfo.type == 'income') {
-                tag = 'totalIncome';
-                type = 'income';
-            }
-            saveTotal(tag, number, type);
+            // var tag = 'totalExpense';
+            // var type = 'expense';
+            // if (_this.accountInfo.type == 'income') {
+            //     tag = 'totalIncome';
+            //     type = 'income';
+            // }
+            // saveTotal(tag, number, type);
+
+            /*
+             * 更新total表。重算当前的最大收入和支出字段。
+             * author: cuiyongjian
+             * 在新数据save之后，再去更新total表
+            */
 
             _this.accountInfo.msg = nodes.remark.value;
             _this.accountInfo.number = number;
             _this.accountInfo.time = time;
 
-            local.getItem('list', function (err, list) {
-                if (!list) {
-                    list = {};
-                }
-                list[id] = _this.accountInfo;
+            // local.getItem('list', function (err, list) {
+            //     if (!list) {
+            //         list = {};
+            //     }
+            //     list[id] = _this.accountInfo;
 
-                local.setItem('list', list, function (err,value) {
-                    //router.redirect("/list");
-                });
+            //     local.setItem('list', list, function (err,value) {
+            //         //router.redirect("/list");
+            //     });
+            // });
+
+
+
+            /*
+             * 借助curd进行插入新数据
+             * @author: cuiyongjian
+            */
+            var curdHelp = require('../common/js/curd');
+            curdHelp.create(id, _this.accountInfo).then(function () {
+                // 插入成功后，更新total表
+                var dbManager = require('../common/js/Data-manage');
+                dbManager.caclAllTotal();
+                // 去列表页
+                router.redirect('/list');
             });
         },
 

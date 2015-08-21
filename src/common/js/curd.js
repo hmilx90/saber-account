@@ -12,6 +12,10 @@ define(function (require) {
         description : 'this is a db for account'
     });
 
+    exports.getTable = function (name) {
+        return localforage.getItem(name);
+    }
+
     /**
      * 添加纪录
      *
@@ -19,7 +23,12 @@ define(function (require) {
      * @param {Object} obj 待添加的值
     */
     exports.create = function (key, obj) {
-        return localforage.setItem(key, obj);
+        return this.getTable('list').then(function (list) {
+            list[key] = obj;
+            return localforage.setItem('list', list, function () {
+                return obj;
+            });
+        });
     }
 
 
@@ -29,7 +38,13 @@ define(function (require) {
      * @param {string} key 待删除的键
     */
     exports.delete = function (key) {
-        return localforage.removeItem(key);
+        return this.getTable('list').then(function (list) {
+            delete list[key];
+            return localforage.setItem('list', list, function () {
+                return key;
+            });            
+        });
+
     }
 
     /**
@@ -38,7 +53,12 @@ define(function (require) {
      * @param {string} key 待修改的键
     */
     exports.update = function (key, obj) {
-        return localforage.setItem(key, obj);
+        return this.getTable('list').then(function (list) {
+            list[key] = obj;
+            return localforage.setItem('list', list, function () {
+                return obj;
+            });
+        });
     }
 
     /**
@@ -47,7 +67,9 @@ define(function (require) {
      * @param {string} key 待查询的键
     */
     exports.get = function (key) {
-        return localforage.getItem(key);
+        return this.getTable('list').then(function (list) {
+            return list[key];
+        });
     }
 
     return exports;
