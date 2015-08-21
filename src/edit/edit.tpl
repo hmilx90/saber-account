@@ -10,24 +10,60 @@
         <div class="classify" id="expenseBtn">
             <ul class="classify-list">
                 <li class="active-cls" sort="food"><div class="item-bg item-bg-1 active"><span class="icon-food"></span></div>餐饮</li>
-                <li sort="shopping"><div class="item-bg item-bg-2"><span class="icon-shopping"></span></div>购物</li>
-                <li sort="hotel"><div class="item-bg item-bg-3"><span class="icon-hotel"></span></div>酒店</li>
-                <li sort="transtation"><div class="item-bg item-bg-4"><span class="icon-truck"></span></div>交通</li>
+                <li sort="shopping">
+                    <div class="item-bg item-bg-2"><span class="icon-shopping"></span></div>
+                    <p class="text">购物</p>
+                </li>
+                <li sort="hotel">
+                    <div class="item-bg item-bg-3"><span class="icon-hotel"></span></div>
+                    <p class="text">酒店</p>
+                </li>
+                <li sort="transtation">
+                    <div class="item-bg item-bg-4"><span class="icon-truck"></span></div>
+                    <p class="text">交通</p>
+                </li>
             </ul>
             <ul class="classify-list">
-                <li sort="enternment"><div class="item-bg item-bg-5"><span class="icon-music"></span></div>娱乐</li>
-                <li sort="phoneFee"><div class="item-bg item-bg-6"><span class="icon-earth"></span></div>通讯</li>
-                <li sort="hospital"><div class="item-bg item-bg-7"><span class="icon-health"></span></div>医疗</li>
-                <li sort="investion"><div class="item-bg item-bg-8"><span class="icon-investion"></span></div>投资理财</li>
+                <li sort="enternment">
+                    <div class="item-bg item-bg-5"><span class="icon-music"></span></div>
+                    <p class="text">娱乐</p>
+                </li>
+                <li sort="phoneFee">
+                    <div class="item-bg item-bg-6"><span class="icon-earth"></span></div>
+                    <p class="text">通讯<p>
+                </li>
+                <li sort="hospital">
+                    <div class="item-bg item-bg-7"><span class="icon-health"></span></div>
+                    <p class="text">医疗</p>
+                </li>
+                <li sort="investion">
+                    <div class="item-bg item-bg-8"><span class="icon-investion"></span></div>
+                    <p class="text">投资理财</p>
+                </li>
             </ul>
         </div>
         <div class="classify" id="incomeBtn" style="display:none;">
             <ul class="classify-list">
-                <li sort="salary"><div class="item-bg item-bg-5"><span class="icon-music"></span></div>工资</li>
-                <li sort="investIncome"><div class="item-bg item-bg-6"><span class="icon-earth"></span></div>投资收入</li>
-                <li sort="extraSalary"><div class="item-bg item-bg-7"><span class="icon-health"></span></div>兼职收入</li>
-                <li sort="bonus"><div class="item-bg item-bg-8"><span class="icon-investion"></span></div>红包</li>
-                <li sort="others"><div class="item-bg item-bg-8"><span class="icon-investion"></span></div>其他</li>
+                <li sort="salary">
+                    <div class="item-bg item-bg-5"><span class="icon-music"></span></div>
+                    <p class="text">工资</p>
+                </li>
+                <li sort="investIncome">
+                    <div class="item-bg item-bg-6"><span class="icon-earth"></span></div>
+                    <p class="text">投资收入</p>
+                </li>
+                <li sort="extraSalary">
+                    <div class="item-bg item-bg-7"><span class="icon-health"></span></div>
+                    <p class="text">兼职收入</p>
+                </li>
+                <li sort="bonus">
+                    <div class="item-bg item-bg-8"><span class="icon-investion"></span></div>
+                    <p class="text">红包</p>
+                </li>
+                <li sort="others">
+                    <div class="item-bg item-bg-8"><span class="icon-investion"></span></div>
+                    <p class="text">其他</p>
+                </li>
             </ul>
         </div>
     </div>
@@ -36,7 +72,7 @@
         <span class="tab-2" type="income" other="expense">收入</span>
     </div>
     <div class="ipt-box">
-        <div class="ipt-box-i"><span class="pay-income">支出</span>：<span class="sum" node-type="num" origin="0.0">0.0</span>元</div>
+        <div class="ipt-box-i"><span class="pay-income">支出:</span><span class="sum" node-type="num" origin="0.0">0.0</span>元</div>
         <div>备注：<input class="ipt-remark" type="text" name="remark" node-type="remark"></div>
     </div>
     <div class="keyboard">
