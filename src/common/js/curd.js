@@ -13,7 +13,15 @@ define(function (require) {
     });
 
     exports.getTable = function (name) {
-        return localforage.getItem(name);
+        return localforage.getItem(name).then(function (data) {
+            if (!data) {
+                data = {};
+                return localforage.setItem(name, data).then(function (data) {
+                    return data;
+                });
+            }
+            return data;
+        });
     }
 
     /**
