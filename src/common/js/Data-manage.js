@@ -3,14 +3,17 @@
  * @author wangshuo16
  */
 
-define(function () {
+define(function (require) {
+
+    var Resolver = require('saber-promise');
+
     var config = {};
 
     /**
      * 取指定月份的数据
      * @param month 月
      * @param year 年
-     * @return {Promise} promise
+     * @return {Promise} 返回数据
      */
     config.getDataByMonth = function (month, year) {
         //无指定年月时，默认当前月
@@ -29,17 +32,22 @@ define(function () {
                     selectedData[k] = value[k];
                 }
             }
+            return selectedData;
         });
 
     };
 
     /**
      * 计算数据的收入总计和支出总计
-     * @return {Object} 收入总计和支出总计
+     * @return {promise} 返回收入总计和支出总计
      */
     config.calcDate = function (data) {
 
-        var result = {icm_total:0, exp_total:0};
+        var result = {
+            icm_total: 0,
+            exp_total: 0
+        };
+        var resolver = new Resolver();
 
         for(var key in data ){
             var item = date[key];
@@ -53,6 +61,7 @@ define(function () {
                 console.warn('type中存储内容有误');
             }
         }
-        return result;
+
+        return resolver.resolved(result);
     }
 });
