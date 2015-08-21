@@ -11,7 +11,7 @@
     <div class="content">
         <p>收入：<span id="income">${income}</span>元</p>
         <p>支出：<span id="expense">${expense}</span>元</p>
-        <p>本月总计：<span id="total">${sum}</span>元</p>
+        <p>本月净收入：<span id="total">${sum}</span>元</p>
         <p class="slogan">————&nbsp;&nbsp;&nbsp;I choose to be happy&nbsp;&nbsp;&nbsp;————</p>
     </div>
 </div>
