@@ -50,7 +50,7 @@ define(function (require) {
         var resolver = new Resolver();
 
         for(var key in data ){
-            var item = date[key];
+            var item = data[key];
             if(item.type = 'income'){
                 result.icm_total += item.number;
             }
@@ -64,4 +64,7 @@ define(function (require) {
 
         return resolver.resolved(result);
     }
+
+    return config;
+
 });
