@@ -10,6 +10,10 @@ define(function (require) {
     var utilsCookie = require('./js/utils-cookie');
 
     function View(options) {
+        // 视图渲染之前，设置本地存储配置
+        this.on('beforerender', function () {
+
+        });
         Base.call(this, options);
     }
 
@@ -74,7 +78,6 @@ define(function (require) {
         var balloon = require('./widget/balloon');
         balloon(text);
     };
-
 
     return View;
 });
