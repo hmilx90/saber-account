@@ -26,7 +26,7 @@ define(function (require) {
         var selectedData = {};
 
         return localforage.getItem('list').then(function (value) {
-            for(var k in value) {
+            for (var k in value) {
                 var time = value[k].time;
                 if (time && start_date <= time && end_date > time) {
                     selectedData[k] = value[k];
@@ -49,15 +49,15 @@ define(function (require) {
         };
         var resolver = new Resolver();
 
-        for(var key in data ){
+        for (var key in data ) {
             var item = date[key];
-            if(item.type = 'income'){
+            if (item.type = 'income') {
                 result.icm_total += item.number;
             }
-            else if(item.type = 'expense'){
+            else if (item.type = 'expense') {
                 result.exp_total += item.number;
             }
-            else{
+            else {
                 console.warn('type中存储内容有误');
             }
         }
