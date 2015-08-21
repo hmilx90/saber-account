@@ -9,6 +9,7 @@ define(function (require) {
 
     config.template = require('./index.tpl');
 
+
     return config;
 
 });

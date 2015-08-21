@@ -3,7 +3,7 @@
     <span class="nav-btn"></span>
     <!--<a href="#list"><span class="icon-list"></span></a>-->
     统计分析
-    <a href="#share"><span class="icon-share2"></span></a>
+    <span class="icon-share2"></span>
 </div>
 <div id="detail-wrap">
     <div id="main" class="main">
@@ -15,10 +15,10 @@
 
         <div class="detail">
             <div class="part">
-                收入:<span class="value">1000</span>元
+                收入:<span class="value">${icm_total}</span>元
             </div>
             <div class="part">
-                支出:<span class="value">500</span>元
+                支出:<span class="value">${exp_total}</span>元
             </div>
         </div>
 

@@ -33,13 +33,19 @@ define(function (require) {
      */
     Navigation.prototype.initDom = function () {
         var runtime = this.runtime;
-        var wrapper = runtime.wrapper = document.createElement('section');
-
-        wrapper.className = 'nav-sidebar';
-        wrapper.innerHTML = this.get('content');
-
-        this.main.appendChild(wrapper);
-        if (!(dom.query('ui-mask'))) {
+        runtime.wrapper = dom.query('.nav-sidebar');
+        if (!runtime.wrapper) {
+            var wrapper = runtime.wrapper = document.createElement('section');    
+            wrapper.className = 'nav-sidebar';
+            wrapper.innerHTML = this.get('content');
+            document.body.appendChild(wrapper);
+        }
+        
+        
+        // 这里将wrapper添加到body下面，而不是this.main
+        // 这是因为不在div.viewport节点下的元素，当页面切换不会释放该节点。可重用。
+        runtime.mask = dom.query('.ui-mask');
+        if (!(mask)) {
             var mask = runtime.mask = document.createElement('div');
             mask.className = 'ui-mask';
             dom.hide(mask);
@@ -99,6 +105,10 @@ define(function (require) {
         this.addEvent(dom.query('ul', wrapper), 'click', function (e) {
             var target = e.target;
             if (target.tagName === 'A' && target.href.match(/#.*/g)[0].substring(1) === location.hash.substring(2)) {
+                me.hide();
+            }
+            // 上面这个判断多此一举，其实任何是A标签的点击，都得隐藏侧边栏
+            if (target.tagName === 'A') {
                 me.hide();
             }
         });

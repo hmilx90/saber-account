@@ -108,6 +108,16 @@ define(function (require) {
 
             number = Number(number);
             number = Math.round(number);
+            /*
+            * 将总花销记录到localforage;
+            */
+            var tag = 'totalExpense';
+            var type = 'expense';
+            if (_this.accountInfo.type == 'income') {
+                tag = 'totalIncome';
+                type = 'income';
+            }
+            saveTotal(tag, number, type);
 
             _this.accountInfo.msg = nodes.remark.value;
             _this.accountInfo.number = number;
@@ -115,12 +125,12 @@ define(function (require) {
 
             local.getItem('list', function (err, list) {
                 if (!list) {
-                    list = [];
+                    list = {};
                 }
                 list[id] = _this.accountInfo;
 
                 local.setItem('list', list, function (err,value) {
-                    router.redirect("/list");
+                    //router.redirect("/list");
                 });
             });
         },
@@ -150,7 +160,24 @@ define(function (require) {
             dom.g(type + 'Btn').style.display = '';
 
         }
+    }
 
+    /*
+    * 每次记账时算总账；
+    * @param {string} totalIncome || totalExpense
+    * @number {number} 具体的数额
+    * @type {string} income || expense
+    */
+    function saveTotal(tag, number, type) {
+        local.getItem(tag, function (err, value) {
+            if (!value) {
+                value = 0;
+            }
+            value = Number(value);
+            console.log(number);
+            value += number;
+            local.setItem(tag, value);
+        });
     }
 
     return config;

@@ -15,11 +15,6 @@ define(function (require) {
         var sum = 0;
         var income = 0;
         var expense = 0;
-        var item = {
-            sum: sum,
-            income: income,
-            expense: expense
-        };
 
         var totalIncome = local.getItem('totalIncome');
         var totalExpense = local.getItem('totalExpense');

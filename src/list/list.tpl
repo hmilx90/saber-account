@@ -3,7 +3,7 @@
     <span class="nav-btn"></span>
     <!--<a href="#list"><span class="icon-list"></span></a>-->
     收支明细
-    <a href="#share"><span class="icon-share2"></span></a>
+    <span class="icon-share2"></span>
 </div>
 
 <div id="list-wrap">
