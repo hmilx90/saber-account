@@ -20,6 +20,7 @@ define(function (require) {
         var totalExpense = local.getItem('totalExpense');
 
         return Resolver.all(totalIncome, totalExpense).then(function (data) {
+            var item = {};
             if (data[0]) {
                 item.income = data[0];
             }

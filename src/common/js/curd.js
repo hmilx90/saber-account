@@ -24,7 +24,7 @@ define(function (require) {
 
 
     /**
-     * 添加纪录
+     * 删除纪录
      *
      * @param {string} key 待删除的键
     */
