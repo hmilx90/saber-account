@@ -50,7 +50,7 @@ define(function (require) {
         var resolver = new Resolver();
 
         for (var key in data ) {
-            var item = date[key];
+            var item = data[key];
             if (item.type = 'income') {
                 result.icm_total += item.number;
             }
@@ -64,4 +64,32 @@ define(function (require) {
 
         return resolver.resolved(result);
     }
+
+    /**
+     * 计算一个月的天数
+     * @param month 月份
+     * @param year 年
+     * @returns {number} 天数
+     */
+    config.monthDays = function (month, year) {
+        var days = 30;
+        if (month === 2) {
+            if (year%4 === 0) {
+                days = 29;
+            }
+            else {
+                days = 28;
+            }
+        }
+        else {
+            month = month + '';
+            var reg = /^(1|3|5|7|8|10|12){1}$/;
+            if (reg.test(month)) {
+                days = 31;
+            }
+        }
+        return days;
+    };
+
+    return config;
 });

@@ -15,7 +15,11 @@ define(function (require) {
 
     config.events = {
         'ready': function () {
-            this.model.getData().then(bind(this.view.render(), this.view));
+            var me = this;
+            me.model.getData().then(function (data) {
+                me.model.countDataPerDay(data);
+                bind(me.view.renderCharts(), me.view);
+            });
         }
     };
 

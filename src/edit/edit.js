@@ -16,10 +16,10 @@ define(function (require) {
 
     config.events = {
         ready: function () {
-            var _this = this;
-            this.model.getData().then(function(data){
-                bind(_this.view.renderPage(data),_this.view);
-            })
+            //var _this = this;
+            //this.model.getData().then(function(data){
+            //    bind(_this.view.renderPage(data),_this.view);
+            //})
         }
     }
 

@@ -35,7 +35,7 @@
 
         <p class="table-title">月收支曲线图</p>
 
-        <div class="canvas-wrap">
+        <div class="canvas-wrap" id="line-chart">
         </div>
         <p class="table-title">消费类别饼状图</p>
 
