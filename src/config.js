@@ -6,7 +6,7 @@
 define(function (require) {
 
     return [
-        {path: '/index', action: require('./index/index'), cached: true},
+        {path: '/index', action: require('./index/index')},
         {path: '/edit', action: require('./edit/edit'), cached: true},
         {path: '/detail', action: require('./detail/detail'), cached: true},
         {path: '/list', action: require('./list/list'), cached: true},

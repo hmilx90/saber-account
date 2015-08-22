@@ -8,6 +8,14 @@ define(function (require) {
     var Resolver = require('saber-promise');
 
     var config = {};
+    var type = require('saber-lang/type');
+
+    localforage.config({
+        name        : 'myApp',
+        version     : 1.0,
+        storeName   : 'db_account', // Should be alphanumeric, with underscores.
+        description : 'this is a db for account'
+    });
 
     /**
      * 取指定月份的数据
@@ -47,14 +55,13 @@ define(function (require) {
             icm_total: 0,
             exp_total: 0
         };
-        var resolver = new Resolver();
 
         for(var key in data ){
             var item = data[key];
-            if(item.type = 'income'){
+            if(item.type === 'income'){
                 result.icm_total += item.number;
             }
-            else if(item.type = 'expense'){
+            else if(item.type === 'expense'){
                 result.exp_total += item.number;
             }
             else{
@@ -62,8 +69,48 @@ define(function (require) {
             }
         }
 
-        return resolver.resolved(result);
+        return Resolver.resolved(result);
     }
+
+    /**
+     * 计算某个月份的收入总计和支出总计
+     * @return {promise} 返回收入总计和支出总计
+     */
+    config.calcDataByMonth = function (month, year) {
+        var me = this;
+        return this.getDataByMonth(month, year).then(function (curMonthData) {
+            return me.calcDate(curMonthData);
+        });
+    }
+
+
+    /**
+     * 计算所有的收入支出总计，并写入total表
+     * @return {promise} 返回收入总计和支出总计
+     */
+    config.caclAllTotal = function (data) {
+        var me = this;
+        return localforage.getItem('list').then(function (list) {
+            me.calcDate(list).then(function (data) {
+                return localforage.setItem('total', data);
+            });
+        });
+    }
+
+    /**
+     * 获取收入和支出总计（从total表）
+     * @return {promise} 返回收入总计和支出总计
+     */
+    config.getAllTotal = function () {
+        var me = this;
+        return localforage.getItem('total').then(function (data) {
+            if (!data || type.isEmptyObject(data)) {
+                return localforage.setItem('total', {icm_total: 0, exp_total: 0});
+            }
+            return data;
+        });
+    }
+
 
     return config;
 

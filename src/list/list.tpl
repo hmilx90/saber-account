@@ -21,12 +21,19 @@
 <!-- target: listBody -->
     <div class="detail">
         <div class="part">
+<<<<<<< HEAD
             收入:<span class="value">${totalIncome}</span>元
         </div>
         <div class="part">
             支出:<span class="value">${totalExpense}</span>元
+=======
+            收入:<span class="value">${icm_total}</span>元
         </div>
-        <a href="detail.html" class="icon-pie-chart"></a>
+        <div class="part">
+            支出:<span class="value">${exp_total}</span>元
+>>>>>>> d11c6e5a75084c269ba536b9b87a224d907c36c1
+        </div>
+        <a href="#detail" class="icon-pie-chart"></a>
     </div>
     <div class="list-header">
         <span>项目</span>
