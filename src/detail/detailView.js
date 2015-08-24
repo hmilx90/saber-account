@@ -17,7 +17,8 @@ define(function (require) {
      */
     config.renderCharts = function () {
         lineChart.call(this);
-        pieChart.call(this);
+        pieChartExp.call(this);
+        pieChartInc.call(this);
     };
 
     /**
@@ -85,9 +86,10 @@ define(function (require) {
         myChart.setOption(option);
     }
 
-    function pieChart() {
+    function pieChartExp() {
+        var data = this.detail_Data;
 
-        var mypieChart = echarts.init(dom.g('pie-chart'));
+        var mypieChart = echarts.init(dom.g('pie-chart-exp'));
         var option = {
             title : {
                 subtext: '支出',
@@ -98,30 +100,9 @@ define(function (require) {
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
             legend: {
-                orient : 'vertical',
-                x : 'left',
-                data:['餐饮','购物','酒店','交通','娱乐','通讯','医疗','投资理财']
-            },
-            toolbox: {
-                show : true,
-                feature : {
-                    mark : {show: true},
-                    dataView : {show: true, readOnly: false},
-                    magicType : {
-                        show: true,
-                        type: ['pie'],
-                        option: {
-                            funnel: {
-                                x: '25%',
-                                width: '50%',
-                                funnelAlign: 'left',
-                                max: 1548
-                            }
-                        }
-                    },
-                    restore : {show: true},
-                    saveAsImage : {show: true}
-                }
+                x : 'center',
+                y: 'bottom',
+                data: data.sorts_exp
             },
             calculable : true,
             series : [
@@ -130,16 +111,39 @@ define(function (require) {
                     type:'pie',
                     radius : '55%',
                     center: ['50%', '60%'],
-                    data:[
-                        {value:335, name:'餐饮'},
-                        {value:310, name:'购物'},
-                        {value:234, name:'酒店'},
-                        {value:135, name:'交通'},
-                        {value:1548, name:'娱乐'},
-                        {value:1548, name:'通讯'},
-                        {value:1548, name:'医疗'},
-                        {value:1548, name:'投资理财'},
-                    ]
+                    data: data.sorts_count_exp
+                }
+            ]
+        };
+        mypieChart.setOption(option);
+    }
+
+    function pieChartInc() {
+        var data = this.detail_Data;
+
+        var mypieChart = echarts.init(dom.g('pie-chart-inc'));
+        var option = {
+            title : {
+                subtext: '收入',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                x : 'center',
+                y: 'bottom',
+                data: data.sorts_inc
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'分类',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data: data.sorts_count_inc
                 }
             ]
         };

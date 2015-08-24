@@ -37,9 +37,13 @@
 
         <div class="canvas-wrap" id="line-chart">
         </div>
-        <p class="table-title">消费类别饼状图</p>
+        <p class="table-title">支出类别饼状图</p>
 
-        <div class="canvas-wrap" id="pie-chart">
+        <div class="canvas-wrap" id="pie-chart-exp">
+        </div>
+        <p class="table-title">收入类别饼状图</p>
+
+        <div class="canvas-wrap" id="pie-chart-inc">
         </div>
     </div>
 </div>
