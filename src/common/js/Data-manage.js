@@ -90,9 +90,9 @@ define(function (require) {
     config.caclAllTotal = function (data) {
         var me = this;
         return localforage.getItem('list').then(function (list) {
-            me.calcDate(list).then(function (data) {
-                return localforage.setItem('total', data);
-            });
+
+            return localforage.setItem('total',  me.calcDate(list));
+
         });
     };
 
