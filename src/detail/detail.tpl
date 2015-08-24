@@ -1,7 +1,6 @@
-<!--target:detail-->
+<!-- target:detail -->
 <div class="header">
     <span class="nav-btn"></span>
-    <!--<a href="#list"><span class="icon-list"></span></a>-->
     统计分析
     <span class="icon-share2"></span>
 </div>
@@ -15,20 +14,36 @@
 
         <div class="detail">
             <div class="part">
-                收入:<span class="value">${icm_total}</span>元
+                收入:
+                <!-- if: ${icm_total} -->
+                <span class="value">${icm_total}</span>
+                <!-- else -->
+                <span class="value">0</span>
+                <!-- /if -->
+                元
             </div>
             <div class="part">
-                支出:<span class="value">${exp_total}</span>元
+                支出:
+                <!-- if: ${exp_total} -->
+                <span class="value">${exp_total}</span>
+                <!-- else -->
+                <span class="value">0</span>
+                <!-- /if -->
+                元
             </div>
         </div>
 
         <p class="table-title">月收支曲线图</p>
 
-        <div class="canvas-wrap">
+        <div class="canvas-wrap" id="line-chart">
         </div>
-        <p class="table-title">消费类别饼状图</p>
+        <p class="table-title">支出类别饼状图</p>
 
-        <div class="canvas-wrap">
+        <div class="canvas-wrap" id="pie-chart-exp">
+        </div>
+        <p class="table-title">收入类别饼状图</p>
+
+        <div class="canvas-wrap" id="pie-chart-inc">
         </div>
     </div>
 </div>

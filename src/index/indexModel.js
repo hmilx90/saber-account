@@ -12,6 +12,7 @@ define(function (require) {
     // var local = localforage;
 
     config.fetch = function () {
+
         // var sum = 0;
         // var income = 0;
         // var expense = 0;

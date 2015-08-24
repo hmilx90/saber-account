@@ -11,13 +11,19 @@
     <meta name="keywords" content="移动记帐本">
     <meta name="description" content="移动记帐本可以给您提供最丰富大记账体验">
     <link rel="shortcut icon" type="text/css" href="src/common/favicon.ico">
-    <script src="src/common/js/localforage.js"></script>
-    <script src="src/common/js/esl.js"></script>
-    <script>
+    <script src="./dep/zepto.js"></script>
+    <script src="./dep/localforage.js"></script>
+    <script src="./dep/echarts-all.js"></script>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-4/esl.js"></script>
+</head>
+
+<body>
+
+<div id="viewport"></div>
+
+<script>
     require.config({
         baseUrl: 'src',
-        paths: {
-        },
         packages: [
             {
                 name: 'etpl',
@@ -97,13 +103,7 @@
         ]
 
     });
-    </script>
-</head>
-
-<body>
-
-<div id="viewport"></div>
-<script src="src/common/js/jquery-1.11.2.min.js"></script>
+</script>
 <script>
     require(['app'], function (app) {
         app.init();
