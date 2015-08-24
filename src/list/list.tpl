@@ -7,19 +7,24 @@
 </div>
 
 <div id="list-wrap">
-<div id="main" class="main">
-    <div class="time-line">
+    <div id="main" class="main">
+        <div class="time-line" data-time="">
             <a href="javascript:void(0);" class="direction-left"> &lt; </a>
             <a href="javascript:void(0);" class="direction-right"> > </a>
-            <span class="time">2015年3月</span>
+            <span class="time">${year}年${month}月</span>
         </div>
+        <!-- use: listBody(icm_total=${icm_total},exp_total=${exp_total},listData=${listData})-->
+    </div>
+    <a href="#edit" class="edit-btn">记一笔</a>
+</div>
 
+<!-- target: listBody -->
     <div class="detail">
         <div class="part">
-            收入:<span class="value">${icm_total}</span>元
+            收入:<span class="income-value">${icm_total}</span>元
         </div>
         <div class="part">
-            支出:<span class="value">${exp_total}</span>元
+            支出:<span class="expense-value">${exp_total}</span>元
         </div>
         <a href="#detail" class="icon-pie-chart"></a>
     </div>
@@ -27,18 +32,29 @@
         <span>项目</span>
         <span>金额</span>
     </div>
+    <!-- for: ${listData} as ${sameDayItems}, ${key} -->
     <div class="title">
-        <dt><a class="open" href="javascript:void(0);"><span>2015年7月3日</span></a></dt>
-        <dd><span>餐饮</span><span class="red">-30</span></dd>
-        <dd><span>餐饮</span><span class="red">-100</span></dd>
+        <h4>
+            <a class="open" href="javascript:void(0);">
+                <span>${key}</span>
+            </a>
+        </h4>
+        <dl>
+        <!-- for: ${sameDayItems} as ${eachItem} -->
+            
+            <dd data-id="${eachItem.id}">
+                <span>${eachItem.sort}</span>
+                <!-- if: ${eachItem.type} == 'expense' -->
+                <span class="red">-${eachItem.number}</span>
+                <!-- else -->
+                <span class="red">${eachItem.number}</span>
+                <!-- /if -->
+                <div class="box-icon">
+                    <img src="../src/common/img/bianji.png" class="edit-icon">
+                    <img src="../src/common/img/shanchu.png" class="delete-icon">
+                </div>
+            </dd>
+        <!-- /for -->
+        </dl>
     </div>
-
-    <div class="title">
-        <dt><a class="open" href="javascript:void(0);"><span>2015年7月3日</span></a></dt>
-        <dd><span>餐饮</span><span class="green">30</span></dd>
-        <dd><span>餐饮</span><span class="green">100</span></dd>
-    </div>
-</div>
-
-<a href="#list" class="edit-btn">记一笔</a>
-</div>
+    <!-- /for -->

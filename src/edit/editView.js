@@ -106,8 +106,8 @@ define(function (require) {
                 return;
             }
 
-            number = Number(number);
-            number = Math.round(number);
+            number = Number(number).toFixed(2);
+
             /*
             * 将总花销记录到localforage;
             */
@@ -195,7 +195,6 @@ define(function (require) {
                 value = 0;
             }
             value = Number(value);
-            console.log(number);
             value += number;
             local.setItem(tag, value);
         });

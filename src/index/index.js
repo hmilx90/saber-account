@@ -11,8 +11,6 @@ define(function (require) {
 
     config.model = require('./indexModel');
 
-    var bind = require('saber-lang/bind');
-
 
     return config;
 
