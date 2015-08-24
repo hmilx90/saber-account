@@ -9,9 +9,9 @@
 <div id="index-wrap">
 <div class="index-main" class="top50">
     <div class="content">
-        <p>收入：<span id="income">${income}</span>元</p>
-        <p>支出：<span id="expense">${expense}</span>元</p>
-        <p>本月总计：<span id="total">${sum}</span>元</p>
+        <p>收入：<span id="income">${icm_total}</span>元</p>
+        <p>支出：<span id="expense">${exp_total}</span>元</p>
+        <p>净收入：<span id="total">${my_total}</span>元</p>
         <p class="slogan">————&nbsp;&nbsp;&nbsp;I choose to be happy&nbsp;&nbsp;&nbsp;————</p>
     </div>
 </div>
