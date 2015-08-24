@@ -27,6 +27,12 @@ define(function (require) {
                 typeDom.innerHTML -= deletedItem.number;
             });
             
+        },
+        wakeup: function () {
+            var me = this;
+            this.model.fetch().then(function (data) {
+                me.view.render(data);
+            });
         }
     }
 
