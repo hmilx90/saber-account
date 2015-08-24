@@ -16,8 +16,10 @@ define(function (require) {
     config.events = {
         'ready': function () {
             var me = this;
+
             me.model.getData().then(function (data) {
                 me.model.countDataPerDay(data);
+                me.view.detail_Data = me.model.detail_Data;
                 bind(me.view.renderCharts(), me.view);
             });
         }

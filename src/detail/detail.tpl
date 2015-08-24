@@ -39,7 +39,7 @@
         </div>
         <p class="table-title">消费类别饼状图</p>
 
-        <div class="canvas-wrap">
+        <div class="canvas-wrap" id="pie-chart">
         </div>
     </div>
 </div>

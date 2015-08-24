@@ -7,7 +7,6 @@ define(function (require) {
 
     var echarts = window.echarts;
     var dom = require('saber-dom');
-    var dataManager = require('common/js/Data-manage');
 
     var config = {};
 
@@ -15,66 +14,20 @@ define(function (require) {
 
     /**
      * 渲染页面
-     * @param data
      */
-    config.renderCharts = function (data) {
-        //var myChart = echarts.init(dom.g('line-chart'));
-        //var option = {
-        //    tooltip : {
-        //        trigger: 'axis'
-        //    },
-        //    legend: {
-        //        data:['最高气温','最低气温']
-        //    },
-        //    toolbox: {
-        //        show : false
-        //
-        //    },
-        //    calculable : true,
-        //    xAxis : [
-        //        {
-        //            type : 'category',
-        //            boundaryGap : false,
-        //            data : ['周一','周二','周三','周四','周五','周六','周日']
-        //        }
-        //    ],
-        //    yAxis : [
-        //        {
-        //            type : 'value',
-        //            axisLabel : {
-        //                formatter: '{value} °C'
-        //            }
-        //        }
-        //    ],
-        //    series : [
-        //        {
-        //            name:'最高气温',
-        //            type:'line',
-        //            data:[11, 11, 15, 13, 12, 13, 10],
-        //        },
-        //        {
-        //            name:'最低气温',
-        //            type:'line',
-        //            data:[1, -2, 2, 5, 3, 2, 0],
-        //        }
-        //    ]
-        //};
-        //myChart.setOption(option);
+    config.renderCharts = function () {
         lineChart.call(this);
+        pieChart.call(this);
     };
 
-    //config.render = function () {
-    //    lineChart.call(this);
-    //};
-
+    /**
+     * 绘制折线图
+     */
     function lineChart() {
         var data = this.detail_Data;
 
         var myChart = echarts.init(dom.g('line-chart'));
         var option = {
-            title : {
-                text: '月收支曲线'
-            },
             tooltip : {
                 trigger: 'axis'
             },
@@ -82,13 +35,12 @@ define(function (require) {
                 data:['收入','支出']
             },
             toolbox: {
-                show : true,
+                show : false,
                 feature : {
                     mark : {show: true},
                     dataView : {show: true, readOnly: false},
-                    magicType : {show: true, type: ['line', 'bar']},
+                    magicType : {show: true, type: ['line']},
                     restore : {show: true},
-                    saveAsImage : {show: true}
                 }
             },
             calculable : true,
@@ -131,6 +83,67 @@ define(function (require) {
             ]
         };
         myChart.setOption(option);
+    }
+
+    function pieChart() {
+
+        var mypieChart = echarts.init(dom.g('pie-chart'));
+        var option = {
+            title : {
+                subtext: '支出',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data:['餐饮','购物','酒店','交通','娱乐','通讯','医疗','投资理财']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1548
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'分类',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:335, name:'餐饮'},
+                        {value:310, name:'购物'},
+                        {value:234, name:'酒店'},
+                        {value:135, name:'交通'},
+                        {value:1548, name:'娱乐'},
+                        {value:1548, name:'通讯'},
+                        {value:1548, name:'医疗'},
+                        {value:1548, name:'投资理财'},
+                    ]
+                }
+            ]
+        };
+        mypieChart.setOption(option);
     }
 
     return config;
