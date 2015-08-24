@@ -23,6 +23,7 @@ define(function (require) {
 
     config.fetch = function () {
         return dataManager.getDataByMonth().then(function (data) {
+            console.log(data);
             return dataManager.calcDate(data);
         });
     };

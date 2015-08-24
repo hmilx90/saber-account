@@ -59,10 +59,10 @@ define(function (require) {
         for(var key in data ){
             var item = data[key];
             if(item.type === 'income'){
-                result.icm_total += item.number;
+                result.icm_total += Number(item.number);
             }
             else if(item.type === 'expense'){
-                result.exp_total += item.number;
+                result.exp_total += Number(item.number);
             }
             else {
                 console.warn('type中存储内容有误');
