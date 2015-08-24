@@ -47,7 +47,7 @@ define(function (require) {
 
     /**
      * 计算数据的收入总计和支出总计
-     * @return {promise} 返回收入总计和支出总计
+     * @return {Object} 返回收入总计和支出总计
      */
     config.calcDate = function (data) {
 
@@ -68,8 +68,7 @@ define(function (require) {
                 console.warn('type中存储内容有误');
             }
         }
-
-        return Resolver.resolved(result);
+        return result;
     };
 
     /**
