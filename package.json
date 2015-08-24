@@ -27,7 +27,9 @@
             "saber-uri": "~1.0.6",
             "saber-viewport": "~1.1.0",
             "saber-widget": "~1.0.0",
-            "saber-ajax": "~2.1.0"
+            "saber-ajax": "~2.1.0",
+            "echarts": "~2.2.7",
+            "zrender": "~2.1.1"
         },
         "mobile": {
             "theme": "spa"

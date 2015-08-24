@@ -7,13 +7,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="src/common/css/homepage.css" />
     <title>移动记账本</title>
-    <script src="src/common/js/localforage.js"></script>
-    <script src="src/common/js/esl.js"></script>
-    <script>
+    <script src="./dep/zepto.js"></script>
+    <script src="./dep/localforage.js"></script>
+    <script src="./dep/echarts-all.js"></script>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-4/esl.js"></script>
+</head>
+
+<body>
+
+<div id="viewport"></div>
+
+<script>
     require.config({
         baseUrl: 'src',
-        paths: {
-        },
         packages: [
             {
                 name: 'etpl',
@@ -93,13 +99,7 @@
         ]
 
     });
-    </script>
-</head>
-
-<body>
-
-<div id="viewport"></div>
-<script src="src/common/js/jquery-1.11.2.min.js"></script>
+</script>
 <script>
     require(['app'], function (app) {
         app.init();
