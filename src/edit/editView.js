@@ -9,6 +9,8 @@ define(function (require) {
     var nodes = [];
     var dom = require('saber-dom');
     var router = require('saber-router');
+    var dbManager = require('../common/js/Data-manage');
+    var curdHelp = require('../common/js/curd');
 
     config.template = require('./edit.tpl');
 
@@ -98,7 +100,11 @@ define(function (require) {
         'click:.save': function () {
             var _this = this;
             var time = new Date().getTime();
-            var id = 't' + time;
+            var id = dbManager.getId();
+
+            if (!id) {
+                id = 't' + time;
+            }
 
             var number = nodes.num.innerHTML;
             // 没有输入花费金额，不跳转到列表页
@@ -108,48 +114,11 @@ define(function (require) {
 
             number = Number(number).toFixed(2);
 
-            /*
-            * 将总花销记录到localforage;
-            */
-            // var tag = 'totalExpense';
-            // var type = 'expense';
-            // if (_this.accountInfo.type == 'income') {
-            //     tag = 'totalIncome';
-            //     type = 'income';
-            // }
-            // saveTotal(tag, number, type);
-
-            /*
-             * 更新total表。重算当前的最大收入和支出字段。
-             * author: cuiyongjian
-             * 在新数据save之后，再去更新total表
-            */
-
             _this.accountInfo.msg = nodes.remark.value;
             _this.accountInfo.number = number;
             _this.accountInfo.time = time;
-
-            // local.getItem('list', function (err, list) {
-            //     if (!list) {
-            //         list = {};
-            //     }
-            //     list[id] = _this.accountInfo;
-
-            //     local.setItem('list', list, function (err,value) {
-            //         //router.redirect("/list");
-            //     });
-            // });
-
-
-
-            /*
-             * 借助curd进行插入新数据
-             * @author: cuiyongjian
-            */
-            var curdHelp = require('../common/js/curd');
             curdHelp.create(id, _this.accountInfo).then(function () {
                 // 插入成功后，更新total表
-                var dbManager = require('../common/js/Data-manage');
                 dbManager.caclAllTotal();
                 // 去列表页
                 router.redirect('/list');

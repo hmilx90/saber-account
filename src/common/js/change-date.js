@@ -7,10 +7,6 @@ define(function (require) {
     var exports = {};
 
     exports.nextMonth = function (month, year, node, callback) {
-        //var d = new Date();
-        //d.setTime(time);
-        //var y = d.getYear();
-        //var m = d.getMonth();
 
         // 最后一个月
         if (month === 12) {
@@ -35,12 +31,7 @@ define(function (require) {
     };
 
     exports.beforeMonth = function (month, year, node, callback) {
-        //var d = new Date();
-        //d.setTime(time);
-        //var y = d.getYear();
-        //var m = d.getMonth();
 
-        console.log(year);
         // 第一个月
         if (month === 1) {
             year -= 1;
