@@ -1,7 +1,6 @@
 <!--target: list-->
 <div class="header">
     <span class="nav-btn"></span>
-    <!--<a href="#list"><span class="icon-list"></span></a>-->
     收支明细
     <span class="icon-share2"></span>
 </div>
@@ -11,7 +10,7 @@
         <div class="time-line" data-time="">
             <a href="javascript:void(0);" class="direction-left"> &lt; </a>
             <a href="javascript:void(0);" class="direction-right"> > </a>
-            <span class="time">${year}年${month}月</span>
+            <span class="time" id="time-line1">${year}年${month}月</span>
         </div>
         <!-- use: listBody(icm_total=${icm_total},exp_total=${exp_total},listData=${listData})-->
     </div>
@@ -26,7 +25,7 @@
         <div class="part">
             支出:<span class="expense-value">${exp_total}</span>元
         </div>
-        <a href="#detail" class="icon-pie-chart"></a>
+        <a class="icon-pie-chart"></a>
     </div>
     <div class="list-header">
         <span>项目</span>
@@ -47,7 +46,7 @@
                 <!-- if: ${eachItem.type} == 'expense' -->
                 <span class="red">-${eachItem.number}</span>
                 <!-- else -->
-                <span class="red">${eachItem.number}</span>
+                <span class="green">+${eachItem.number}</span>
                 <!-- /if -->
                 <div class="box-icon">
                     <img src="../src/common/img/bianji.png" class="edit-icon">

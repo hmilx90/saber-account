@@ -5,6 +5,9 @@
 
 define(function (require) {
     var dom = require('saber-dom');
+    var changeData = require('common/js/change-date');
+    var extend = require('saber-lang/extend');
+
 
     var config = {};
 
@@ -12,7 +15,19 @@ define(function (require) {
 
     config.model = require('./listModel');
 
+    config.cur_datas = {
+        year: +new Date(Date.now()).getFullYear(),
+        month: new Date(Date.now()).getMonth() + 1
+    };
+
     config.events = {
+        'ready': function () {
+            var me = this;
+            console.log(me.cur_datas)
+            this.model.fetch(me.cur_datas).then(function (data) {
+                me.view.render(data);
+            });
+        },
         // sleep: function () {
         //     this.scrollTop = document.body.scrollTop;
         //     this.activeDate = this.view.activeDate;
@@ -28,13 +43,35 @@ define(function (require) {
             });
             
         },
-        wakeup: function () {
+        'wakeup': function () {
             var me = this;
-            this.model.fetch().then(function (data) {
+            this.model.fetch(me.cur_datas).then(function (data) {
                 me.view.render(data);
             });
+        },
+        'view:lastmonth': function () {
+            var me = this;
+            changeData.beforeMonth(me.cur_datas.month, me.cur_datas.year, me.cur_datas.node, function (month, year) {
+                extend(me.cur_datas, {month:month, year: year});
+                me.model.fetch(me.cur_datas).then(function (data) {
+                    me.view.render(data);
+                });
+            });
+        },
+        'view:nextmonth': function () {
+            var me = this;
+            changeData.nextMonth(me.cur_datas.month, me.cur_datas.year, me.cur_datas.node, function (month, year) {
+                extend(me.cur_datas, {month:month, year: year});
+                me.model.fetch(me.cur_datas).then(function (data) {
+                    me.view.render(data);
+                });
+            });
+        },
+        'view:showcharts': function () {
+            var me = this;
+            this.redirect('/detail', me.cur_datas);
         }
-    }
+    };
 
     return config;
 

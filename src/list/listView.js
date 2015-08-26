@@ -23,8 +23,16 @@ define(function (require) {
         'click: .edit-icon': function (ele, e) {
             var itemDom = dom.closest(ele, 'dd', dom.g('main'));
             this.redirect('/edit', dom.getData(itemDom, 'id'));
+        },
+        'click:.direction-left': function () {
+            this.emit('lastmonth');
+        },
+        'click:.direction-right': function () {
+            this.emit('nextmonth');
+        },
+        'click:.icon-pie-chart': function () {
+            this.emit('showcharts');
         }
-
     };
 
     // config.events = {

@@ -10,8 +10,19 @@ define(function (require) {
 
     var sortMap = {
         'food': '餐饮',
-        'shopping': '购物'
-    }
+        'shopping': '购物',
+        'hospital': '医疗',
+        'hotel': '酒店',
+        'transtation': '交通',
+        'enternment': '娱乐',
+        'phoneFee': '通讯',
+        'investion': '投资理财',
+        'salary': '工资',
+        'investIncome': '投资收入',
+        'extraSalary': '兼职收入',
+        'bonus': '红包',
+        'others': '其它'
+    };
 
     function formatTime(timeStamp) {
         var date = new Date();
@@ -46,35 +57,49 @@ define(function (require) {
 
     var config = {};
 
-    config.fetch = function () {
-        var activeDate = this.activeDate || new Date();
-        var year = activeDate.getFullYear();
-        var month = activeDate.getMonth() + 1;
-        var totalResult = DataManage.calcDataByMonth(month, year);
-        var monthData = DataManage.getDataByMonth(month, year)
+    config.fetch = function (query) {
+        var year = query.year;
+        var month = query.month;
+        var totalResult = {};
+        var monthData = DataManage.getDataByMonth(month, year);
 
-        return Resolver.all(monthData, totalResult).then(function (data) {
 
-            var listRenderData = formatRenderData(data[0]);
-            console.log(data[1]);
+        return DataManage.getDataByMonth(month, year).then(function (data) {
+
+            var listRenderData = formatRenderData(data);
+            totalResult = DataManage.calcDate(data);
 
             return {
                 year: year,
                 month: month,
-                icm_total: data[1].icm_total,
-                exp_total: data[1].exp_total,
+                icm_total: totalResult.icm_total,
+                exp_total: totalResult.exp_total,
                 listData: listRenderData
-            }
-        },
-        function (reason) {
-            console.log(reason);
+            };
         });
+
+        //return Resolver.all(monthData, totalResult).then(function (data) {
+        //
+        //    var listRenderData = formatRenderData(data[0]);
+        //    console.log(data[1]);
+        //
+        //    return {
+        //        year: year,
+        //        month: month,
+        //        icm_total: data[1].icm_total,
+        //        exp_total: data[1].exp_total,
+        //        listData: listRenderData
+        //    }
+        //},
+        //function (reason) {
+        //    console.log(reason);
+        //});
     };
 
     config.getMonthTotal = function (data) {
         localforage.getItem('list');
 
-    }
+    };
 
     config.deleteItem = function (id) {
         var total = DataManage.getAllTotal();

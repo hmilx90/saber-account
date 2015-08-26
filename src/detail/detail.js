@@ -31,13 +31,11 @@ define(function (require) {
             changeData.showTime(me.datas);
 
             me.model.getData(me.datas.month, me.datas.year).then(function (data) {
-                me.current_data = data;
                 refresh(data);
             });
         },
         'view:lastmonth': function () {
             var me = this;
-            //var node = dom.g('time-line');
             changeData.beforeMonth(me.datas.month, me.datas.year, me.datas.node, function (month, year) {
                 me.model.getData(month, year).then(function (data) {
                     extend(me.datas, {month: month, year: year});
@@ -47,7 +45,6 @@ define(function (require) {
         },
         'view:nextmonth': function () {
             var me = this;
-            //var node = dom.g('time-line');
             changeData.nextMonth(me.datas.month, me.datas.year, me.datas.node, function (month, year) {
                 me.model.getData(month, year).then(function (data) {
                     extend(me.datas, {month: month, year: year});
@@ -61,6 +58,7 @@ define(function (require) {
         var me = config;
         bind(me.model.initDatas(data), me.model);
         me.view.detail_Data = me.model.detail_Data;
+        console.log(me.model.detail_Data);
         bind(me.view.renderCharts(), me.view);
     }
 
