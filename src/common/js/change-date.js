@@ -6,57 +6,66 @@
 define(function (require) {
     var exports = {};
 
-    exports.nextMonth = function (time, node, callback) {
-        var d = new Date();
-        d.setTime(time);
-        var y = d.getYear();
-        var m = d.getMonth();
+    exports.nextMonth = function (month, year, node, callback) {
+        //var d = new Date();
+        //d.setTime(time);
+        //var y = d.getYear();
+        //var m = d.getMonth();
 
         // 最后一个月
-        if (m === 11) {
-            y = y + 1;
-            m = 0;
+        if (month === 12) {
+            year += 1;
+            month = 1;
+        }
+        else {
+            month += 1;
         }
 
-        showTime({
-            node: node,
-            y: y,
-            m: m
-        });
+        if (node) {
+            this.showTime({
+                node: node,
+                year: year,
+                month: month
+            });
+        }
+
         if (callback) {
-            callback(y,m);
+            callback(month, year);
         }
     };
 
-    exports.beforeMonth = function (time, node, callback) {
-        var d = new Date();
-        d.setTime(time);
-        var y = d.getYear();
-        var m = d.getMonth();
+    exports.beforeMonth = function (month, year, node, callback) {
+        //var d = new Date();
+        //d.setTime(time);
+        //var y = d.getYear();
+        //var m = d.getMonth();
 
+        console.log(year);
         // 第一个月
-        if (m == 0) {
-            y -= 1;
-            m = 11;
+        if (month === 1) {
+            year -= 1;
+            month = 12;
+        }
+        else {
+            month -= 1;
         }
 
-        showTime({
-            node: node,
-            y: y,
-            m: m
-        });
+        if (node) {
+            this.showTime({
+                node: node,
+                year: year,
+                month: month
+            });
+        }
 
         if (callback) {
-            callback(y,m);
+            callback(month, year);
         }
-    }
+    };
 
-    
-
-    function showTime(options) {
-        options.m += 1；
-        options.node.innerHTML = options.y + '年' + options.m + '月';
-    }
+    exports.showTime = function (options) {
+        options.node.innerHTML = options.year + '年' + options.month + '月';
+    };
 
     return exports;
 
