@@ -26,7 +26,7 @@
         <div class="part">
             支出:<span class="expense-value">${exp_total}</span>元
         </div>
-        <a href="#detail" class="icon-pie-chart"></a>
+        <a class="icon-pie-chart"></a>
     </div>
     <div class="list-header">
         <span>项目</span>
