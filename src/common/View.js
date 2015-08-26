@@ -55,7 +55,7 @@ define(function (require) {
         this.confirmDialog = widget.confirm({wrapper: this.main});
         var shareBtn = dom.query('.icon-share2');
         if (shareBtn) {
-            var shareDialog = this.shareDialog = widget.share(
+            this.shareDialog = widget.share(
                 {
                     content: this.template.render('shareDialog', {}),
                     wrapper: this.main,

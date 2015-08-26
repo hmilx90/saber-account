@@ -22,7 +22,7 @@ define(function (require) {
         },
         'click: .edit-icon': function (ele, e) {
             var itemDom = dom.closest(ele, 'dd', dom.g('main'));
-            this.redirect('/edit', dom.getData(itemDom, 'id'));
+            this.redirect('/edit', {id: dom.getData(itemDom, 'id')});
         },
         'click:.direction-left': function () {
             this.emit('lastmonth');

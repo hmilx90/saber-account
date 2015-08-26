@@ -39,7 +39,7 @@ define(function (require) {
             var item = data[timeStamp];
             var sortKey = item.sort;
             item.sort = sortMap[sortKey];
-            item.id = 't' + item.time;
+            item.id = timeStamp;
             item.time = formatTime(item.time);
             
 
