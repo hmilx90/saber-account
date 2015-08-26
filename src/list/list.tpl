@@ -49,7 +49,7 @@
                 <!-- if: ${eachItem.type} == 'expense' -->
                 <span class="red">-${eachItem.number}</span>
                 <!-- else -->
-                <span class="red">${eachItem.number}</span>
+                <span class="green">+${eachItem.number}</span>
                 <!-- /if -->
                 <div class="box-icon">
                     <img src="../src/common/img/bianji.png" class="edit-icon">
