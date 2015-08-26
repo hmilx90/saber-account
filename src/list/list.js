@@ -1,6 +1,7 @@
 /**
  * @file 
- * @author ()
+ * @author fengchuyan
+ *         wangshuo16
  */
 
 define(function (require) {
@@ -23,19 +24,13 @@ define(function (require) {
     config.events = {
         'ready': function () {
             var me = this;
-            console.log(me.cur_datas)
             this.model.fetch(me.cur_datas).then(function (data) {
                 me.view.render(data);
             });
         },
-        // sleep: function () {
-        //     this.scrollTop = document.body.scrollTop;
-        //     this.activeDate = this.view.activeDate;
-        // },
-        // wakeup: function () {
-        //     document.body.scrollTop = this.scrollTop;
-        //     this.model.activeDate = this.activeDate;
-        // },
+         //'sleep': function () {
+         //    this.scrollTop = document.body.scrollTop;
+         //},
         'view: delete': function (id) {
             this.model.deleteItem(id).then(function (deletedItem) {
                 var typeDom = deletedItem.type === 'expense' ? dom.query('.expense-value') : dom.query('.income-value');
@@ -44,6 +39,7 @@ define(function (require) {
             
         },
         'wakeup': function () {
+            //document.body.scrollTop = this.scrollTop;
             var me = this;
             this.model.fetch(me.cur_datas).then(function (data) {
                 me.view.render(data);

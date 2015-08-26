@@ -1,6 +1,6 @@
 /**
  * @file 
- * @author ()
+ * @author fengchuyan
  */
 
 define(function (require) {
@@ -34,18 +34,6 @@ define(function (require) {
             this.emit('showcharts');
         }
     };
-
-    // config.events = {
-    //     ready: function () {
-    //         var year = new Date().getFullYear();
-    //         var month = new Date().getMonth() + 1;
-    //         dom.query('.time').innerHTML = year + '年' + month + '月';
-    //         var timeBar = dom.query('.time-line');
-    //         dom.setStyle(timeBar, 'data-time', new Date().getTime());
-
-    //     }
-    // };
-
 
     return config;
 

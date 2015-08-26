@@ -5,7 +5,6 @@
 
 define(function (require) {
 
-    var Resolver = require('saber-promise');
     var dataManager = require('common/js/Data-manage');
     var uri = require('saber-uri');
 
@@ -40,7 +39,6 @@ define(function (require) {
 
     config.fetch = function () {
         return dataManager.getDataByMonth().then(function (data) {
-            console.log(data);
             return dataManager.calcDate(data);
         });
     };
@@ -68,19 +66,22 @@ define(function (require) {
         var exp_count = new Array(days);
         var days_array = new Array(days);
 
-        for (var i = 0; i<days; i++) {
+        for (var i = 0; i < days; i++) {
             days_array[i] = i+1;
             icn_count[i] = 0;
             exp_count[i] = 0;
         }
 
         for (var k in data) {
-            var day = new Date(data[k].time).getDate();
-            if (data[k].type === 'income') {
-                icn_count[day-1] += Number(data[k].number);
-            }
-            else if(data[k].type === 'expense') {
-                exp_count[day-1] += Number(data[k].number);
+            if(data.hasOwnProperty(k)){
+
+                var day = new Date(data[k].time).getDate();
+                if (data[k].type === 'income') {
+                    icn_count[day-1] += Number(data[k].number);
+                }
+                else if(data[k].type === 'expense') {
+                    exp_count[day-1] += Number(data[k].number);
+                }
             }
         }
 
@@ -100,7 +101,6 @@ define(function (require) {
         var len = sorts.length;
         for (var i = 0; i<len; i++) {
             sort_count[sorts[i]] = 0;
-            //sort_count.push({name: sorts[i], value: 0});
         }
 
         for (var k in data) {

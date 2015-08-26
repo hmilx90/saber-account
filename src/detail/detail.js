@@ -1,6 +1,6 @@
 /**
  * @file 
- * @author ()
+ * @author wangshuo16
  */
 
 define(function (require) {
@@ -58,7 +58,6 @@ define(function (require) {
         var me = config;
         bind(me.model.initDatas(data), me.model);
         me.view.detail_Data = me.model.detail_Data;
-        console.log(me.model.detail_Data);
         bind(me.view.renderCharts(), me.view);
     }
 

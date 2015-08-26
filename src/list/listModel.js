@@ -1,6 +1,6 @@
 /**
  * @file 
- * @author ()
+ * @author fengchuyan
  */
 
 define(function (require) {
@@ -50,8 +50,6 @@ define(function (require) {
             }
             sortedList[dayKey].push(item);
         }
-        console.log('sortedList');
-        console.log(sortedList);
         return sortedList;
     }
 
@@ -78,22 +76,6 @@ define(function (require) {
             };
         });
 
-        //return Resolver.all(monthData, totalResult).then(function (data) {
-        //
-        //    var listRenderData = formatRenderData(data[0]);
-        //    console.log(data[1]);
-        //
-        //    return {
-        //        year: year,
-        //        month: month,
-        //        icm_total: data[1].icm_total,
-        //        exp_total: data[1].exp_total,
-        //        listData: listRenderData
-        //    }
-        //},
-        //function (reason) {
-        //    console.log(reason);
-        //});
     };
 
     config.getMonthTotal = function (data) {
