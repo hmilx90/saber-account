@@ -31,6 +31,7 @@
         <span>项目</span>
         <span>金额</span>
     </div>
+
     <!-- for: ${listData} as ${sameDayItems}, ${key} -->
     <div class="title">
         <h4>
@@ -39,7 +40,8 @@
             </a>
         </h4>
         <dl>
-        <!-- for: ${sameDayItems} as ${eachItem} -->
+
+            <!-- for: ${sameDayItems} as ${eachItem} -->
             
             <dd data-id="${eachItem.id}">
                 <span>${eachItem.sort}</span>
@@ -57,3 +59,5 @@
         </dl>
     </div>
     <!-- /for -->
+
+

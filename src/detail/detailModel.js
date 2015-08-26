@@ -37,8 +37,10 @@ define(function (require) {
         sorts_count_inc: []
     };
 
-    config.fetch = function () {
-        return dataManager.getDataByMonth().then(function (data) {
+    config.fetch = function (query) {
+        var me = this;
+        return dataManager.getDataByMonth(query.month, query.year).then(function (data) {
+            me.initDatas(data);
             return dataManager.calcDate(data);
         });
     };

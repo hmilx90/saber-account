@@ -21,6 +21,11 @@ define(function (require) {
         pieChartInc.call(this);
     };
 
+    config.renderTotal = function (data) {
+        dom.g('icm_value').innerHTML = data.icm_total;
+        dom.g('exp_value').innerHTML = data.exp_total;
+    };
+
     config.domEvents = {
         'click:.direction-left': function () {
             this.emit('lastmonth');

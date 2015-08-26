@@ -59,14 +59,11 @@ define(function (require) {
         var year = query.year;
         var month = query.month;
         var totalResult = {};
-        var monthData = DataManage.getDataByMonth(month, year);
-
 
         return DataManage.getDataByMonth(month, year).then(function (data) {
 
             var listRenderData = formatRenderData(data);
             totalResult = DataManage.calcDate(data);
-
             return {
                 year: year,
                 month: month,

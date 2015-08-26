@@ -18,7 +18,7 @@ define(function (require) {
 
     config.datas = {
         month: new Date(Date.now()).getMonth() + 1,
-        year: +new Date(Date.now()).getFullYear(),
+        year: +new Date(Date.now()).getFullYear()
     };
 
     config.events = {
@@ -30,35 +30,31 @@ define(function (require) {
 
             changeData.showTime(me.datas);
 
-            me.model.getData(me.datas.month, me.datas.year).then(function (data) {
-                refresh(data);
-            });
+            refresh();
         },
         'view:lastmonth': function () {
             var me = this;
             changeData.beforeMonth(me.datas.month, me.datas.year, me.datas.node, function (month, year) {
-                me.model.getData(month, year).then(function (data) {
-                    extend(me.datas, {month: month, year: year});
-                    refresh(data);
-                });
+                extend(me.datas, {month: month, year: year});
+                refresh();
             });
         },
         'view:nextmonth': function () {
             var me = this;
             changeData.nextMonth(me.datas.month, me.datas.year, me.datas.node, function (month, year) {
-                me.model.getData(month, year).then(function (data) {
-                    extend(me.datas, {month: month, year: year});
-                    refresh(data);
-                });
+                extend(me.datas, {month: month, year: year});
+                refresh();
             });
         }
     };
 
-    function refresh (data) {
+    function refresh () {
         var me = config;
-        bind(me.model.initDatas(data), me.model);
-        me.view.detail_Data = me.model.detail_Data;
-        bind(me.view.renderCharts(), me.view);
+        me.model.fetch(me.datas).then(function (data) {
+            me.view.renderTotal(data);
+            me.view.detail_Data = me.model.detail_Data;
+            bind(me.view.renderCharts(), me.view);
+        });
     }
 
     return config;
