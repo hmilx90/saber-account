@@ -6,6 +6,9 @@
 define(function (require) {
 
     var bind = require('saber-lang/bind');
+    var changeData = require('common/js/change-date');
+    var dom = require('saber-dom');
+    var extend = require('saber-lang/extend');
 
     var config = {};
 
@@ -13,28 +16,53 @@ define(function (require) {
 
     config.model = require('./detailModel');
 
+    config.datas = {
+        month: new Date(Date.now()).getMonth() + 1,
+        year: +new Date(Date.now()).getFullYear(),
+    };
+
     config.events = {
         'ready': function () {
             var me = this;
 
-            me.model.getData().then(function (data) {
+            extend(me.datas, me.model.getFilterFromURL());
+            extend(me.datas, {node: dom.g('time-line')});
 
-                bind(me.model.initDatas(data), me.model);
+            changeData.showTime(me.datas);
 
-                //me.model.countDataPerDay(data);
-                //
-                //var sorts_exp = ['餐饮','购物','酒店','交通','娱乐','通讯','医疗','投资理财'];
-                //this.view.sortscount_exp = me.model.countDataBySorts(data, sorts_exp);
-                //
-                //var sorts_exp = ['工资','投资收入','红包','其它'];
-                //this.view.sortscount_inc = me.model.countDataBySorts(data, sorts_exp);
-
-                me.view.detail_Data = me.model.detail_Data;
-
-                bind(me.view.renderCharts(), me.view);
+            me.model.getData(me.datas.month, me.datas.year).then(function (data) {
+                me.current_data = data;
+                refresh(data);
+            });
+        },
+        'view:lastmonth': function () {
+            var me = this;
+            //var node = dom.g('time-line');
+            changeData.beforeMonth(me.datas.month, me.datas.year, me.datas.node, function (month, year) {
+                me.model.getData(month, year).then(function (data) {
+                    extend(me.datas, {month: month, year: year});
+                    refresh(data);
+                });
+            });
+        },
+        'view:nextmonth': function () {
+            var me = this;
+            //var node = dom.g('time-line');
+            changeData.nextMonth(me.datas.month, me.datas.year, me.datas.node, function (month, year) {
+                me.model.getData(month, year).then(function (data) {
+                    extend(me.datas, {month: month, year: year});
+                    refresh(data);
+                });
             });
         }
     };
+
+    function refresh (data) {
+        var me = config;
+        bind(me.model.initDatas(data), me.model);
+        me.view.detail_Data = me.model.detail_Data;
+        bind(me.view.renderCharts(), me.view);
+    }
 
     return config;
 

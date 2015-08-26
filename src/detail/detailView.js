@@ -1,6 +1,6 @@
 /**
  * @file 
- * @author ()
+ * @author wangshuo16
  */
 
 define(function (require) {
@@ -21,6 +21,14 @@ define(function (require) {
         pieChartInc.call(this);
     };
 
+    config.domEvents = {
+        'click:.direction-left': function () {
+            this.emit('lastmonth');
+        },
+        'click:.direction-right': function () {
+            this.emit('nextmonth');
+        }
+    };
     /**
      * 绘制折线图
      */
@@ -85,24 +93,17 @@ define(function (require) {
         };
         myChart.setOption(option);
     }
-
+    /**
+     * 绘制支出饼图
+     */
     function pieChartExp() {
         var data = this.detail_Data;
 
         var mypieChart = echarts.init(dom.g('pie-chart-exp'));
         var option = {
-            title : {
-                subtext: '支出',
-                x:'center'
-            },
             tooltip : {
                 trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                x : 'center',
-                y: 'bottom',
-                data: data.sorts_exp
+                formatter: "{b} : <br/>{c} ({d}%)"
             },
             calculable : true,
             series : [
@@ -110,31 +111,24 @@ define(function (require) {
                     name:'分类',
                     type:'pie',
                     radius : '55%',
-                    center: ['50%', '60%'],
+                    center: ['50%', '40%'],
                     data: data.sorts_count_exp
                 }
             ]
         };
         mypieChart.setOption(option);
     }
-
+    /**
+     * 绘制收入饼图
+     */
     function pieChartInc() {
         var data = this.detail_Data;
 
         var mypieChart = echarts.init(dom.g('pie-chart-inc'));
         var option = {
-            title : {
-                subtext: '收入',
-                x:'center'
-            },
             tooltip : {
                 trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                x : 'center',
-                y: 'bottom',
-                data: data.sorts_inc
+                formatter: "{b} : <br/>{c} ({d}%)"
             },
             calculable : true,
             series : [
@@ -142,7 +136,7 @@ define(function (require) {
                     name:'分类',
                     type:'pie',
                     radius : '55%',
-                    center: ['50%', '60%'],
+                    center: ['50%', '40%'],
                     data: data.sorts_count_inc
                 }
             ]

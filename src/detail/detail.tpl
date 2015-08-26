@@ -9,7 +9,7 @@
         <div class="time-line">
             <a href="javascript:void(0);" class="direction-left"> &lt; </a>
             <a href="javascript:void(0);" class="direction-right"> > </a>
-            <span class="time">2015年3月</span>
+            <span class="time" id="time-line">2015年3月</span>
         </div>
 
         <div class="detail">

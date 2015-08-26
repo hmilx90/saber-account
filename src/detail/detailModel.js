@@ -7,6 +7,8 @@ define(function (require) {
 
     var Resolver = require('saber-promise');
     var dataManager = require('common/js/Data-manage');
+    var uri = require('saber-uri');
+
 
     var config = {};
 
@@ -28,8 +30,8 @@ define(function (require) {
         });
     };
 
-    config.getData = function () {
-        return dataManager.getDataByMonth();
+    config.getData = function (month, year) {
+        return dataManager.getDataByMonth(month, year);
     };
     //
     //config.getTotal = function () {
@@ -156,6 +158,22 @@ define(function (require) {
         me.detail_Data.sorts_count_exp = me.countDataBySorts(data, me.detail_Data.sorts_exp);
 
         me.detail_Data.sorts_count_inc = me.countDataBySorts(data, me.detail_Data.sorts_inc);
+    };
+
+    /**
+     * 从URL中读取filter数据
+     * @return {Object} changes 筛选后的参数
+     */
+    config.getFilterFromURL = function () {
+        var urlParams = {};
+        var query = uri.parse(window.location.href).fragment.split('~')[1];
+        if (query) {
+            query.split('&').forEach(function (item) {
+                var result = item.split('=');
+                urlParams[result[0]] = result[1];
+            });
+        }
+        return urlParams;
     };
 
 
