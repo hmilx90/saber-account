@@ -66,7 +66,6 @@ define(function (require) {
 
             var listRenderData = formatRenderData(data);
             totalResult = DataManage.calcDate(data);
-
             return {
                 year: year,
                 month: month,

@@ -14,7 +14,7 @@ define(function (require) {
     */
     function getCookie(key) {
         if (document.cookie.length>0) { 
-            c_start=document.cookie.indexOf(key + "=")
+            c_start = document.cookie.indexOf(key + "=")
             if (c_start!=-1) {
             c_start=c_start + key.length+1 
             c_end=document.cookie.indexOf(";",c_start)

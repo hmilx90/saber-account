@@ -1,5 +1,5 @@
 /**
- * @file 移动记账本编辑页面 
+ * @file 移动记账本编辑页面
  * @author linjing03@
  */
 
@@ -7,7 +7,7 @@ define(function (require) {
 
     var Resolver = require('saber-promise');
     var query = require('../common/js/Data-manage');
-    
+
     var config = {};
     var local = localforage;
 
@@ -24,6 +24,7 @@ define(function (require) {
         if (!id) {
             resolver.reject();
         }
+        var data = {};
         local.getItem('list', function (err, list) {
             if (id && list[id]) {
                 data = list[id];
@@ -31,7 +32,8 @@ define(function (require) {
             }
         });
         return resolver.promise();
-    }
+    };
+
     return config;
 
 });

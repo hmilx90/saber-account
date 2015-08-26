@@ -5,7 +5,6 @@
 
 define(function (require) {
     var config = {};
-    var local = localforage;
     var nodes = [];
     var dom = require('saber-dom');
     var router = require('saber-router');
@@ -25,6 +24,7 @@ define(function (require) {
     * 保存时默认的存储数据
     * 默认为支出餐饮类型；
     */
+
     config.accountInfo = {
         type: 'expense',
         sort: 'food',
@@ -45,7 +45,7 @@ define(function (require) {
             nodes.remark.value = data.msg;
         }
 
-        if(data.sort !== this.accountInfo.sort) {
+        if (data.sort !== this.accountInfo.sort) {
             $('.sortlist .active').removeClass('active');
             $('#edit-wrap [sort=' + data.sort + ']').find('div').addClass('active');
         }
@@ -54,25 +54,28 @@ define(function (require) {
             $('#tab-bnt .active').removeClass('active');
             $('#tab-bnt [type=' + data.type + ']').addClass('active');
         }
-    }
+    };
 
     /*
     * 获取页面中常操作的Dom元素;
     */
+
     config.getElements = function () {
-        nodes['remark'] = $('#edit-wrap [name="remark"]')[0];
-        nodes['num'] = $('#edit-wrap [node-type="num"]')[0];
-    }
+        nodes.remark = $('#edit-wrap [name="remark"]')[0];
+        nodes.num = $('#edit-wrap [node-type="num"]')[0];
+    };
 
 
     config.domEvents = {
-        /**+
+
+        /*
         * 计算器的一些方法
         * @param {DOM element} 显示的钱数的节点
         */
+
         'click:.keyboard p': function (ele) {
             nodes.num.focus();
-            if (nodes.num.innerHTML === '0.0'){
+            if (nodes.num.innerHTML === '0.0') {
                 nodes.num.innerHTML = '';
             }
             var num = ele.getAttribute('num');
@@ -84,7 +87,7 @@ define(function (require) {
             var str = nodes.num.innerHTML;
             if (str) {
                 var len = str.length;
-                str = str.substr(0, len-1);
+                str = str.substr(0, len - 1);
             }
             nodes.num.innerHTML = str;
         },
@@ -134,7 +137,7 @@ define(function (require) {
 
             $('.classify .active').removeClass('active');
             var item = ele.getElementsByTagName('div')[0];
-            dom.addClass(item,'active');
+            dom.addClass(item, 'active');
         },
 
         'click:.tab-line span': function (ele) {
@@ -142,7 +145,7 @@ define(function (require) {
             this.accountInfo.type = type;
 
             $('.tab-line span').removeClass('active');
-            dom.addClass(ele,'active');
+            dom.addClass(ele, 'active');
 
             var other = ele.getAttribute('other');
 
@@ -150,24 +153,7 @@ define(function (require) {
             dom.g(type + 'Btn').style.display = '';
 
         }
-    }
-
-    /*
-    * 每次记账时算总账；
-    * @param {string} totalIncome || totalExpense
-    * @number {number} 具体的数额
-    * @type {string} income || expense
-    */
-    function saveTotal(tag, number, type) {
-        local.getItem(tag, function (err, value) {
-            if (!value) {
-                value = 0;
-            }
-            value = Number(value);
-            value += number;
-            local.setItem(tag, value);
-        });
-    }
+    };
 
     return config;
 

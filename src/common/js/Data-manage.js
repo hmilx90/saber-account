@@ -1,11 +1,11 @@
 /**
- * 取数据，对数据进行处理
+ * @file 取数据，对数据进行处理
  * @author wangshuo16
  */
 
 define(function (require) {
 
-    var Resolver = require('saber-promise');
+
 
     var config = {};
     var type = require('saber-lang/type');
@@ -13,24 +13,25 @@ define(function (require) {
     var startFlag = '~';
 
     localforage.config({
-        name        : 'myApp',
-        version     : 1.0,
-        storeName   : 'db_account', // Should be alphanumeric, with underscores.
-        description : 'this is a db for account'
+        name: 'myApp',
+        version: 1.0,
+        storeName: 'db_account', // Should be alphanumeric, with underscores.
+        description: 'this is a db for account'
     });
 
     /**
      * 取指定月份的数据
-     * @param month 月
-     * @param year 年
+     * @param {number} month 月
+     * @param {number} year 年
      * @return {Promise} 返回数据
      */
+
     config.getDataByMonth = function (month, year) {
-        //无指定年月时，默认当前月
+        // 无指定年月时，默认当前月
         year = year || + new Date().getFullYear();
         month = month || new Date().getMonth() + 1;
 
-        var start_date = Date.parse(new Date(year, month-1, 1, 0, 0, 0).toISOString());
+        var start_date = Date.parse(new Date(year, month - 1, 1, 0, 0, 0).toISOString());
         var end_date = Date.parse(new Date(year, month, 1, 0, 0, 0).toISOString());
 
         var selectedData = {};
@@ -49,8 +50,10 @@ define(function (require) {
 
     /**
      * 计算数据的收入总计和支出总计
+     * @param {obj} list obj
      * @return {Object} 返回收入总计和支出总计
      */
+
     config.calcDate = function (data) {
 
         var result = {
@@ -58,12 +61,12 @@ define(function (require) {
             exp_total: 0
         };
 
-        for(var key in data ){
+        for (var key in data) {
             var item = data[key];
-            if(item.type === 'income'){
+            if (item.type === 'income') {
                 result.icm_total += Number(item.number);
             }
-            else if(item.type === 'expense'){
+            else if (item.type === 'expense') {
                 result.exp_total += Number(item.number);
             }
             else {
@@ -75,6 +78,8 @@ define(function (require) {
 
     /**
      * 计算某个月份的收入总计和支出总计
+     * @param {number} 月
+     * @param {number} 年
      * @return {promise} 返回收入总计和支出总计
      */
     config.calcDataByMonth = function (month, year) {
@@ -103,7 +108,6 @@ define(function (require) {
      * @return {promise} 返回收入总计和支出总计
      */
     config.getAllTotal = function () {
-        var me = this;
         return localforage.getItem('total').then(function (data) {
             if (!data || type.isEmptyObject(data)) {
                 return localforage.setItem('total', {icm_total: 0, exp_total: 0});
@@ -114,14 +118,14 @@ define(function (require) {
 
     /**
      * 计算一个月的天数
-     * @param month 月份
-     * @param year 年
-     * @returns {number} 天数
+     * @param {number} 月
+     * @param {number} 年
+     * @return {number} 天数
      */
     config.monthDays = function (month, year) {
         var days = 30;
         if (month === 2) {
-            if (year%4 === 0) {
+            if (year % 4 === 0) {
                 days = 29;
             }
             else {
@@ -141,6 +145,7 @@ define(function (require) {
     /*
     * 获取地址栏的id;
     */
+
     config.getId = function () {
         var href = location.hash.substr(1);
         var start = href.indexOf(startFlag);
@@ -150,7 +155,7 @@ define(function (require) {
             return id;
         }
         return false;
-    }
+    };
 
     /*
     * 获取query中的特定参数
@@ -166,7 +171,7 @@ define(function (require) {
                 return arr2[1];
             }
         }
-    }
+    };
 
     return config;
 
