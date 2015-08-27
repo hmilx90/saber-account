@@ -18,10 +18,12 @@
     .direction-left
         position: absolute;
         left: 10px;
+        width: 50px;
 
     .direction-right
         position: absolute;
         right: 10px;
+        width: 50px;
     .detail
         position: relative;
         height: 27px;
@@ -50,17 +52,18 @@
         text-align: center;
 
     .list-header span
-        width: 50%;
+        width: 49%;
         float: left;
         display: block;
 
-    .title dt
+    .title h4
         background: #d2d2d2;
         height: 20px;
         line-height: 20px;
         padding-left: 10px;
         font-size: smaller;
         position: relative;
+        border-bottom: 1px solid #bababa;
 
         a:after
             font-size: 0;
@@ -68,21 +71,19 @@
             height: 0;
             width: 0;
             border: 4px solid;
-            border-color: transparent transparent transparent #7d7d7d;
+            border-color: #7d7d7d transparent transparent transparent;
             position: absolute;
             top: 5px;
             right: 15px;
-
-        a.open:after
-            border-color: #7d7d7d transparent transparent transparent;
 
 
     .title dd
         border-bottom: 1px solid #ccc;
         height: 30px;
+        position: relative;
 
         span
-            width: 50%;
+            width: 49%;
             float: left;
             text-align: center;
             line-height: 30px;
@@ -92,6 +93,22 @@
 
         span.green
             color: #01b112;
+
+        .box-icon
+            position: absolute;
+            right: 2px;
+            top: 6px;
+        img
+            width: 20px;
+            height: 20px;
+            margin-right: 3px;
+
+    .toggle h4
+        a:after
+            border-color: transparent transparent transparent #7d7d7d;
+
+    .toggle dl
+        display: none;
 
     .icon-pie-chart
         position: absolute;

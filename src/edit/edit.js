@@ -1,6 +1,6 @@
 /**
- * @file 
- * @author ()
+ * @file dit action
+ * @author linjing03
  */
 
 define(function (require) {
@@ -16,12 +16,12 @@ define(function (require) {
 
     config.events = {
         ready: function () {
-            //var _this = this;
-            //this.model.getData().then(function(data){
-            //    bind(_this.view.renderPage(data),_this.view);
-            //})
+            var me = this;
+            this.model.getData().then(function (data) {
+                bind(me.view.renderPage(data), me.view);
+            });
         }
-    }
+    };
 
 
     return config;

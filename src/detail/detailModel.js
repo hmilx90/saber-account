@@ -5,8 +5,24 @@
 
 define(function (require) {
 
-    var Resolver = require('saber-promise');
     var dataManager = require('common/js/Data-manage');
+    var uri = require('saber-uri');
+
+    var sortMap = {
+        'food': '餐饮',
+        'shopping': '购物',
+        'hospital': '医疗',
+        'hotel': '酒店',
+        'transtation': '交通',
+        'enternment': '娱乐',
+        'phoneFee': '通讯',
+        'investion': '投资理财',
+        'salary': '工资',
+        'investIncome': '投资收入',
+        'extraSalary': '兼职收入',
+        'bonus': '红包',
+        'others': '其它'
+    };
 
     var config = {};
 
@@ -16,26 +32,23 @@ define(function (require) {
         exp_count: [],
         days_array: [],
         sorts_exp: ['餐饮','购物','酒店','交通','娱乐','通讯','医疗','投资理财'],
-        sorts_inc: ['工资','投资收入','红包','其它'],
+        sorts_inc: ['工资','投资收入', '兼职收入', '红包','其它'],
         sorts_count_exp: [],
         sorts_count_inc: []
     };
 
-    config.fetch = function () {
-        return dataManager.getDataByMonth().then(function (data) {
+    config.fetch = function (query) {
+        var me = this;
+        return dataManager.getDataByMonth(query.month, query.year).then(function (data) {
+            me.initDatas(data);
             return dataManager.calcDate(data);
         });
     };
 
-    config.getData = function () {
-        return dataManager.getDataByMonth();
+    config.getData = function (month, year) {
+        return dataManager.getDataByMonth(month, year);
     };
-    //
-    //config.getTotal = function () {
-    //    dataManager.getDataByMonth().then(function (data) {
-    //        return dataManager.calcDate(data);
-    //    });
-    //};
+
 
     /**
      * 统计每日的收入和支出总额
@@ -55,19 +68,22 @@ define(function (require) {
         var exp_count = new Array(days);
         var days_array = new Array(days);
 
-        for (var i = 0; i<days; i++) {
+        for (var i = 0; i < days; i++) {
             days_array[i] = i+1;
             icn_count[i] = 0;
             exp_count[i] = 0;
         }
 
         for (var k in data) {
-            var day = new Date(data[k].time).getDate();
-            if (data[k].type === 'income') {
-                icn_count[day-1] += data[k].number;
-            }
-            else if(data[k].type === 'expense') {
-                exp_count[day-1] += data[k].number;
+            if(data.hasOwnProperty(k)){
+
+                var day = new Date(data[k].time).getDate();
+                if (data[k].type === 'income') {
+                    icn_count[day-1] += Number(data[k].number);
+                }
+                else if(data[k].type === 'expense') {
+                    exp_count[day-1] += Number(data[k].number);
+                }
             }
         }
 
@@ -87,51 +103,12 @@ define(function (require) {
         var len = sorts.length;
         for (var i = 0; i<len; i++) {
             sort_count[sorts[i]] = 0;
-            //sort_count.push({name: sorts[i], value: 0});
         }
 
         for (var k in data) {
             if (data.hasOwnProperty(k)) {
-                switch(data[k].sort) {
-                    case 'food':
-                        sort_count['餐饮'] += data[k].number;
-                        break;
-                    case 'shopping':
-                        sort_count['购物'] += data[k].number;
-                        break;
-                    case 'hotel':
-                        sort_count['酒店'] += data[k].number;
-                        break;
-                    case 'transtation':
-                        sort_count['交通'] += data[k].number;
-                        break;
-                    case 'enternment':
-                        sort_count['娱乐'] += data[k].number;
-                        break;
-                    case 'phoneFee':
-                        sort_count['通讯'] += data[k].number;
-                        break;
-                    case 'hospital':
-                        sort_count['医疗'] += data[k].number;
-                        break;
-                    case 'investion':
-                        sort_count['投资理财'] += data[k].number;
-                        break;
-                    case 'salary':
-                        sort_count['工资'] += data[k].number;
-                        break;
-                    case 'investIncome':
-                        sort_count['投资收入'] += data[k].number;
-                        break;
-                    case 'extraSalary':
-                        sort_count['兼职收入'] += data[k].number;
-                        break;
-                    case 'bonus':
-                        sort_count['红包'] += data[k].number;
-                        break;
-                    default:
-                        sort_count['其它'] += data[k].number;
-                }
+                var sortName = sortMap[data[k].sort];
+                sort_count[sortName] += Number(data[k].number);
             }
         }
 
@@ -155,6 +132,22 @@ define(function (require) {
         me.detail_Data.sorts_count_exp = me.countDataBySorts(data, me.detail_Data.sorts_exp);
 
         me.detail_Data.sorts_count_inc = me.countDataBySorts(data, me.detail_Data.sorts_inc);
+    };
+
+    /**
+     * 从URL中读取filter数据
+     * @return {Object} changes 筛选后的参数
+     */
+    config.getFilterFromURL = function () {
+        var urlParams = {};
+        var query = uri.parse(window.location.href).fragment.split('~')[1];
+        if (query) {
+            query.split('&').forEach(function (item) {
+                var result = item.split('=');
+                urlParams[result[0]] = result[1];
+            });
+        }
+        return urlParams;
     };
 
 

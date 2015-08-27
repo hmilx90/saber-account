@@ -45,23 +45,23 @@
         <div class="classify" id="incomeBtn" style="display:none;">
             <ul class="classify-list">
                 <li sort="salary">
-                    <div class="item-bg item-bg-5"><span class="icon-music"></span></div>
+                    <div class="item-bg item-bg-3"><span class="icon-salary"></span></div>
                     <p class="text">工资</p>
                 </li>
                 <li sort="investIncome">
-                    <div class="item-bg item-bg-6"><span class="icon-earth"></span></div>
+                    <div class="item-bg item-bg-7"><span class="icon-invest"></span></div>
                     <p class="text">投资收入</p>
                 </li>
                 <li sort="extraSalary">
-                    <div class="item-bg item-bg-7"><span class="icon-health"></span></div>
+                    <div class="item-bg item-bg-1"><span class="icon-parttime"></span></div>
                     <p class="text">兼职收入</p>
                 </li>
                 <li sort="bonus">
-                    <div class="item-bg item-bg-8"><span class="icon-investion"></span></div>
+                    <div class="item-bg item-bg-6"><span class="icon-bonus"></span></div>
                     <p class="text">红包</p>
                 </li>
                 <li sort="others">
-                    <div class="item-bg item-bg-8"><span class="icon-investion"></span></div>
+                    <div class="item-bg item-bg-4"><span class="icon-others"></span></div>
                     <p class="text">其他</p>
                 </li>
             </ul>
