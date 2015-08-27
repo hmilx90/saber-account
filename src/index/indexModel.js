@@ -12,7 +12,7 @@ define(function (require) {
         var dataHelp = require('../common/js/Data-manage');
         return dataHelp.getAllTotal().then(function (data) {
             extend(data, {
-                my_total: data.icm_total - data.exp_total
+                my_total: Number(data.icm_total - data.exp_total).toFixed(2)
             });
             return data;
         }, function (err) {
