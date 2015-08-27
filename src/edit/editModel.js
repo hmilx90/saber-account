@@ -23,6 +23,7 @@ define(function (require) {
         var id = query.getId();
         if (!id) {
             resolver.reject();
+
         }
         var data = {};
         local.getItem('list', function (err, list) {
