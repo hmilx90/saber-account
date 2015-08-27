@@ -8,6 +8,8 @@ define(function (require) {
 
     exports.nextMonth = function (month, year, node, callback) {
 
+        month = Number(month);
+        year = Number(year);
         // 最后一个月
         if (month === 12) {
             year += 1;
