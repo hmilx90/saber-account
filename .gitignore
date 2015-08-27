@@ -2,5 +2,5 @@
 /node_modules
 /dep
 /src/common/js/db.js
-.DS_Store
+*.DS_Store
 
