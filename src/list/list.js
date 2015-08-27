@@ -25,7 +25,8 @@ define(function (require) {
         'ready': function () {
             var me = this;
             this.model.fetch(me.cur_datas).then(function (data) {
-                me.view.render(data);
+                me.view.renderList(data);
+                
             });
         },
          //'sleep': function () {
@@ -42,7 +43,8 @@ define(function (require) {
             //document.body.scrollTop = this.scrollTop;
             var me = this;
             this.model.fetch(me.cur_datas).then(function (data) {
-                me.view.render(data);
+                me.view.renderList(data);
+                
             });
         },
         'view:lastmonth': function () {
@@ -50,7 +52,8 @@ define(function (require) {
             changeData.beforeMonth(me.cur_datas.month, me.cur_datas.year, me.cur_datas.node, function (month, year) {
                 extend(me.cur_datas, {month:month, year: year});
                 me.model.fetch(me.cur_datas).then(function (data) {
-                    me.view.render(data);
+                    me.view.renderList(data);
+                    
                 });
             });
         },
@@ -59,7 +62,8 @@ define(function (require) {
             changeData.nextMonth(me.cur_datas.month, me.cur_datas.year, me.cur_datas.node, function (month, year) {
                 extend(me.cur_datas, {month:month, year: year});
                 me.model.fetch(me.cur_datas).then(function (data) {
-                    me.view.render(data);
+                    me.view.renderList(data);
+                    
                 });
             });
         },

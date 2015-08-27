@@ -35,6 +35,13 @@ define(function (require) {
         }
     };
 
+    config.renderList = function (data) {
+        // var html = require('etpl').render('listBody', 
+        //     {year: data.year, month: data.month, icm_total: data.icm_total, exp_total: data.exp_total, listData: data.listData});
+        var html = this.template.render('listBody', data);
+        dom.g('main').innerHTML = html;
+    }
+
     return config;
 
 });

@@ -8,17 +8,17 @@
 
 <div id="list-wrap">
     <div id="main" class="main">
-        <div class="time-line" data-time="">
-            <a href="javascript:void(0);" class="direction-left"> &lt; </a>
-            <a href="javascript:void(0);" class="direction-right"> > </a>
-            <span class="time">${year}年${month}月</span>
-        </div>
-        <!-- use: listBody(icm_total=${icm_total},exp_total=${exp_total},listData=${listData})-->
+        <!-- use: listBody(icm_total=${icm_total},exp_total=${exp_total},listData=${listData},year=${year},month=${month})-->
     </div>
     <a href="#edit" class="edit-btn">记一笔</a>
 </div>
 
 <!-- target: listBody -->
+    <div class="time-line" data-time="">
+        <a href="javascript:void(0);" class="direction-left"> &lt; </a>
+        <a href="javascript:void(0);" class="direction-right"> > </a>
+        <span class="time">${year}年${month}月</span>
+    </div>
     <div class="detail">
         <div class="part">
             收入:<span class="income-value">${icm_total}</span>元
