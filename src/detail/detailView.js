@@ -12,15 +12,6 @@ define(function (require) {
 
     config.template = require('./detail.tpl');
 
-    /**
-     * 渲染页面
-     */
-    config.renderCharts = function () {
-        lineChart.call(this);
-        pieChartExp.call(this);
-        pieChartInc.call(this);
-    };
-
     config.renderTotal = function (data) {
         dom.g('icm_value').innerHTML = data.icm_total;
         dom.g('exp_value').innerHTML = data.exp_total;
@@ -34,13 +25,16 @@ define(function (require) {
             this.emit('nextmonth');
         }
     };
+
     /**
      * 绘制折线图
+     * @param node 绘制节点
+     * @param xdata x轴名称
+     * @param ydata y轴数据数组
      */
-    function lineChart() {
-        var data = this.detail_Data;
+    config.lineChart = function (node, xdata, ydata) {
 
-        var myChart = echarts.init(dom.g('line-chart'));
+        var myChart = echarts.init(node);
         var option = {
             tooltip : {
                 trigger: 'axis'
@@ -62,7 +56,7 @@ define(function (require) {
                 {
                     type : 'category',
                     boundaryGap : false,
-                    data : data.days_array
+                    data : xdata
                 }
             ],
             yAxis : [
@@ -77,7 +71,7 @@ define(function (require) {
                 {
                     name: '收入',
                     type: 'line',
-                    data: data.icn_count,
+                    data: ydata[0],
                     markLine : {
                         data : [
                             {type : 'average', name: '平均值'}
@@ -87,7 +81,7 @@ define(function (require) {
                 {
                     name: '支出',
                     type: 'line',
-                    data: data.exp_count,
+                    data: ydata[1],
                     markLine : {
                         data : [
                             {type : 'average', name : '平均值'}
@@ -97,14 +91,16 @@ define(function (require) {
             ]
         };
         myChart.setOption(option);
-    }
-    /**
-     * 绘制支出饼图
-     */
-    function pieChartExp() {
-        var data = this.detail_Data;
+    };
 
-        var mypieChart = echarts.init(dom.g('pie-chart-exp'));
+    /**
+     * 绘制饼图
+     * @param node 绘图节点
+     * @param values 绘图数据
+     */
+    config.pieChart = function (node, values) {
+
+        var mypieChart = echarts.init(node);
         var option = {
             tooltip : {
                 trigger: 'item',
@@ -113,41 +109,16 @@ define(function (require) {
             calculable : true,
             series : [
                 {
-                    name:'分类',
+                    name: '分类',
                     type:'pie',
                     radius : '55%',
                     center: ['50%', '40%'],
-                    data: data.sorts_count_exp
+                    data: values
                 }
             ]
         };
         mypieChart.setOption(option);
-    }
-    /**
-     * 绘制收入饼图
-     */
-    function pieChartInc() {
-        var data = this.detail_Data;
-
-        var mypieChart = echarts.init(dom.g('pie-chart-inc'));
-        var option = {
-            tooltip : {
-                trigger: 'item',
-                formatter: "{b} : <br/>{c} ({d}%)"
-            },
-            calculable : true,
-            series : [
-                {
-                    name:'分类',
-                    type:'pie',
-                    radius : '55%',
-                    center: ['50%', '40%'],
-                    data: data.sorts_count_inc
-                }
-            ]
-        };
-        mypieChart.setOption(option);
-    }
+    };
 
     return config;
 

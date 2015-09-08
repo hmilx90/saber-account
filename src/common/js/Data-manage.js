@@ -73,6 +73,8 @@ define(function (require) {
                 console.warn('type中存储内容有误');
             }
         }
+        result.icm_total=Number(result.icm_total).toFixed(2);
+        result.exp_total=Number(result.exp_total).toFixed(2);
         return result;
     };
 
