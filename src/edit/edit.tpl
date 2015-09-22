@@ -9,7 +9,7 @@
     <div class="sortlist">
         <div class="classify" id="expenseBtn">
             <ul class="classify-list">
-                <li class="active-cls" sort="food"><div class="item-bg item-bg-1 active"><span class="icon-food"></span></div>餐饮</li>
+                <li class="active-cls" sort="food" ><div class="item-bg item-bg-1 active"><span class="icon-food"></span></div>餐饮</li>
                 <li sort="shopping">
                     <div class="item-bg item-bg-2"><span class="icon-shopping"></span></div>
                     <p class="text">购物</p>
@@ -73,7 +73,8 @@
     </div>
     <div class="ipt-box">
         <div class="ipt-box-i"><span class="pay-income">支出:</span><span class="sum" node-type="num" origin="0.0">0.0</span>元</div>
-        <div>备注：<input class="ipt-remark" type="text" name="remark" node-type="remark"></div>
+        <div><span class="pay-income">当前分类：</span><span node-type="selectType" class="select-type">餐饮</span></div>
+        <div><span class="pay-income">备注：</span><input class="ipt-remark" type="text" name="remark" node-type="remark"></div>
     </div>
     <div class="keyboard">
         <table>

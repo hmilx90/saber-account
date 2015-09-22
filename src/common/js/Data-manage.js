@@ -1,6 +1,5 @@
 /**
  * @file 取数据，对数据进行处理
- * @author wangshuo16
  */
 
 define(function (require) {
@@ -11,13 +10,6 @@ define(function (require) {
     var type = require('saber-lang/type');
     // 同href中?的功能一样，后面用于添加参数;
     var startFlag = '~';
-
-    localforage.config({
-        name: 'myApp',
-        version: 1.0,
-        storeName: 'db_account', // Should be alphanumeric, with underscores.
-        description: 'this is a db for account'
-    });
 
     /**
      * 取指定月份的数据

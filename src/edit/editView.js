@@ -10,13 +10,17 @@ define(function (require) {
     var router = require('saber-router');
     var dbManager = require('../common/js/Data-manage');
     var curdHelp = require('../common/js/curd');
+    var sort = require('../common/js/config-sort');
 
     config.template = require('./edit.tpl');
 
 
     config.events = {
         ready: function () {
+            // Dom加载完后去获取需要操作的Dom节点;
             this.getElements();
+
+            customedEvent.keyboardState();
         }
     };
 
@@ -63,7 +67,17 @@ define(function (require) {
     config.getElements = function () {
         nodes.remark = $('#edit-wrap [name="remark"]')[0];
         nodes.num = $('#edit-wrap [node-type="num"]')[0];
+        nodes.selectType = $('#edit-wrap [node-type="selectType"]')[0];
     };
+
+    /*
+    * 改变显示的sort
+    * @param {string} sort type name
+    */
+    function changeShowSort (name) {
+        var sortName = sort[name];
+        nodes.selectType.innerHTML = sortName;
+    }
 
 
     config.domEvents = {
@@ -131,15 +145,21 @@ define(function (require) {
         /**
         * 分类操作
         */
-        'click:.classify li': function (ele) {
+        'click: .classify li': function (ele) {
             var sort = ele.getAttribute('sort');
             this.accountInfo.sort = sort;
-
             $('.classify .active').removeClass('active');
             var item = ele.getElementsByTagName('div')[0];
             dom.addClass(item, 'active');
+
+            // 改变分类的显示;
+            changeShowSort(sort);
         },
 
+        /**
+        * 分类操作
+        * @param {Dom} element
+        */
         'click:.tab-line span': function (ele) {
             var type = ele.getAttribute('type');
             this.accountInfo.type = type;
@@ -151,9 +171,25 @@ define(function (require) {
 
             dom.g(other + 'Btn').style.display = 'none';
             dom.g(type + 'Btn').style.display = '';
-
         }
     };
+
+    /**
+    * 一些自定义事件;
+    */
+    var customedEvent = {
+        keyboardState: function () {
+            $('.ipt-remark').bind('focus', function () {
+                $('.keyboard').hide();
+            });
+
+            $('.ipt-remark').bind('blur', function () {
+                $('.keyboard').show();
+            });
+        }
+    };
+
+
 
     return config;
 

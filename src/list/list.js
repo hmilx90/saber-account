@@ -1,7 +1,5 @@
 /**
- * @file 
- * @author fengchuyan
- *         wangshuo16
+ * @file 数据列表;
  */
 
 define(function (require) {
@@ -16,57 +14,63 @@ define(function (require) {
 
     config.model = require('./listModel');
 
+    /*
+    * 初始化list数据
+    */
     config.cur_datas = {
-        year: +new Date(Date.now()).getFullYear(),
-        month: new Date(Date.now()).getMonth() + 1
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1
     };
 
+    /*
+    * 获取数据
+    */
+    config.requestData = function () {
+        var me = this;
+        me.model.fetch(me.cur_datas).then(function (data) {
+            me.view.renderList(data);
+        });
+    }
+
     config.events = {
-        'ready': function () {
-            var me = this;
-            this.model.fetch(me.cur_datas).then(function (data) {
-                me.view.renderList(data);
-                
-            });
+        // 每次都要重新读取数据;
+        'wakeup': function () {
+            this.requestData();
         },
-         //'sleep': function () {
-         //    this.scrollTop = document.body.scrollTop;
-         //},
+
         'view: delete': function (id) {
             this.model.deleteItem(id).then(function (deletedItem) {
-                var typeDom = deletedItem.type === 'expense' ? dom.query('.expense-value') : dom.query('.income-value');
+                var typeDom = deletedItem.type === 'expense' ? dom.query('.expense-value') 
+                                                             : dom.query('.income-value');
                 typeDom.innerHTML -= deletedItem.number;
-            });
-            
+            }); 
         },
-        'wakeup': function () {
-            //document.body.scrollTop = this.scrollTop;
-            var me = this;
-            this.model.fetch(me.cur_datas).then(function (data) {
-                me.view.renderList(data);
-                
-            });
-        },
+
+
         'view:lastmonth': function () {
             var me = this;
-            changeData.beforeMonth(me.cur_datas.month, me.cur_datas.year, me.cur_datas.node, function (month, year) {
+            var month = me.cur_datas.month;
+            var year = me.cur_datas.year;
+            var node = me.cur_datas.node;
+
+            changeData.beforeMonth(month, year, node, function (month, year) {
                 extend(me.cur_datas, {month:month, year: year});
-                me.model.fetch(me.cur_datas).then(function (data) {
-                    me.view.renderList(data);
-                    
-                });
+                this.requestData();
             });
         },
+
         'view:nextmonth': function () {
             var me = this;
-            changeData.nextMonth(me.cur_datas.month, me.cur_datas.year, me.cur_datas.node, function (month, year) {
+            var month = me.cur_datas.month;
+            var year = me.cur_datas.year;
+            var node = me.cur_datas.node;
+
+            changeData.nextMonth(month, year, node, function (month, year) {
                 extend(me.cur_datas, {month:month, year: year});
-                me.model.fetch(me.cur_datas).then(function (data) {
-                    me.view.renderList(data);
-                    
-                });
+                this.requestData();
             });
         },
+
         'view:showcharts': function () {
             var me = this;
             this.redirect('/detail', me.cur_datas);

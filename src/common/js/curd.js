@@ -1,6 +1,6 @@
 /**
  * @file 数据库基本的CRUD
- * @author cyj(cuiyongjian@outlook.com)
+ * @author linjing03@
 */
 
 define(function (require) {

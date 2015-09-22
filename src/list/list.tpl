@@ -35,11 +35,11 @@
 
     <!-- for: ${listData} as ${sameDayItems}, ${key} -->
     <div class="title">
-        <h4>
+        <p class="time-line">
             <a class="open" href="javascript:void(0);">
                 <span>${key}</span>
             </a>
-        </h4>
+        </p>
         <dl>
 
             <!-- for: ${sameDayItems} as ${eachItem} -->
