@@ -52,8 +52,10 @@ define(function (require) {
         var me = config;
         me.model.fetch(me.datas).then(function (data) {
             me.view.renderTotal(data);
-            me.view.detail_Data = me.model.detail_Data;
-            bind(me.view.renderCharts(), me.view);
+            var chartData = me.model.detail_Data;
+            bind(me.view.lineChart(dom.g('line-chart'), chartData.days_array, [chartData.icn_count, chartData.exp_count]), me.view);
+            bind(me.view.pieChart(dom.g('pie-chart-exp'), chartData.sorts_count_exp), me.view);
+            bind(me.view.pieChart(dom.g('pie-chart-inc'), chartData.sorts_count_inc), me.view);
         });
     }
 
